@@ -4,9 +4,7 @@ class CreateTravelers < ActiveRecord::Migration[5.2]
       t.boolean :organizer
       t.string :name
       t.string :email
-      t.string :password_digest
       t.integer :age
-      t.string :rewards, array: true
       t.timestamps
     end
   end

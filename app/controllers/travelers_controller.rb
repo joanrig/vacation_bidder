@@ -1,2 +1,2 @@
-class TravelersController < ApplicationController
+class TravelersController < ApplicationControlle
 end
