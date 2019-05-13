@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_155300) do
   create_table "bucket_list_items", force: :cascade do |t|
     t.string "title"
     t.integer "traveler_id"
-    t.integer "attraction_id"
+    t.integer "attraction_ids"
     t.integer "vacation_id"
     t.text "notes"
     t.datetime "created_at", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_155300) do
     t.boolean "organizer"
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.integer "age"
     t.string "rewards", array: true
     t.datetime "created_at", null: false
