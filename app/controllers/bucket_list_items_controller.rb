@@ -1,0 +1,2 @@
+class BucketListItemsController < ApplicationController
+end
