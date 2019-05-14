@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new#render login form
-    binding.pry
+    @traveler = Traveler.new
   end
 
   def create#create new session, ie log in user.

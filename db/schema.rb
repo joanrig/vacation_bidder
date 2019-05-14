@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_010645) do
     t.boolean "organizer", default: false
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

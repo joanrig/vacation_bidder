@@ -83,53 +83,6 @@ BucketListItems = BucketListItem.create([
   }
 ])
 
-BucketAttractions = BucketAttraction.create([
-  {
-    bucket_list_item_id: 1,
-    attraction_id: 5
-  },
-
-  {
-    bucket_list_item_id: 1,
-    attraction_id: 6
-  },
-
-  {
-    bucket_list_item_id: 1,
-    attraction_id: 11
-  },
-
-  {
-    bucket_list_item_id: 3,
-    attraction_id: 4
-  },
-
-  {
-    bucket_list_item_id: 4,
-    attraction_id: 7
-  },
-
-  {
-    bucket_list_item_id: 4,
-    attraction_id: 8
-  },
-
-  {
-    bucket_list_item_id: 6,
-    attraction_id: 9
-  },
-
-  {
-    bucket_list_item_id: 6,
-    attraction_id: 10
-  },
-
-  {
-    bucket_list_item_id: 7,
-    attraction_id: 12
-  }
-])
-
 Attractions = Attraction.create([
   {
     name: "Zion National Park",
@@ -192,6 +145,91 @@ Attractions = Attraction.create([
   }
 ])
 
+BucketAttractions = BucketAttraction.create([
+  {
+    bucket_list_item_id: 1,
+    attraction_id: 5
+  },
+
+  {
+    bucket_list_item_id: 1,
+    attraction_id: 6
+  },
+
+  {
+    bucket_list_item_id: 1,
+    attraction_id: 11
+  },
+
+  {
+    bucket_list_item_id: 3,
+    attraction_id: 4
+  },
+
+  {
+    bucket_list_item_id: 4,
+    attraction_id: 7
+  },
+
+  {
+    bucket_list_item_id: 4,
+    attraction_id: 8
+  },
+
+  {
+    bucket_list_item_id: 6,
+    attraction_id: 9
+  },
+
+  {
+    bucket_list_item_id: 6,
+    attraction_id: 10
+  },
+
+  {
+    bucket_list_item_id: 7,
+    attraction_id: 12
+  }
+])
+
+Categories = Category.create([
+  {
+    name: "parks",
+    image: "https://images.unsplash.com/photo-1504827910875-50c950d5d13f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+  },
+
+  {
+    name:"bicycling",
+    image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+  },
+
+  {
+    name:"hiking",
+    image: "https://www.planetware.com/photos-large/USCA/california-redwood-national-and-state-parks-boy-scout-tree-trail.jpg"
+  },
+
+  {
+    name:"theater",
+    image: "http://theatreprojects.com/files/projects/chicago-shakespeare-theater-navy-pier-01.jpg"
+  },
+
+  {
+    name:"tour",
+    image:"https://static1.squarespace.com/static/5558ab9fe4b02d567e71d61f/571fd1ca859fd093dd9eda99/571fd1d1cf80a163a4d4dc6c/1461703167640/DSC_4183.JPG?format=2500w"
+  },
+
+  {
+    name:"running",
+    image: "https://wpassets.trainingpeaks.com/wp-content/uploads/2018/04/02142228/04078-hal-higdon-top-10-running-tips-blog-700x394.jpg"
+  },
+
+  {
+    name:"classes",
+    image:"https://img.grouponcdn.com/deal/dTi8d7uFDafiTprJSS2m/K8-2048x1229/v1/c700x420.jpg"
+  },
+
+])
+
 AttractionCategories = AttractionCategory.create([
   {
     attraction_id: 1,
@@ -248,45 +286,6 @@ AttractionCategories = AttractionCategory.create([
     category_id: 7
   },
 ])
-
-Categories = Category.create([
-  {
-    name: "parks",
-    image: "https://images.unsplash.com/photo-1504827910875-50c950d5d13f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
-  },
-
-  {
-    name:"bicycling",
-    image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
-  },
-
-  {
-    name:"hiking",
-    image: "https://www.planetware.com/photos-large/USCA/california-redwood-national-and-state-parks-boy-scout-tree-trail.jpg"
-  },
-
-  {
-    name:"theater",
-    image: "http://theatreprojects.com/files/projects/chicago-shakespeare-theater-navy-pier-01.jpg"
-  },
-
-  {
-    name:"tour",
-    image:"https://static1.squarespace.com/static/5558ab9fe4b02d567e71d61f/571fd1ca859fd093dd9eda99/571fd1d1cf80a163a4d4dc6c/1461703167640/DSC_4183.JPG?format=2500w"
-  },
-
-  {
-    name:"running",
-    image: "https://wpassets.trainingpeaks.com/wp-content/uploads/2018/04/02142228/04078-hal-higdon-top-10-running-tips-blog-700x394.jpg"
-  },
-
-  {
-    name:"classes",
-    image:"https://img.grouponcdn.com/deal/dTi8d7uFDafiTprJSS2m/K8-2048x1229/v1/c700x420.jpg"
-  },
-
-])
-
 
 
 Vacations = Vacation.create([

@@ -1,4 +1,5 @@
 class Traveler < ApplicationRecord
+  has_secure_password
   has_many :bucket_list_items
   has_many :bucket_attractions, through: :bucket_list_items
   has_many :attractions, through: :bucket_attractions
