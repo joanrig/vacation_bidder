@@ -16,6 +16,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
+  <header>
+<br>
+<!-- note: if you change below to h1 it reverts to bootstrap styling plus big white box -->
+      <h5 style="text-align:center">Bid on my bucket list</h5>
+
+        <nav>
+          <h4><%= link_to "Signup", '/travelers/new', class: 'nav_element' %></h4>
+          <h4><%= link_to "Bucket List", bucket_list_items_path, class: 'nav_element'  %></h4>
+        </nav>
+
+</header>
 
   <body>
     <%= yield %>

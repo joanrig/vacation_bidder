@@ -34,7 +34,7 @@ class TravelersController < ApplicationController
     if @traveler.valid?
       redirect_to traveler_path(@traveler)
     else
-      render :new
+      render :edit
     end
   end
 

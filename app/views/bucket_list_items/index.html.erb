@@ -1,0 +1,5 @@
+<%= render 'layout' %>
+
+<% @items.each do |item| %>
+  <%= link_to item.title, bucket_list_item_path(item) %>
+<% end %>
