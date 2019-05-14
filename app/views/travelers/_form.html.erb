@@ -1,0 +1,27 @@
+
+
+<div class="container">
+  <div class="panel-a" text-black>
+    <div class="panel-body">
+      <div class="form" style="color:darkgrey">
+      <%= form_for traveler do |f| %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+        <br><br>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+        <br><br>
+        <%= f.label :age %><br>
+        <%= f.text_field :age %>
+        <br><br>
+        <%= f.check_box :organizer %>
+        <%= f.label :organizer, "Trip planner" %>
+        <br><br>
+        <br><br><br>
+        <div style="color:black">
+        <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

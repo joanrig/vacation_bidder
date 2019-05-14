@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_010645) do
   end
 
   create_table "travelers", force: :cascade do |t|
-    t.boolean "organizer"
+    t.boolean "organizer", default: false
     t.string "name"
     t.string "email"
     t.integer "age"
