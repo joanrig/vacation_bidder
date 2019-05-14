@@ -132,12 +132,12 @@ BucketAttractions = BucketAttraction.create([
 
 Attractions = Attraction.create([
   {
-    name: "Zion",
+    name: "Zion National Park",
     website: "https://www.nationalparks.org/explore-parks/zion-national-park"
   },
 
   {
-    name: "Crater Lake",
+    name: "Crater Lake National Park",
     website: "https://www.nationalparks.org/explore-parks/crater-lake-national-park"
   },
 
@@ -225,11 +225,6 @@ AttractionCategories = AttractionCategory.create([
 
   {
     attraction_id: 7,
-    category_id: 7
-  },
-
-  {
-    attraction_id: 7,
     category_id: 6
   },
 
@@ -252,13 +247,12 @@ AttractionCategories = AttractionCategory.create([
     attraction_id: 12,
     category_id: 7
   },
-
-
 ])
 
 Categories = Category.create([
   {
-    name:"park"
+    name: "parks",
+    image: "https://images.unsplash.com/photo-1504827910875-50c950d5d13f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
   },
 
   {

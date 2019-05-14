@@ -1,0 +1,19 @@
+<%= render 'layout' %>
+
+<div class="col-sm-12 d-flex flex-row" style="text-align:center">
+
+
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <div class="col-sm-12 d-flex flex-row">
+          <h1>Attractions</h1>
+          <% @categories.each do |c| %>
+          <br>
+          <div class="subheader"><h2><%= link_to c.name, category_path(c)%></h2></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

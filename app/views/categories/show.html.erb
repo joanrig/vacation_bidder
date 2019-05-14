@@ -1,0 +1,23 @@
+<style>
+  body {
+  background: url(<%= @category.image %>) center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  }
+
+.panel-a {
+  background: rgb(0, 0, 0, 0.1)
+  }
+</style>
+
+
+<div class="col-sm-12 d-flex flex-row">
+  <div class="text-center">
+
+    <h1><%= @category.name %></h1>
+    <% @category.attractions.each do |a| %>
+      <h4><a href="<%= a.website %>"><%= a.name %></a></h4>
+    <% end %>
+
+  </div>
+</div>

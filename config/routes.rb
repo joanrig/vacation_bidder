@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :bucket_list_items
   resources :attractions
   resources :destinations
+  resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

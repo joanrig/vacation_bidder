@@ -1,9 +1,11 @@
 class AttractionsController < ApplicationController
 
   def index
-    @attractions = Attraction.all.sort_by(&:category)
-    @parks = Attraction.where(category:"park")
-    @running = Attraction.where(category:"running")
-    @hiking = Attraction.where(category:"hiking")
+    @attractions = Attraction.all
   end
+
+  def show
+    @attraction = Attraction.find_by_id(params[:id])
+  end
+  
 end
