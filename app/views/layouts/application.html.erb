@@ -18,14 +18,16 @@
   </head>
   <header>
 <br>
-<!-- note: if you change below to h1 it reverts to bootstrap styling plus big white box -->
-      <h5 style="text-align:center">Bid on my bucket list</h5>
-
-        <nav>
-          <h4><%= link_to "Signup", '/travelers/new', class: 'nav_element' %></h4>
-          <h4><%= link_to "Bucket List", bucket_list_items_path, class: 'nav_element'  %></h4>
-        </nav>
-
+    <nav>
+      <div style="text-align:center">
+        <p><%= link_to "Signup", signup_path, class: 'nav_element' %></p>
+        <p><%= link_to "Log In", login_path, class: 'nav_element' %></p>
+        <p><%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %></p>
+        <p><%= link_to "My Vacations", vacations_path, class: 'nav_element'  %></p>
+        <p><%= link_to "Inspire Me", attractions_path, class: 'nav_element'  %></p>
+        <p><%= link_to "Log Out", logout_path, class: 'nav_element'  %></p>
+      </div>
+    </nav>
 </header>
 
   <body>

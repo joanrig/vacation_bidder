@@ -1,4 +1,5 @@
 class TravelersController < ApplicationController
+  before_action :verify_login, :current_user, except: [:new, :create]
   before_action :set_traveler, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -1,4 +1,5 @@
 class BucketListItemsController < ApplicationController
+  before_action :verify_login, :current_user
 
   def index
     @traveler = current_user
