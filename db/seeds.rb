@@ -133,76 +133,161 @@ BucketAttractions = BucketAttraction.create([
 Attractions = Attraction.create([
   {
     name: "Zion",
-    category: "park",
     website: "https://www.nationalparks.org/explore-parks/zion-national-park"
   },
 
   {
     name: "Crater Lake",
-    category: "park",
     website: "https://www.nationalparks.org/explore-parks/crater-lake-national-park"
   },
 
   {
     name: "Ragbrai",
-    category: "event",
     website: "https://ragbrai.com/"
   },
 
   {
     name: "Annapurna Circuit",
-    category: "hike",
     website: "https://en.wikipedia.org/wiki/Annapurna_Circuit"
   },
 
   {
     name: "Globe Theatre",
-    category: "theater",
     website: "https://www.shakespearesglobe.com"
   },
 
   {
     name: "Shakespeare's birthplace",
-    category: "tour",
     website: "https://www.shakespeare.org.uk/visit/shakespeares-birthplace/"
   },
 
   {
     name: "Boston marathon",
-    category: "event",
     website: "https://www.baa.org/"
   },
 
   {
     name: "Battle Road Trail",
-    category: "trail",
     website: "https://www.nps.gov/mima/planyourvisit/placestogo.htm"
   },
 
   {
     name: "Tour de Noto",
-    category: "bike route",
     website: "https://www.okujapan.com/trips/noto-peninsula-self-guided-cycling-7-days-116"
   },
 
   {
     name: "Mt. Fuji",
-    category: "hike",
     website: "https://www.japan-guide.com/e/e6901.html"
   },
 
   {
     name: "Warner Brothers Studio",
-    category: "tour",
     website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0"
   },
 
   {
     name: "Tio Tula School",
-    category: "school",
     website: "https://www.tiatula.com/"
   }
 ])
+
+AttractionCategories = AttractionCategory.create([
+  {
+    attraction_id: 1,
+    category_id: 1
+  },
+
+  {
+    attraction_id: 2,
+    category_id: 1
+  },
+
+  {
+    attraction_id: 3,
+    category_id: 2
+  },
+
+  {
+    attraction_id: 4,
+    category_id: 3
+  },
+
+  {
+    attraction_id: 5,
+    category_id: 4
+  },
+
+  {
+    attraction_id: 6,
+    category_id: 5
+  },
+
+  {
+    attraction_id: 7,
+    category_id: 7
+  },
+
+  {
+    attraction_id: 7,
+    category_id: 6
+  },
+
+  {
+    attraction_id: 9,
+    category_id: 2
+  },
+
+  {
+    attraction_id: 10,
+    category_id: 3
+  },
+
+  {
+    attraction_id: 11,
+    category_id: 5
+  },
+
+  {
+    attraction_id: 12,
+    category_id: 7
+  },
+
+
+])
+
+Categories = Category.create([
+  {
+    name:"park"
+  },
+
+  {
+    name:"bicycling"
+  },
+
+  {
+    name:"hiking"
+  },
+
+  {
+    name:"theater"
+  },
+
+  {
+    name:"tour"
+  },
+
+  {
+    name:"running"
+  },
+
+  {
+    name:"classes"
+  },
+
+])
+
+
 
 Vacations = Vacation.create([
   {
@@ -215,7 +300,7 @@ Vacations = Vacation.create([
   {
     name: "2020 Japan tour",
     category: "outdoors",
-    budget: 5000,
+    budget: 6000,
     number_of_travelers: 4,
   }
 ])

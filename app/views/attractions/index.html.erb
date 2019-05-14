@@ -1,0 +1,34 @@
+<%= render 'layout' %>
+
+<div class="col-sm-12 d-flex flex-row" style="text-align:center">
+<h1>Attractions Index</h1>
+<br><br>
+<h2>Outdoors</h2>
+
+<h3>
+Parks <br>
+<% @parks.each do |a| %>
+  <%= link_to a.name %><br>
+<% end %>
+<br><br>
+Running <br>
+<% @running.each do |a| %>
+  <%= link_to a.name %><br>
+<% end %>
+<br><br>
+Hiking<br>
+<% @hiking.each do |a| %>
+  <%= link_to a.name %><br>
+<% end %>
+
+
+</h3>
+
+
+
+
+
+
+
+
+</div>
