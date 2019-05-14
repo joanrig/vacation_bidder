@@ -4,9 +4,12 @@
   <div class="panel-a" text-black>
     <div class="panel-body">
       <div class="form" style="color:darkgrey">
-      <%= form_for traveler do |f| %>
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+      <%= form_for user do |f| %>
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %>
+        <br><br>
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
         <br><br>
         <%= f.label :email %><br>
         <%= f.text_field :email %>

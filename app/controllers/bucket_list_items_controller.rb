@@ -1,8 +1,8 @@
 class BucketListItemsController < ApplicationController
 
   def index
-    @traveler = current_user
-    @items = @traveler.bucket_list_items.all
+    @user = current_user
+    @items = @user.bucket_list_items.all
   end
 
   def new
@@ -44,7 +44,7 @@ class BucketListItemsController < ApplicationController
 
     private
       def item_params
-        params.require(:bucket_list_item).permit(:title, :traveler_id, :vacation_id, :notes)
+        params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes)
       end
 
 end

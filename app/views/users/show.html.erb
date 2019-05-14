@@ -1,6 +1,6 @@
 <%= render 'layout' %>
 
-<h1>Welcome, <%= @traveler.name %>! </h1>
+<h1>Welcome, <%= @user.name %>! </h1>
 
 <div class="col-sm-12 d-flex flex-row">
    <% if flash[:notice] %>
@@ -9,9 +9,9 @@
     </div>
   <% end %>
 
-  <h3>Email:  <%= @traveler.email %></h3>
+  <h3>Email:  <%= @user.email %></h3>
 
-  <% if @traveler.organizer %>
+  <% if @user.organizer %>
     <h2>Let's get this trip planned!</h2>
   <% end %>
 
