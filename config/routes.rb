@@ -12,10 +12,16 @@ Rails.application.routes.draw do
   resources :vacations, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get root to: 'travelers#new'
 
-  get '/signup', to: 'travelers#new'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+  devise_scope :user do
+  authenticated :user do
+    root 'users#show', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root 'devise/sessions#new', as: :unauthenticated_root
+  end
+end
+
+
 end
