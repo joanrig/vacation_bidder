@@ -256,27 +256,33 @@ Categories = Category.create([
   },
 
   {
-    name:"bicycling"
+    name:"bicycling",
+    image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
   },
 
   {
-    name:"hiking"
+    name:"hiking",
+    image: "https://www.planetware.com/photos-large/USCA/california-redwood-national-and-state-parks-boy-scout-tree-trail.jpg"
   },
 
   {
-    name:"theater"
+    name:"theater",
+    image: "http://theatreprojects.com/files/projects/chicago-shakespeare-theater-navy-pier-01.jpg"
   },
 
   {
-    name:"tour"
+    name:"tour",
+    image:"https://static1.squarespace.com/static/5558ab9fe4b02d567e71d61f/571fd1ca859fd093dd9eda99/571fd1d1cf80a163a4d4dc6c/1461703167640/DSC_4183.JPG?format=2500w"
   },
 
   {
-    name:"running"
+    name:"running",
+    image: "https://wpassets.trainingpeaks.com/wp-content/uploads/2018/04/02142228/04078-hal-higdon-top-10-running-tips-blog-700x394.jpg"
   },
 
   {
-    name:"classes"
+    name:"classes",
+    image:"https://img.grouponcdn.com/deal/dTi8d7uFDafiTprJSS2m/K8-2048x1229/v1/c700x420.jpg"
   },
 
 ])
