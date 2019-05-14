@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
     def verify_login
-      redirect_to '/travelers/new' unless logged_in?
+      redirect_to '/users/new' unless logged_in?
     end
 
     def logged_in?
@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-      @traveler = Traveler.find_by_id(session[:user_id]) if logged_in?
+      @user = user.find_by_id(session[:user_id]) if logged_in?
     end
 end

@@ -1,5 +1,5 @@
 
-Travelers = Traveler.create([
+users = User.create([
   {
     name: "Joan",
     email: "joan@test.com",
@@ -40,45 +40,45 @@ Travelers = Traveler.create([
 BucketListItems = BucketListItem.create([
   {
     title: "Harry Potter and Shakespeare tour",
-    traveler_id: 3,
+    user_id: 3,
     vacation_id: 1,
     notes: "definitely see King Lear"
   },
 
   {
     title: "Ride Ragbrai",
-    traveler_id: 2,
+    user_id: 2,
     notes: "bring sag wagon"
   },
 
   {
     title: "Nepal tour",
-    traveler_id: 1,
+    user_id: 1,
     notes: "can't wait to try apple pie trail!"
   },
 
   {
     title: "Run Boston Marathon",
-    traveler_id: 4,
+    user_id: 4,
     notes: "lots of training to do!"
   },
 
   {
     title: "Southwest tour",
-    traveler_id: 1,
+    user_id: 1,
     notes: "bring bikes to zion!"
   },
 
   {
     title: "bike tour of Japan",
-    traveler_id: 2,
+    user_id: 2,
     vacation_id: 2,
     notes: "eat sushi!!"
   },
 
   {
     title: "learn Spanish in Spain",
-    traveler_id: 1,
+    user_id: 1,
     notes: "i love salamanca!"
   }
 ])
@@ -293,13 +293,13 @@ Vacations = Vacation.create([
     name: "2019 England tour",
     category: "cultural",
     budget: 5000,
-    number_of_travelers: 4,
+    number_of_users: 4,
   },
 
   {
     name: "2020 Japan tour",
     category: "outdoors",
     budget: 6000,
-    number_of_travelers: 4,
+    number_of_users: 4,
   }
 ])

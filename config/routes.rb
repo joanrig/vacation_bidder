@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :installs
   resources :attractions
   resources :categories
-  resources :travelers
+  resources :users
     resources :bucket_list_items
   resources :vacations, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get root to: 'travelers#new'
+  get root to: 'users#new'
 
-  get '/signup', to: 'travelers#new'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
 end

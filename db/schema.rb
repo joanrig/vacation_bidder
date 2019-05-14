@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_010645) do
 
   create_table "bucket_list_items", force: :cascade do |t|
     t.string "title"
-    t.integer "traveler_id"
+    t.integer "user_id"
     t.integer "vacation_id"
     t.text "notes"
     t.datetime "created_at", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_010645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "travelers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.boolean "organizer", default: false
     t.string "name"
     t.string "email"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_010645) do
     t.string "name"
     t.string "category"
     t.integer "budget"
-    t.integer "number_of_travelers"
+    t.integer "number_of_users"
     t.integer "requirements_id"
     t.integer "schedule_id"
     t.datetime "created_at", null: false

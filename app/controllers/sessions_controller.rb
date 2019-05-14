@@ -1,17 +1,17 @@
 class SessionsController < ApplicationController
 
   def new#render login form
-    @traveler = Traveler.new
+    @user = User.new
   end
 
   def create#create new session, ie log in user.
     #binding.pry
-    @traveler = Traveler.find_by(name: params[:user][:name])
+    @user = user.find_by(name: params[:user][:name])
 
-    if @traveler.try(:authenticate, params[:traveler][:password])
-      session[:user_id] = @traveler.id
+    if @user.try(:authenticate, params[:user][:password])
+      session[:user_id] = @user.id
       flash[:notice]
-      redirect_to travelers_path(@traveler)
+      redirect_to users_path(@user)
     else
       render :new
     end
