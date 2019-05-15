@@ -14,7 +14,7 @@
         <h3>Attractions </h3>
           <% if @item.attractions %>
             <% @item.attractions.each do |a| %>
-              <%= link_to a.name, a.website) %><br>
+              <%= link_to a.name, attraction_path(a) %><br>
             <% end %>
           <% else %>
             <h4>No Attractions yet! Let's add some!</h4>

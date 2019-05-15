@@ -9,4 +9,10 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by_id(params[:id])
   end
 
+  private
+
+    def attraction_params
+      params.require(:attraction).permit(:name, category_ids: [], :website, :notes)
+    end
+
 end

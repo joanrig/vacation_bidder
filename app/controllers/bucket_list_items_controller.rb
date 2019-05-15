@@ -15,7 +15,6 @@ class BucketListItemsController < ApplicationController
     @user = current_user
     @item = BucketListItem.new
     @item.update(item_params)
-    binding.pry
     if @item.save
       redirect_to bucket_list_item_path(@item)
     else
@@ -42,15 +41,14 @@ class BucketListItemsController < ApplicationController
       flash[:alert] = @item.errors.full_messages
       render :edit
     end
-
   end
 
 
 
 
-    private
-      def item_params
-        params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes, :attraction_ids)
-      end
+  private
+    def item_params
+      params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes, :attraction_ids)
+    end
 
 end

@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :vacations
-
-  resources :attractions
-  resources :categories, only: [:index, :show]
-  resources :users
   resources :bucket_list_items
+  resources :categories, only: [:index, :show]
+
+  resources :users do
+    resources :attractions, shallow: true 
+  end
+
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

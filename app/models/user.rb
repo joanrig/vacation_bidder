@@ -5,7 +5,9 @@ class User < ApplicationRecord
    has_many :bucket_list_items
    has_many :vacations, through: :bucket_list_items
    has_many :bucket_attractions, through: :bucket_list_items
+
    has_many :attractions, through: :bucket_attractions
+   accepts_nested_attributes_for :attractions
 
    validates :first_name, presence: true
    validates :last_name, presence: true

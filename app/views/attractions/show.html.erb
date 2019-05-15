@@ -1,1 +1,24 @@
 <%= render 'layout' %>
+
+<div class="col-sm-12 d-flex flex-row">
+  <div class="text-center">
+
+    <h1><%= @attraction.name %></h1>
+
+      <h4>
+        Categories:
+        <% @attraction.categories.uniq.each do |c|%>
+          <%= link_to c.name, category_path(c) %>
+        <% end %>
+      </h4>
+
+      <h4>@attraction.notes</h4>
+
+
+
+    <br>
+    <h3><%= link_to "Website", @attraction.website %></h3>
+
+
+  </div>
+</div>
