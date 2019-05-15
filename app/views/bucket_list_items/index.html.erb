@@ -8,7 +8,7 @@
       <div class="panel-body">
         <h1><%= @user.first_name %>'s bucket list'</h1>
         <br>
-        <% if @items %>
+        <% if !@items %>
           <h3>Looks like your bucket list is empty! Let's fix that.</h3>
         <% else %>
           <% @items.each do |item| %>
