@@ -1,7 +1,19 @@
 <%= render 'layout' %>
 
-<h3>Just added to your bucket list:</h3>
+<br>
+<br>
+<br>
 
-<h3>Title: <%= @bucket_list_item.name %></h3>
-
-<p>Notes: <%= @bucket_list_item.notes %></p>
+<div class="container", style="text-align:center">
+  <div class="panel-a" text-black>
+    <div class="panel-body">
+      <div class="form" style="color:darkgrey">
+        <h4>Just added to your bucket list:</h4>
+        <br><br>
+        <h3><%= @item.title %></h3>
+        <h4>Notes: <%= @item.notes %></h4>
+        <%= link_to "Edit", edit_bucket_list_item_path(@item) %>
+      </div>
+    </div>
+  </div>
+</div>

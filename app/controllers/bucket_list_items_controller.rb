@@ -7,10 +7,12 @@ class BucketListItemsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @item = BucketListItem.new
   end
 
   def create
+    @user = current_user
     @item = BucketListItem.new
     @item.update(item_params)
     if @item.save
