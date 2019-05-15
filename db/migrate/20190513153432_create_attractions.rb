@@ -4,7 +4,7 @@ class CreateAttractions < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :website
       t.integer :destination_id
-      t.text_area :notes
+      t.string :notes
       t.timestamps
     end
   end

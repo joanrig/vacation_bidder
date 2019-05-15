@@ -90,47 +90,56 @@ BucketListItems = BucketListItem.create([
 Attractions = Attraction.create([
   {
     name: "Zion National Park",
-    website: "https://www.nationalparks.org/explore-parks/zion-national-park"
+    website: "https://www.nationalparks.org/explore-parks/zion-national-park",
+    notes: "must do the Narrows"
   },
 
   {
     name: "Crater Lake National Park",
-    website: "https://www.nationalparks.org/explore-parks/crater-lake-national-park"
+    website: "https://www.nationalparks.org/explore-parks/crater-lake-national-park",
+    notes: "Wizard Island is the best"
   },
 
   {
     name: "Ragbrai",
-    website: "https://ragbrai.com/"
+    website: "https://ragbrai.com/",
+    notes: "bring your own sag wagon"
   },
 
   {
     name: "Annapurna Circuit",
-    website: "https://en.wikipedia.org/wiki/Annapurna_Circuit"
+    website: "https://en.wikipedia.org/wiki/Annapurna_Circuit",
+    notes: "aim for October"
   },
 
   {
     name: "Globe Theatre",
-    website: "https://www.shakespearesglobe.com"
+    website: "https://www.shakespearesglobe.com",
+    notes: "cheap tickets available through so-and-so"
   },
 
   {
     name: "Shakespeare's birthplace",
-    website: "https://www.shakespeare.org.uk/visit/shakespeares-birthplace/"
+    website: "https://www.shakespeare.org.uk/visit/shakespeares-birthplace/",
+    notes: "could be cool!"
   },
 
   {
     name: "Boston marathon",
-    website: "https://www.baa.org/"
+    website: "https://www.baa.org/",
+    notes: "need to complete qualifying run"
   },
 
   {
     name: "Battle Road Trail",
-    website: "https://www.nps.gov/mima/planyourvisit/placestogo.htm"
+    website: "https://www.nps.gov/mima/planyourvisit/placestogo.htm",
+    notes: "history and cycling!"
   },
 
   {
     name: "Tour de Noto",
-    website: "https://www.okujapan.com/trips/noto-peninsula-self-guided-cycling-7-days-116"
+    website: "https://www.okujapan.com/trips/noto-peninsula-self-guided-cycling-7-days-116",
+    notes: "awesome riding"
   },
 
   {
@@ -139,13 +148,15 @@ Attractions = Attraction.create([
   },
 
   {
-    name: "Warner Brothers Studio",
-    website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0"
+    name: "Warner Brothers Studio - Harry Potter set",
+    website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0",
+    notes: "this is a seven-hour tour?"
   },
 
   {
     name: "Tio Tula School",
-    website: "https://www.tiatula.com/"
+    website: "https://www.tiatula.com/",
+    notes: "classes start on a rolling basis"
   }
 ])
 

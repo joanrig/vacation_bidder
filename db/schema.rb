@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_222024) do
     t.string "name"
     t.string "website"
     t.integer "destination_id"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

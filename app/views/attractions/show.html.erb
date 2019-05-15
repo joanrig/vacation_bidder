@@ -5,19 +5,24 @@
 
     <h1><%= @attraction.name %></h1>
 
-      <h4>
-        Categories:
-        <% @attraction.categories.uniq.each do |c|%>
-          <%= link_to c.name, category_path(c) %>
-        <% end %>
-      </h4>
+    <h4>
+      Categories:
+      <% @attraction.categories.uniq.each do |c|%>
+        <%= link_to c.name, category_path(c) %>
+      <% end %>
+    </h4>
 
-      <h4>@attraction.notes</h4>
+    <br>
+    <h4>Notes:</h4>
+    <h5><%= @attraction.notes %></h5>
 
 
 
     <br>
     <h3><%= link_to "Website", @attraction.website %></h3>
+
+    <br>
+    <%= submit_tag "Edit" %>
 
 
   </div>
