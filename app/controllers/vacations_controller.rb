@@ -1,3 +1,9 @@
 class VacationsController < ApplicationController
-  before_action :verify_login, :current_user
+  before_action :authenticate_user!
+
+
+  def index
+    @vacations = current_user.vacations
+  end
+
 end

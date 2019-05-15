@@ -18,16 +18,23 @@
   </head>
   <header>
 <br>
-      <h5 style="text-align:center">Bid on my bucket list</h5>
+      <h5 style="text-align:center">What's in your bucket list?</h5>
 
         <nav>
-          <h4><%= link_to "Signup", '/users/new', class: 'nav_element' %></h4>
-          <h4><%= link_to "Bucket List", bucket_list_items_path, class: 'nav_element'  %></h4>
+          <% if current_user %>
+            <p><%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %></p>
+            <p><%= link_to "My Vacations", vacations_path, class: 'nav_element' %></p>
+            <p><%= link_to "Inspire Me", categories_path, class: 'nav_element' %></p>
+            <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %></p>
+          <% else %>
+            <p><%= link_to "Log In", new_user_session_path, class: 'nav_element'  %></p>
+          <% end %>
         </nav>
 
 </header>
 
   <body>
+    <br><br>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>

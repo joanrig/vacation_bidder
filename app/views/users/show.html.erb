@@ -5,7 +5,7 @@
 <div class="col-sm-12 d-flex flex-row">
    <% if flash[:notice] %>
     <div class="notice" style="text-align:center">
-      <font size="60" color="red"><em><%= flash[:notice] %></em></font>
+      <font size="12" color="red"><em><%= flash[:notice] %></em></font>
     </div>
   <% end %>
 
@@ -14,5 +14,3 @@
   <% if @user.organizer %>
     <h2>Let's get this trip planned!</h2>
   <% end %>
-
-  

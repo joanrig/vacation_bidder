@@ -1,5 +1,23 @@
 <%= render 'layout' %>
 
-<% @items.each do |item| %>
-  <%= link_to item.title, bucket_list_item_path(item) %>
-<% end %>
+
+<br>
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <h1>hello from bucket list items index page</h1>
+        <% if @items.empty? %>
+          <h3>Looks like your bucket list is empty! Let's fix that.</h3>
+        <% else %>
+          <% @items.each do |item| %>
+            <%= link_to item.title, bucket_list_item_path(item) %>
+          <% end %>
+        <% end %>
+        <br>
+        <br>
+        <h3><%= link_to "Add to my bucket list", new_bucket_list_item_path %></h3>
+      </div>
+    </div>
+  </div>
+</div>

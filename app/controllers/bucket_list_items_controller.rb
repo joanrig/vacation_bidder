@@ -1,5 +1,5 @@
 class BucketListItemsController < ApplicationController
-  before_action :verify_login, :current_user
+  before_action :authenticate_user!
 
   def index
     @user = current_user
