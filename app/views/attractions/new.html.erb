@@ -5,10 +5,9 @@
       <div class="panel-body">
         <h3>Hi <%= @user.first_name %>!</h3>
           <h2>What would you like to add to your bucket list?</h2>
-          <p>You can add attractions to your bucket list on the next page.</p>
       </div>
     </div>
   </div>
 
-<%= render partial: 'form', locals: { bucket_list_item: @item, user: @user }%>
+<%= render partial: 'form', locals: { attraction: @attraction, user: @user }%>
 </div>

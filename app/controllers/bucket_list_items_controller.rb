@@ -43,6 +43,14 @@ class BucketListItemsController < ApplicationController
     end
   end
 
+  def attractions
+    @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
+    @user = current_user
+    @attractions = @item.try(:attractions)
+    binding.pry
+    render :attractions
+  end
+
 
 
 

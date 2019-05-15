@@ -1,13 +1,29 @@
 class AttractionsController < ApplicationController
 
-  def index
-    @attractions = Attraction.all
+
+  def new
+    @attraction = Attraction.new
   end
+
 
   def show
     #binding.pry
     @attraction = Attraction.find_by_id(params[:id])
   end
+
+  def edit
+  end
+
+  def update
+    @attraction = Attraction.find_by_id(params[:id])
+    @attraction.update(attraction_params)
+    if @attraction.valid?
+      redirect_to attraction_path(@attraction)
+    else
+      render :edit
+    end
+  end
+
 
   private
 
