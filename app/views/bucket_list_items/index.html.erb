@@ -6,12 +6,13 @@
   <div class="container">
     <div class="panel-a" text-black>
       <div class="panel-body">
-        <h1>hello from bucket list items index page</h1>
-        <% if @items.empty? %>
+        <h1><%= @user.first_name %>'s bucket list'</h1>
+        <br>
+        <% if @items %>
           <h3>Looks like your bucket list is empty! Let's fix that.</h3>
         <% else %>
           <% @items.each do |item| %>
-            <%= link_to item.title, bucket_list_item_path(item) %>
+            <h3><%= link_to item.title, bucket_list_item_path(item) %></h3><br>
           <% end %>
         <% end %>
         <br>

@@ -8,11 +8,19 @@
   <div class="panel-a" text-black>
     <div class="panel-body">
       <div class="form" style="color:darkgrey">
-        <h4>Just added to your bucket list:</h4>
         <br><br>
-        <h3><%= @item.title %></h3>
-        <h4>Notes: <%= @item.notes %></h4>
-        <%= link_to "Edit", edit_bucket_list_item_path(@item) %>
+        <h3><%= @item.title if @item %></h3>
+        <h3>Notes: <%= @item.try(:notes)  %></h3>
+        <h3>Attractions </h3>
+          <% if @item.attractions %>
+            <% @item.attractions.each do |a| %>
+              <%= link_to a.name, a.website) %><br>
+            <% end %>
+          <% else %>
+            <h4>No Attractions yet! Let's add some!</h4>
+          <% end %>
+        <br><br>
+        <h5><%= link_to "Edit", edit_bucket_list_item_path(@item) %></h5>
       </div>
     </div>
   </div>

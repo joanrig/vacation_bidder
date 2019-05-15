@@ -26,8 +26,6 @@
             <p><%= link_to "My Vacations", vacations_path, class: 'nav_element' %></p>
             <p><%= link_to "Inspire Me", categories_path, class: 'nav_element' %></p>
             <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %></p>
-          <% else %>
-            <p><%= link_to "Log In", new_user_session_path, class: 'nav_element'  %></p>
           <% end %>
         </nav>
 

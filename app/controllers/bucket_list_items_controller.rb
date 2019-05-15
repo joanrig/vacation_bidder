@@ -3,7 +3,7 @@ class BucketListItemsController < ApplicationController
 
   def index
     @user = current_user
-    @items = @user.bucket_list_items.all
+    @items = BucketListItem.where("user_id = ?", @user.id)
   end
 
   def new
@@ -15,6 +15,7 @@ class BucketListItemsController < ApplicationController
     @user = current_user
     @item = BucketListItem.new
     @item.update(item_params)
+    binding.pry
     if @item.save
       redirect_to bucket_list_item_path(@item)
     else
@@ -28,6 +29,8 @@ class BucketListItemsController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @item = BucketListItem.find_by_id(params[:id])
   end
 
   def update
@@ -47,7 +50,7 @@ class BucketListItemsController < ApplicationController
 
     private
       def item_params
-        params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes)
+        params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes, :attraction_ids)
       end
 
 end
