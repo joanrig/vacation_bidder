@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   end
 
   resources :vacations
-  resources :bucket_list_items
-  resources :bucket_attractions, only: [:new, :create]
+  resources :bucket_list_items do
+    resources :bucket_attractions, only: [:new, :create]
+  end
+
+
+
   resources :categories, only: [:index, :show]
 
   resources :users do
@@ -23,8 +27,6 @@ Rails.application.routes.draw do
   end
 
   get '/attractions/index', to: 'categories#index'
-
-  get '/bucket_list_items/:bucket_list_item_id/attractions', to: "bucket_list_items#attractions"
 
 
 

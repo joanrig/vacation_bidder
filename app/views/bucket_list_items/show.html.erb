@@ -20,10 +20,8 @@
               <% @item.attractions.each do |a| %>
               <%= link_to a.name, attraction_path(a) %><br>
             <% end %>
-
           <% end %>
-          <%= button_to "Add or Drop Attractions", "#{bucket_list_item_path(@item)}/attractions", method: :get %><br>
-
+          <%= link_to "Add Attractions", new_bucket_list_item_bucket_attraction_path(@item) %>
           <br><br>
 
         </div>

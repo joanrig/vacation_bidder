@@ -43,17 +43,6 @@ class BucketListItemsController < ApplicationController
     end
   end
 
-  def attractions
-    @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-    @user = current_user
-    @attractions = @item.try(:attractions)
-    binding.pry
-    render :attractions
-  end
-
-
-
-
   private
     def item_params
       params.require(:bucket_list_item).permit(:title, :user_id, :vacation_id, :notes, :attraction_ids)
