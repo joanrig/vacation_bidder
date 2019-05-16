@@ -4,7 +4,7 @@ class CreateVacations < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :category
       t.integer :budget
-      t.integer :number_of_users
+      t.integer :number_of_travelers
       t.integer :requirements_id
       t.integer :schedule_id
 

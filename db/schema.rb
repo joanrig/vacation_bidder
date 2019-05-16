@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_05_16_153440) do
     t.string "name"
     t.string "category"
     t.integer "budget"
-    t.integer "number_of_users"
+    t.integer "number_of_travelers"
     t.integer "requirements_id"
     t.integer "schedule_id"
     t.datetime "created_at", null: false

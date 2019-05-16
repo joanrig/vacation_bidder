@@ -45,7 +45,6 @@ BucketListItems = BucketListItem.create([
   {
     title: "Harry Potter and Shakespeare tour",
     user_id: 3,
-    vacation_id: 1,
     notes: "definitely see King Lear"
   },
 
@@ -76,7 +75,6 @@ BucketListItems = BucketListItem.create([
   {
     title: "bike tour of Japan",
     user_id: 2,
-    vacation_id: 2,
     notes: "eat sushi!!"
   },
 
@@ -162,47 +160,47 @@ Attractions = Attraction.create([
 
 VacationAttractions = VacationAttraction.create([
   {
-    bucket_list_item_id: 1,
+    vacation_id: 1,
     attraction_id: 5
   },
 
   {
-    bucket_list_item_id: 1,
+    vacation_id: 1,
     attraction_id: 6
   },
 
   {
-    bucket_list_item_id: 1,
+    vacation_id: 1,
     attraction_id: 11
   },
 
   {
-    bucket_list_item_id: 3,
+    vacation_id: 3,
     attraction_id: 4
   },
 
   {
-    bucket_list_item_id: 4,
+    vacation_id: 4,
     attraction_id: 7
   },
 
   {
-    bucket_list_item_id: 4,
+    vacation_id: 4,
     attraction_id: 8
   },
 
   {
-    bucket_list_item_id: 6,
+    vacation_id: 6,
     attraction_id: 9
   },
 
   {
-    bucket_list_item_id: 6,
+    vacation_id: 6,
     attraction_id: 10
   },
 
   {
-    bucket_list_item_id: 7,
+    vacation_id: 7,
     attraction_id: 12
   }
 ])
@@ -308,13 +306,13 @@ Vacations = Vacation.create([
     name: "2019 England tour",
     category: "cultural",
     budget: 5000,
-    number_of_users: 4,
+    number_of_travelers: 4,
   },
 
   {
     name: "2020 Japan tour",
     category: "outdoors",
     budget: 6000,
-    number_of_users: 4,
+    number_of_travelers: 4,
   }
 ])

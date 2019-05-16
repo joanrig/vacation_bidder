@@ -6,12 +6,12 @@ class Vacation < ApplicationRecord
   has_many :attractions, through: :vacation_attractions
 
   validates :name, presence: true
-  validate :validate_name
+  #validate :validate_name
 
-  def validate_name
-    if current_user.vacations.where(title: self.title).exist?
-       error.add(:title, 'has already been taken')
-    end
-  end
+  # def validate_name
+  #   if current_user.vacations.where(title: self.title).exist?
+  #      error.add(:title, 'has already been taken')
+  #   end
+  # end
 
 end
