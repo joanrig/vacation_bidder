@@ -11,9 +11,8 @@ class BucketAttractionsController < ApplicationController
     binding.pry
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @attraction = Attraction.find_by_id(params[:attraction_id])
-
     @bucket_attraction = BucketAttraction.create(bucket_list_item_id: @item.id, attraction_id: @attraction.id)
-    binding.pry
+
 
     if @item.save
       redirect_to bucket_list_item_path(@item)

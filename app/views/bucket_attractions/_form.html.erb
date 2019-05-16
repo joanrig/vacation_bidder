@@ -1,20 +1,21 @@
-<div class="container">
-  <div class="panel-a" text-black>
-    <div class="panel-body">
-      <div class="form" style="color:lightblue">
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <div class="form" style="color:lightblue">
 
-        <%= form_for @item do |f| %>
-          <%= @item.title %>
-          <%= @item.try(:notes) %>
-
-          <%= f.label :attraction, "Add Attractions" %><br>
-          <%= f.collection_select :attraction_ids, @attractions, :id, :name %>
-          <br><br>
-
-
-          <%= f.submit "Update Attractions"%>
+            <h1><%= @item.title %></h1>
+            <p><%= @item.try(:notes) %></p>
+            <br>
+            <%= form_for @item do |f| %>
+              <h4><%= f.label :attraction_ids, "Add Attractions" %></h4><br>
+              <%= f.collection_select :attraction_ids, @attractions, :id, :name %>
+              <br><br><br>
+              <h5><%= f.submit %></h5>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
