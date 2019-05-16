@@ -10,6 +10,8 @@
           <h1><%= @vacation.name %></h1>
 
           <%= form_for @vacation do |f| %>
+            <h4><%= f.label :name%><br></h4>
+            <%= f.text_field :name %><br><br>          
             <h4><%= f.label :budget%><br></h4>
             <%= f.text_field :budget %><br><br>
             <h4><%= f.label :number_of_travelers %><br></h4>

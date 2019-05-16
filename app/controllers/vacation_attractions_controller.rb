@@ -1,8 +1,10 @@
 class VacationAttractionsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
+    binding.pry
+    @attractions = current_user.attractions
     @vacation = Vacation.find_by_id(params[:vacation_id])
-    @attractions = Attraction.all
     @vacation_attraction = @vacation.vacation_attractions.build(vacation_id: @vacation.id)
   end
 

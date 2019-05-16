@@ -22,8 +22,6 @@ class VacationsController < ApplicationController
     @vacation.name = @item.title#better: pass in as hidden value from form
     @vacation.bucket_list_items << @item
 
-
-
     if @vacation.save
       redirect_to vacation_path(@vacation)
     else
@@ -49,8 +47,14 @@ class VacationsController < ApplicationController
   def update
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
+    @vacation.update(vacation_params)
 
-    binding.pry
+    if @vacation.save
+      redirect_to vacation_path(@vacation)
+    else
+      flash[:alert] = @vacation.errors.full_messages
+      render :new
+    end
   end
 
 
