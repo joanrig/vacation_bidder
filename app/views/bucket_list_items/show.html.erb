@@ -17,16 +17,6 @@
           <br>
 
 
-          <h5>Attractions already assigned to this bucket list item </h5>
-            <% if @item.attractions.empty? %>
-              <h4>No Attractions yet! Let's add some!</h4>
-            <% else %>
-              <% @item.attractions.uniq.each do |a| %>
-              <h3><%= link_to a.name, attraction_path(a) %></h3>
-            <% end %>
-          <% end %>
-          <br><br>
-          <h4><%= link_to "Add Attractions", new_bucket_list_item_bucket_attraction_path(@item) %></h4>
 
 
 

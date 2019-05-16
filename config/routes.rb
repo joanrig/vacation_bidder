@@ -13,19 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :vacations
-
-  resources :bucket_list_items do
-    resources :bucket_attractions, only: [:new, :create]
+  resources :vacations do
+    resources :vacation_attractions, only: [:new, :create]
   end
-
-
 
   resources :categories, only: [:index, :show]
-
-  resources :users do
-    resources :attractions, shallow: true
-  end
+  resources :attractions
+  resources :bucket_list_items
 
   get '/attractions/index', to: 'categories#index'
 

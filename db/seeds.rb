@@ -160,7 +160,7 @@ Attractions = Attraction.create([
   }
 ])
 
-BucketAttractions = BucketAttraction.create([
+VacationAttractions = VacationAttraction.create([
   {
     bucket_list_item_id: 1,
     attraction_id: 5

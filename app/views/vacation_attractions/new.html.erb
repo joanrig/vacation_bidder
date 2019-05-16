@@ -1,4 +1,4 @@
-<%= render '/bucket_list_items/layout' %>
+<%= render '/vacations/layout' %>
 
 <div class="center" style="text-align:center">
   <div class="container">
@@ -8,17 +8,16 @@
 
 
 
-            <h1><%= @item.title %></h1>
-            <p><%= @item.try(:notes) %></p>
+            <h1><%= @vacation.title %></h1>
 
-            <%= form_for @bucket_attraction, url: bucket_list_item_bucket_attractions_path do |f| %>
+            <%= form_for @vacation_attraction, url: vacation_vacation_attractions do |f| %>
               <h4><%= f.label :attraction_id, "Add Attractions" %></h4><br>
               <%= f.collection_select :attraction_id, @attractions, :id, :name %>
               <br><br><br>
               <h5><%= f.submit %></h5>
             <% end %>
 
-            
+
 
           </div>
         </div>

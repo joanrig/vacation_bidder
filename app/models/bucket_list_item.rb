@@ -8,7 +8,8 @@ class BucketListItem < ApplicationRecord
   end
 
   def validate_name
-  if current_user.bucket_list_items.where(title: self.title).exist?
-     error.add(:title, 'has already been taken')
+    if current_user.bucket_list_items.where(title: self.title).exist?
+       error.add(:title, 'has already been taken')
+    end
   end
 end
