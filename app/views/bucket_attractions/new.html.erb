@@ -1,5 +1,2 @@
 <%= render '/bucket_list_items/layout' %>
-<%= render 'form', locals: {
-    item: @item,
-    attractions: @attractions,
-    bucket_attraction: @bucket_attraction } %>
+<%= render partial: 'form', locals: {item: @item, attractions: @attractions, bucket_attraction: @bucket_attraction } %>
