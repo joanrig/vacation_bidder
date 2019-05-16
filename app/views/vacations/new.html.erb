@@ -1,14 +1,30 @@
 <%= render 'layout' %>
 
+<div class="center", style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <div class="col-sm-12 d-flex flex-row">
+
+          <h3>Let's build your vacation!</h3>
+          <% if @user.bucket_list_items %>
+
+            <%= form_for @vacation do |f| %>
+              <h4><%= f.label :bucket_list_item, "Pick a bucket list item" %></h4><br>
+              <%= f.collection_select :bucket_list_item_id, @bucket_list_items, :id, :name %>
+              <br><br><br>
+              <h5><%= f.submit %></h5>
+            <% end %>
+
+          <% else %>
+            <h3>We need a bucket list item to build a vacation.</h3>
+            <h3>Let's add to your bucket list.</h3>
+          <% end %>
 
 
 
-<h3>To build a vacation, pick a bucket list item</h3>
-
-<%= form_for @vacation do |f| %>
-
-  <h4><%= f.label :bucket_list_item_id, "Add Attractions" %></h4><br>
-  <%= f.collection_select :attraction_id, @attractions, :id, :name %>
-  <br><br><br>
-  <h5><%= f.submit %></h5>
-<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

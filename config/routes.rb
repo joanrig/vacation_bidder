@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :vacations do
     resources :vacation_attractions, only: [:new, :create]
+    resources :bucket_attractions, only: [:new, :create]
   end
 
   resources :categories, only: [:index, :show]

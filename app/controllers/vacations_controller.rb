@@ -3,7 +3,15 @@ class VacationsController < ApplicationController
 
 
   def index
-    @vacations = current_user.vacations
+    @user = current_user
+    @vacations = @user.vacations
   end
+
+  def new
+    @user = current_user
+    @vacation = Vacation.new
+    @attractions = Attraction.all
+  end
+
 
 end
