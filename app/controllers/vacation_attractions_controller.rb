@@ -9,7 +9,7 @@ class VacationAttractionsController < ApplicationController
   def create
     @vacation = Vacation.find_by_id(params[:vacation_id])
     @attraction = Attraction.find_by_id(params[:vacation_attraction][:attraction_id])
-    @vacation_attraction = VacationAttraction.new(vacation_id: @vacaiton.id, attraction_id: @attraction.id)
+    @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id, attraction_id: @attraction.id)
 
     if @vacation_attraction.save
       redirect_to vacation_path(@vacation)

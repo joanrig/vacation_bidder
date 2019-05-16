@@ -45,6 +45,7 @@ BucketListItems = BucketListItem.create([
   {
     title: "Harry Potter and Shakespeare tour",
     user_id: 3,
+    vacation_id: 1,
     notes: "definitely see King Lear"
   },
 
@@ -75,6 +76,7 @@ BucketListItems = BucketListItem.create([
   {
     title: "bike tour of Japan",
     user_id: 2,
+    vacation_id: 2,
     notes: "eat sushi!!"
   },
 

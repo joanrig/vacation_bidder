@@ -8,9 +8,9 @@
 
 
 
-          <h1><%= @vacation.title %></h1>
+          <h1><%= @vacation.name %></h1>
 
-          <%= form_for @vacation_attraction, url: vacation_vacation_attractions do |f| %>
+          <%= form_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
             <h4><%= f.label :attraction_id, "Add Attractions" %></h4><br>
             <%= f.collection_select :attraction_id, @attractions, :id, :name %>
             <h5><%= f.submit %></h5>
