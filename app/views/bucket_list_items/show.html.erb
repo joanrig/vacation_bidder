@@ -1,29 +1,37 @@
 <%= render 'layout' %>
 
-<br>
-<br>
-<br>
 <div class="center" style="text-align:center">
   <div class="container">
     <div class="panel-a" text-black>
       <div class="panel-body">
         <div class="form" style="color:darkgrey">
+
+
           <br><br>
-          <h3><%= @item.title if @item %></h3>
+          <h1><%= @item.title%></h1>
           <h3>Notes: <%= @item.try(:notes)  %></h3>
-          <h5><%= link_to "Edit", edit_bucket_list_item_path(@item) %></h5>
+          <p><%= link_to "Edit", edit_bucket_list_item_path(@item) %></p>
           <br>
-          <h3>Attractions </h3>
+          <br>
+          <br>
+          <br>
+
+
+          <h5>Attractions already assigned to this bucket list item </h5>
             <% if @item.attractions.empty? %>
               <h4>No Attractions yet! Let's add some!</h4>
             <% else %>
-              <% @item.attractions.each do |a| %>
-              <%= link_to a.name, attraction_path(a) %><br>
+              <% @item.attractions.uniq.each do |a| %>
+              <h3><%= link_to a.name, attraction_path(a) %></h3>
             <% end %>
           <% end %>
-          <%= link_to "Add Attractions", new_bucket_list_item_bucket_attraction_path(@item) %>
           <br><br>
+          <h4><%= link_to "Add Attractions", new_bucket_list_item_bucket_attraction_path(@item) %></h4>
 
+
+
+          <br>
+          <br>
         </div>
       </div>
     </div>

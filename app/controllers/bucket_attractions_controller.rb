@@ -10,7 +10,6 @@ class BucketAttractionsController < ApplicationController
   def create
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @attraction = Attraction.find_by_id(params[:bucket_attraction][:attraction_id])
-    binding.pry
     @bucket_attraction = BucketAttraction.new(bucket_list_item_id: @item.id, attraction_id: @attraction.id)
 
     if @bucket_attraction.save

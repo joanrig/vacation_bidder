@@ -6,18 +6,29 @@
   }
 
 .panel-a {
-  background: rgb(0, 0, 0, 0.1)
+  background: rgb(0, 0, 0, 0.2)
   }
 </style>
 
 
-<div class="col-sm-12 d-flex flex-row">
-  <div class="text-center">
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
 
-    <h1><%= @category.name %></h1>
-    <% @category.attractions.each do |a| %>
-      <h4><a href="<%= a.website %>"><%= a.name %></a></h4>
-    <% end %>
 
+        <div class="col-sm-12 d-flex flex-row">
+          <div class="text-center">
+
+            <h1><%= @category.name %></h1>
+            <% @category.attractions.each do |a| %>
+              <h3><a href="<%= a.website %>"><%= a.name %></a></h3>
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
