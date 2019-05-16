@@ -9,5 +9,8 @@ class Vacation < ApplicationRecord
   validate :validate_name
 
   def validate_name
-    
+  if current_user.vacations.where(title: self.title).exist?
+     error.add(:title, 'has already been taken')
+  end
+
 end
