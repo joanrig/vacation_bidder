@@ -1,8 +1,7 @@
 class Vacation < ApplicationRecord
-  has_many :bucket_vacations
-  has_many :bucket_list_items, through: :bucket_vacations
-
+  has_many :bucket_list_items
   has_many :vacation_attractions
+  accepts_nested_attributes_for :vacation_attractions
   has_many :attractions, through: :vacation_attractions
 
   validates :name, presence: true

@@ -1,7 +1,6 @@
 class BucketListItem < ApplicationRecord
   belongs_to :user
-  has_many :bucket_vacations
-  has_many :vacations, through: :bucket_vacations
+  belongs_to :vacation, optional:true
   validates :title, presence: true, uniqueness: true
 
   def attractions_names

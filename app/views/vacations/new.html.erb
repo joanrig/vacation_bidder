@@ -1,26 +1,21 @@
-<%= render 'layout' %>
+<%= render '/vacations/layout' %>
 
-<div class="center", style="text-align:center">
+<div class="center" style="text-align:center">
   <div class="container">
     <div class="panel-a" text-black>
       <div class="panel-body">
-        <div class="col-sm-12 d-flex flex-row">
+        <div class="form" style="color:lightblue">
 
-          <h3>Let's build your vacation!</h3>
-          <% if @user.bucket_list_items %>
+          <h3><%= @user.first_name %>'s next vacation:</h3>
+          <h1><%= @vacation.name %></h1>
 
-            <%= form_for @vacation do |f| %>
-              <h4><%= f.label :bucket_list_item, "Pick a bucket list item" %></h4><br>
-              <%= f.collection_select :bucket_list_item_id, @bucket_list_items, :id, :name %>
-              <br><br><br>
-              <h5><%= f.submit %></h5>
-            <% end %>
-
-          <% else %>
-            <h3>We need a bucket list item to build a vacation.</h3>
-            <h3>Let's add to your bucket list.</h3>
+          <%= form_for [@item, @vacation] do |f| %>
+            <h5><%= f.label :budget%><br></h5>
+            <%= f.text_field :budget %><br><br>
+            <h5><%= f.label :number_of_travelers %><br></h5>
+            <%= f.text_field :number_of_travelers %><br><br><br>
+            <%= f.submit %><br><br>
           <% end %>
-
 
 
         </div>

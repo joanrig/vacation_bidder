@@ -10,11 +10,10 @@
           <br><br>
           <h1><%= @item.title%></h1>
           <h3>Notes: <%= @item.try(:notes)  %></h3>
-          <p><%= link_to "Edit", edit_bucket_list_item_path(@item) %></p>
-          <br>
-          <br>
-          <br>
-          <br>
+          <p><%= link_to "Edit", edit_bucket_list_item_path(@item) %></p><br><br>
+
+          <h3><%= link_to "Ready to make this real? Click here to build a vacation from this bucket list item", new_bucket_list_item_vacation_path(@item) %><br><br>
+
 
 
 
