@@ -1,0 +1,14 @@
+<%= render 'layout' %>
+
+
+
+
+<h3>To build a vacation, pick a bucket list item</h3>
+
+<%= form_for @vacation do |f| %>
+
+  <h4><%= f.label :bucket_list_item_id, "Add Attractions" %></h4><br>
+  <%= f.collection_select :attraction_id, @attractions, :id, :name %>
+  <br><br><br>
+  <h5><%= f.submit %></h5>
+<% end %>
