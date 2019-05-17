@@ -18,7 +18,7 @@
           <%= f.text_field :number_of_travelers %><br><br><br>
 
           <% if @attractions %>
-            <p>Attractions already assigned to this vacation:</p>
+            <h4><%= f.label "Attractions already assigned to this vacation:" %></h4>
             <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
               <div class="collection-check-box">
                 <%= b.check_box %>
@@ -29,11 +29,10 @@
             <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
           <% end %><br><br>
 
-            <p>Add Attractions</p>
             <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
               <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
               <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name %>
-            <% end %>
+            <% end %><br><br>
 
 
 
