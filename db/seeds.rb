@@ -3,7 +3,6 @@ Users = User.create([
     first_name: "Joan",
     last_name: "Gonzales",
     email: "joan@test.com",
-    age: 35  ,
     organizer: true,
   },
 
@@ -11,7 +10,6 @@ Users = User.create([
     first_name: "Eric",
     last_name: "Jones",
     email: "eric@test.com",
-    age: 52  ,
     organizer: true,
   },
 
@@ -19,7 +17,6 @@ Users = User.create([
     first_name: "Cambria",
     last_name: "Lee",
     email: "cam@test.com",
-    age: 16  ,
     organizer: true,
   },
 
@@ -27,7 +24,6 @@ Users = User.create([
     first_name: "Indy",
     last_name: "Ward",
     email: "indy@test.com",
-    age: 15  ,
     organizer: false,
   },
 
@@ -35,7 +31,6 @@ Users = User.create([
     first_name: "Katy",
     last_name: "June",
     email: "katy@test.com",
-    age: 61  ,
     organizer: true,
   }
 ])

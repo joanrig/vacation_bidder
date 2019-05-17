@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_060944) do
     t.string "name"
     t.string "email"
     t.string "website"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,8 +78,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_060944) do
     t.datetime "remember_created_at"
     t.string "first_name"
     t.string "last_name"
-    t.integer "age"
-    t.boolean "organizer"
+    t.string "organizer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
