@@ -1,4 +1,5 @@
 class BidsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @bidder = Bidder.find_by_id(params[:bidder_id])
