@@ -153,3 +153,8 @@ h5 a {
   color: rgb(235, 230, 230);
 
 }
+
+.flash {
+  color: red;
+  font-size: 1.5em;
+}

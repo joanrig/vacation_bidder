@@ -9,9 +9,14 @@ class VacationsController < ApplicationController
 
   def new
     @user = current_user
-    @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-    @vacation = @item.build_vacation(name: @item.title)
-    @attractions = Attraction.all
+    unless @user.bucket_list_items.empty?
+      @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
+      @vacation = @item.build_vacation(name: @item.name)
+      @attractions = Attraction.all
+    else
+      flash[:alert] = "We need a bucket list item to build a vacation. Let's add to your bucket list!"
+      redirect_to new_bucket_list_item_path
+    end
 
   end
 
