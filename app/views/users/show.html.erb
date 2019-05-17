@@ -1,16 +1,16 @@
 <%= render 'layout' %>
 
-<h1>Welcome, <%= @user.first_name %>! </h1>
 
-<div class="col-sm-12 d-flex flex-row">
-   <% if flash[:notice] %>
-    <div class="notice" style="text-align:center">
-      <font size="12" color="red"><em><%= flash[:notice] %></em></font>
-    </div>
-  <% end %>
+<div class="text-center">
+  <br>
+  <br>
 
-  <h3>Email:  <%= @user.email %></h3>
+  <h1>Welcome, <%= @user.first_name %>! </h1>
+  <h2>What would you like to do?</h2>
+  <br>
+  <br>
 
-  <% if @user.organizer %>
-    <h2>Let's get this trip planned!</h2>
-  <% end %>
+  <h3><%= link_to "Build my bucket list", new_bucket_list_item_path %></h3><br>
+  <h3><%= link_to "Register as a bidder", new_bidder_path %></h3><br>
+
+</div>

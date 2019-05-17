@@ -9,7 +9,6 @@ class VacationsController < ApplicationController
 
   def new
     @user = current_user
-    binding.pry
     unless @user.bucket_list_items.empty?
       @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
       @vacation = @item.build_vacation(name: @item.name)
@@ -26,7 +25,6 @@ class VacationsController < ApplicationController
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
     @vacation.name = @item.name#better: pass in as hidden value from form
-    @vacation.bucket_list_items << @item
 
     if @vacation.save
       redirect_to vacation_path(@vacation)
@@ -54,8 +52,11 @@ class VacationsController < ApplicationController
   def update
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
-        binding.pry
     @vacation.update(vacation_params)
+
+    if params[:vacation][:vacation_attraction][:attraction_id]
+      VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
+    end
 
     if @vacation.save
       redirect_to vacation_path(@vacation)

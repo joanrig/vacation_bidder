@@ -30,10 +30,12 @@
           <% end %><br><br>
 
             <p>Add Attractions</p>
-            <%= f.fields_for @vacation.vacation_attractions do |va| %>
-              <%= va.hidden_field :vacation_id, :value => @vacation.id %>
-              <%= va.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name %>
+            <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
+              <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
+              <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name %>
             <% end %>
+
+
 
 
             <%= f.submit %><br><br>

@@ -1,2 +1,6 @@
-<h1>Bidder#edit</h1>
-<p>Find me in app/views/bidder/edit.html.erb</p>
+<%= render partial: 'form', locals: { bidder: @bidder }%>
+
+
+<div class="center">
+  <%= link_to "Delete Bidder", bidder_path(@bidder) %>  
+</div>

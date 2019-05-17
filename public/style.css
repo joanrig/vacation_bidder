@@ -18,7 +18,7 @@ header {
 }
 
 header h1 a {
-  color: rgb(235, 230, 230);
+  color: inherit;
   font-family: 'Raleway', sans-serif;
   font-size: 1.35em;
   width: 90%;
@@ -76,14 +76,14 @@ nav {
 }
 
 h1 {
-  color: rgb(235, 230, 230);
+  color: rgb(255, 255, 255);
   font-family: 'Raleway', sans-serif;
   font-size: 3em;
   text-decoration: none;
 }
 
 h2 {
-  color: rgb(235, 230, 230);
+  color: rgb(255, 255, 255);
   font-family: 'Raleway', sans-serif;
   font-size: 2em;
   text-decoration: none;
@@ -100,7 +100,7 @@ h2 {
 }
 
 h3 {
-  color: rgb(235, 230, 230);
+  color: inherit;
   font-family: 'Raleway', sans-serif;
   font-size: 1.75em;
   text-decoration: none;
@@ -125,7 +125,7 @@ p a {
 }
 
 h4 {
-  color: rgb(0, 255, 0);
+  color: inherit;
   font-family: 'Raleway', sans-serif;
   font-size: 1.6em;
   text-decoration: none;
@@ -151,9 +151,17 @@ h5 a {
 
 .field {
   color: rgb(235, 230, 230);
+  text-align: left;
+
 
 }
 
 .bidder {
-  color: red
+  color: red;
+  text-align: center;
+}
+
+.flash {
+  color: red;
+  font-size: 1.5em;
 }

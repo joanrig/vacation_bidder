@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  enum role: [:traveler, :bidder, :admin]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
@@ -9,6 +10,7 @@ class User < ApplicationRecord
 
    validates :first_name, presence: true
    validates :last_name, presence: true
+   #validates :role, inclusion: { in: %w(Traveler Bidder Admin) } does not work - invalidates Traveler even tho perfect match
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

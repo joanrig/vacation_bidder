@@ -10,7 +10,6 @@ class BucketVacationsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     # @vacation = Vacation.find_by_id(params[:bucket_vacation][:vacation_id])
     @bucket_vacation = BucketVacation.new(bucket_list_item_id: @item.id, vacation_id: @vacation.id, )
