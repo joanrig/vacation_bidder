@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  get 'bidder/new'
-  get 'bidder/create'
-  get 'bidder/show'
-  get 'bidder/index'
-  get 'bidder/edit'
-  get 'bidder/update'
-  get 'bidder/index'
-  get 'bidder/new'
-  get 'bidder/create'
-  get 'bidder/show'
-  get 'bidder/edit'
-  get 'bidder/update'
-  get 'bidder/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :views
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "callbacks" }
@@ -37,6 +25,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :attractions
   resources :bucket_vacations, only: [:new, :create]
+  resources :bidders
 
 
 

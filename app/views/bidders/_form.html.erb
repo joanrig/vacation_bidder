@@ -1,0 +1,30 @@
+<%= render 'layout' %>
+
+
+<br><br>
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <div class="form" style="color:lightblue">
+
+
+        <%= form_for bidder do |f| %>
+          <%= f.label :name, "Company Name" %><br>
+          <%= f.text_field :name %>
+          <br><br>
+          <%= f.label :email,"Company Email" %><br>
+          <%= f.text_field :email %>
+          <br><br>
+          <%= f.label :website,"Company Website" %><br>
+          <%= f.text_field :website %><br><br>
+          <%= f.submit %>
+          </div>
+        <% end %>
+        <br><br><br><br><br>
+
+
+      </div>
+    </div>
+  </div>
+</div>
