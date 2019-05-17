@@ -48,11 +48,13 @@ class VacationsController < ApplicationController
     @attractions = @vacation.attractions
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
+
   end
 
   def update
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
+        binding.pry
     @vacation.update(vacation_params)
 
     if @vacation.save
@@ -67,7 +69,7 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id)
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, attraction_ids: [])
     end
 
 

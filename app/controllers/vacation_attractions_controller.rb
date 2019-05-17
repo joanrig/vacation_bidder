@@ -23,7 +23,7 @@ class VacationAttractionsController < ApplicationController
     private
 
     def vacation_attraction_params
-      params.require(:vacation_attraction).permit(:attraction_id)
+      params.require(:vacation_attraction).permit(:attraction_id, :vacation_id)
     end
 
 

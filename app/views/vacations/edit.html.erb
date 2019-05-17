@@ -8,28 +8,39 @@
           <p>Now editing:</p>
           <h2><%= @vacation.name %></h2>
 
-        <h3>
+
           <%= form_for @vacation do |f| %>
-            <%= f.label :name%><br>
-            <%= f.text_field :name %><br><br>
-            <%= f.label :budget%><br>
-            <%= f.text_field :budget %><br><br>
-            <%= f.label :number_of_travelers %><br>
-            <%= f.text_field :number_of_travelers %><br><br><br>
-            <%= f.submit %><br><br>
-          <% end %>
-        </h3>
+          <%= f.label :name%><br>
+          <%= f.text_field :name %><br><br>
+          <%= f.label :budget%><br>
+          <%= f.text_field :budget %><br><br>
+          <%= f.label :number_of_travelers %><br>
+          <%= f.text_field :number_of_travelers %><br><br><br>
 
           <% if @attractions %>
-          <h4>Attractions already assigned to this vacation:</h4>
-            <% @attractions.uniq.each do |a| %>
-              <h5><%= link_to a.name, attraction_path(a) %></h5>
+            <p>Attractions already assigned to this vacation:</p>
+            <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box %>
+                <%= b.label %>
+              </div>
             <% end %>
           <% else %>
             <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
           <% end %><br><br>
 
-          <h4><%= link_to "Edit Attractions", new_vacation_vacation_attraction_path(@vacation) %></h4>
+            <p>Add Attractions</p>
+            <%= f.fields_for @vacation.vacation_attractions do |va| %>
+              <%= va.hidden_field :vacation_id, :value => @vacation.id %>
+              <%= va.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name %>
+            <% end %>
+
+
+            <%= f.submit %><br><br>
+          <% end %>
+
+
+
 
         </div>
       </div>

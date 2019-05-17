@@ -12,7 +12,7 @@
 
           <%= form_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
             <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
-            <%= f.collection_check_boxes :attraction_id, @attractions.uniq.sort_by(&:name), :id, :name, value:true %>
+            <%= f.collection_select :attraction_id, @attractions.uniq.sort_by(&:name), :id, :name %>
             <br><br><br><br>
             <%= f.submit "Update" %>
           <% end %>
