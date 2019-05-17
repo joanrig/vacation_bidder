@@ -11,12 +11,12 @@
 
             <h1><%= @vacation.name %></h1>
             <h3>Budget: $<%= @vacation.budget %></h3>
-            <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3>
+            <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br><br><br>
 
             <% if @vacation.attractions %>
             <h4>Attractions already assigned to this vacation:</h4>
               <% @vacation.attractions.uniq.each do |a| %>
-                <h3><%= link_to a.name, attraction_path(a) %></h3>
+                <p><%= link_to a.name, attraction_path(a) %></p>
               <% end %>
             <% else %>
               <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
