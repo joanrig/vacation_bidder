@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role: [:traveler, :bidder, :admin]
+  enum role: [:Traveler, :Bidder]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable

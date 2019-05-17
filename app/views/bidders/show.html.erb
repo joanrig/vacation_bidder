@@ -1,7 +1,5 @@
 <%= render 'layout' %>
 
-
-
 <div class="center" style="text-align:center">
   <div class="container">
     <div class="panel-a" text-black>
@@ -26,9 +24,7 @@
             <h3>You haven't placed any bids yet. Let's get started!</h3>
           <% end %>
 
-          <h3>Place bids/ Add link</h3>
-
-
+          <h3><%= link_to "Let's Bid!", new_bidder_bid_path(@bidder)%></h3>
 
         </div>
       </div>

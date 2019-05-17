@@ -1,4 +1,4 @@
-<%= render '/vacations/layout' %>
+<%= render 'layout' %>
 
 <div class="center" style="text-align:center">
   <div class="container">
@@ -29,11 +29,10 @@
             <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
           <% end %><br><br>
 
-            <p>Add Attractions</p>
             <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
-              <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
+              <h4><%= f.label :attraction_id, "Add Attractions" %></h4><br>
               <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name %>
-            <% end %>
+            <% end %><br><br>
 
 
 

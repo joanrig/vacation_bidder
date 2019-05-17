@@ -8,6 +8,7 @@ class BiddersController < ApplicationController
 
   def create
     @bidder = Bidder.new(bidder_params)
+    current_user.update(role: "Bidder")
     if @bidder.save
       redirect_to bidder_path(@bidder)
     else
