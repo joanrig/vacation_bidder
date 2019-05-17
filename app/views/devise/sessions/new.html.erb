@@ -1,15 +1,17 @@
 <%= render '/users/layout' %>
 
-<div class="col-xs-1 col-xs-offset-0 col1"></div>
-  <div class="col-xs-4 col-xs-offset-0 col2">
-    <h2>Log in</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-      <br>
+  <div class="col-sm-1 d-flex flex-row"></div>
+    <div class="col-sm-4 d-flex flex-row">
+      <h2>Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <br>
+
 
       <div class="field">
         <%= f.label :password %><br />
@@ -29,4 +31,6 @@
     <% end %>
 
     <%= render "devise/shared/links" %>
+
+  </div>
 </div>
