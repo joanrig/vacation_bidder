@@ -5,19 +5,20 @@
     <div class="panel-a" text-black>
       <div class="panel-body">
         <div class="form" style="color:lightblue">
-          <h3>Edit Form</h3>
-          <h3><%= @user.first_name %>'s next vacation:</h3>
-          <h1><%= @vacation.name %></h1>
+          <p>Now editing:</p>
+          <h2><%= @vacation.name %></h2>
 
+        <h3>
           <%= form_for @vacation do |f| %>
-            <h4><%= f.label :name%><br></h4>
+            <%= f.label :name%><br>
             <%= f.text_field :name %><br><br>
-            <h4><%= f.label :budget%><br></h4>
+            <%= f.label :budget%><br>
             <%= f.text_field :budget %><br><br>
-            <h4><%= f.label :number_of_travelers %><br></h4>
+            <%= f.label :number_of_travelers %><br>
             <%= f.text_field :number_of_travelers %><br><br><br>
             <%= f.submit %><br><br>
           <% end %>
+        </h3>
 
           <% if @attractions %>
           <h4>Attractions already assigned to this vacation:</h4>

@@ -127,7 +127,7 @@ p a {
 h4 {
   color: rgb(0, 255, 0);
   font-family: 'Raleway', sans-serif;
-  font-size: 1.75em;
+  font-size: 1.6em;
   text-decoration: none;
 }
 
@@ -140,7 +140,7 @@ h4 a {
 h5 {
   color: rgb(235, 230, 230);
   font-family: 'Raleway', sans-serif;
-  font-size: 1.8em;
+  font-size: 1.4em;
   text-decoration: none;
 }
 
@@ -152,9 +152,4 @@ h5 a {
 .field {
   color: rgb(235, 230, 230);
 
-}
-
-.flash {
-  color: red;
-  font-size: 1.5em;
 }

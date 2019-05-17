@@ -9,6 +9,7 @@ class VacationsController < ApplicationController
 
   def new
     @user = current_user
+    binding.pry
     unless @user.bucket_list_items.empty?
       @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
       @vacation = @item.build_vacation(name: @item.name)
@@ -24,7 +25,7 @@ class VacationsController < ApplicationController
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
-    @vacation.name = @item.title#better: pass in as hidden value from form
+    @vacation.name = @item.name#better: pass in as hidden value from form
     @vacation.bucket_list_items << @item
 
     if @vacation.save

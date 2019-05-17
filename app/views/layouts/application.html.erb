@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VacationBidder</title>
+    <title>Vacation Bidder</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,16 +18,20 @@
   </head>
   <header>
 <br>
-      <h5 style="text-align:center">What's in your bucket list?</h5>
 
-        <nav>
+
+    <nav>
+      <div id="navbar"
+        <div class="text-center">
           <% if current_user %>
-            <p><%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %></p>
-            <p><%= link_to "My Vacations", vacations_path, class: 'nav_element' %></p>
-            <p><%= link_to "Inspire Me", categories_path, class: 'nav_element' %></p>
-            <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %></p>
+            <%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %>
+            <%= link_to "My Vacations", vacations_path, class: 'nav_element' %>
+            <%= link_to "Inspire Me", categories_path, class: 'nav_element' %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %>
           <% end %>
-        </nav>
+        </div>
+      </div>
+    </nav>
 
 </header>
 
@@ -50,5 +54,19 @@
     <%= yield %>
 
 
+    <script>
+      window.onscroll = function() {myFunction()};
+
+      var navbar = document.getElementById("navbar");
+      var sticky = navbar.offsetTop;
+
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky")
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+    </script>
   </body>
 </html>

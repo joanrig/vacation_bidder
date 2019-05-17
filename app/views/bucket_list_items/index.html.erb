@@ -9,11 +9,11 @@
         <h1><%= @user.first_name %>'s bucket list</h1>
         <h3>Click on a bucket list item to build a vacation</h3>
         <br>
-        <% if !@items %>
+        <% if @user.bucket_list_items.empty? %>
           <h3>Looks like your bucket list is empty! Let's fix that.</h3>
         <% else %>
           <% @items.each do |item| %>
-            <h3><%= link_to item.title, bucket_list_item_path(item) %></h3><br>
+            <h3><%= link_to item.name, bucket_list_item_path(item) %></h3><br>
           <% end %>
         <% end %>
         <br>

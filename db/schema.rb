@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_005816) do
   end
 
   create_table "bucket_list_items", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.integer "user_id"
     t.text "notes"
     t.integer "vacation_id"

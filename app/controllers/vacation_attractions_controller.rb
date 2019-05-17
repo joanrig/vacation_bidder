@@ -2,8 +2,7 @@ class VacationAttractionsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    
-    @attractions = Attraction.all
+    @attractions = Attraction.all #need to fix this
     @vacation = Vacation.find_by_id(params[:vacation_id])
     @vacation_attraction = @vacation.vacation_attractions.build(vacation_id: @vacation.id)
   end

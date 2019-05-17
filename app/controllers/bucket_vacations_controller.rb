@@ -6,7 +6,7 @@ class BucketVacationsController < ApplicationController
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @bucket_vacation = @item.bucket_vacations.build(bucket_list_item_id: @item.id)
-    @vacation = Vacation.new(name: @item.title)
+    @vacation = Vacation.new(name: @item.name)
   end
 
   def create

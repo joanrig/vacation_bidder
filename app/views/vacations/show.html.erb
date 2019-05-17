@@ -13,8 +13,8 @@
             <h3>Budget: $<%= @vacation.budget %></h3>
             <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br><br><br>
 
-            <% if @vacation.attractions %>
-            <h4>Attractions already assigned to this vacation:</h4>
+            <% unless @vacation.attractions.empty? %>
+            <h4>Itinerary includes:</h4>
               <% @vacation.attractions.uniq.each do |a| %>
                 <p><%= link_to a.name, attraction_path(a) %></p>
               <% end %>
@@ -22,7 +22,7 @@
               <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
             <% end %><br><br>
 
-            <h4><%= link_to "Edit Vacation/ Add Attractions", edit_vacation_path(@vacation) %></h4>
+            <h4><%= link_to "Edit Vacation", edit_vacation_path(@vacation) %></h4>
 
           </div>
         </div>

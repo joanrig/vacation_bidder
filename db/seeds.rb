@@ -43,45 +43,45 @@ Users = User.create([
 
 BucketListItems = BucketListItem.create([
   {
-    title: "Harry Potter and Shakespeare tour",
+    name: "Harry Potter and Shakespeare tour",
     user_id: 3,
     vacation_id: 1,
     notes: "definitely see King Lear"
   },
 
   {
-    title: "Ride Ragbrai",
+    name: "Ride Ragbrai",
     user_id: 2,
     notes: "bring sag wagon"
   },
 
   {
-    title: "Nepal tour",
+    name: "Nepal tour",
     user_id: 1,
     notes: "can't wait to try apple pie trail!"
   },
 
   {
-    title: "Run Boston Marathon",
+    name: "Run Boston Marathon",
     user_id: 4,
     notes: "lots of training to do!"
   },
 
   {
-    title: "Southwest tour",
+    name: "Southwest tour",
     user_id: 1,
     notes: "bring bikes to zion!"
   },
 
   {
-    title: "bike tour of Japan",
+    name: "bike tour of Japan",
     user_id: 2,
     vacation_id: 2,
     notes: "eat sushi!!"
   },
 
   {
-    title: "learn Spanish in Spain",
+    name: "learn Spanish in Spain",
     user_id: 1,
     notes: "i love salamanca!"
   }
