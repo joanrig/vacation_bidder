@@ -9,17 +9,3 @@
   background: rgb(0, 0, 0, 0.3)
   }
 </style>
-
-
-<div class="col-sm-12 d-flex flex-row">
-<h3 class="text-center">
-  <% if flash[:alert] %>
-    <div class="alert" style="color:red">
-      <ul>
-       <% flash[:alert].each do |alert| %>
-        <%= alert %><br>
-       <% end %>
-      </ul>
-     </div>
-   <% end %>
-   </h3>
