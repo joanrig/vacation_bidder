@@ -1,6 +1,6 @@
 <style>
   body {
-  background: url(https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-1.2.1&auto=format&fit=crop&w=1568&q=80) center no-repeat;
+  background: url(/assets/roadtrip-dino-reichmuth-115620-unsplash.jpg) center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   }
@@ -9,17 +9,3 @@
   background: rgb(0, 0, 0, 0.2)
   }
 </style>
-
-
-<div class="col-sm-12 d-flex flex-row">
-  <div class="text-center">
-    <% if flash[:alert] %>
-    <div class="alert" style="color:red">
-      <ul>
-       <% flash[:alert].each do |alert| %>
-        <%= alert %><br>
-       <% end %>
-      </ul>
-    <% end %>
-  </div>
-</div>

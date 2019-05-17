@@ -220,7 +220,7 @@ Categories = Category.create([
 
   {
     name:"hiking",
-    image: "https://www.planetware.com/photos-large/USCA/california-redwood-national-and-state-parks-boy-scout-tree-trail.jpg"
+    image: "https://images.unsplash.com/photo-1547772863-4a1073b3f93c"
   },
 
   {

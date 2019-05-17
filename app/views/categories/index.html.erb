@@ -4,13 +4,13 @@
 
 
   <div class="container">
-    <div class="panel-a" text-black>
+    <div class="panel-a" style="color:white">
       <div class="panel-body">
-        <div class="col-sm-12 d-flex flex-row">
-          <h1>Attractions</h1>
-          <% @categories.each do |c| %>
-          <br>
-          <div class="subheader"><h2><%= link_to c.name, category_path(c)%></h2></div>
+        <div class="col-sm-4 d-flex flex-row"></div>
+          <div class="col-sm-4 d-flex flex-row">
+            <h1>Attractions</h1>
+            <% @categories.each do |c| %>
+            <h3><%= link_to c.name, category_path(c)%></h3>
           <% end %>
         </div>
       </div>
