@@ -2,9 +2,6 @@ class BiddersController < ApplicationController
   before_action :authenticate_user!
 
 
-
-
-
   def new
     @bidder = Bidder.new
   end
