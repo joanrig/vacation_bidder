@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_060944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "bucket_vacations", force: :cascade do |t|
-    t.integer "bucket_list_item_id"
-    t.integer "vacation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -79,7 +72,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_060944) do
     t.string "first_name"
     t.string "last_name"
     t.string "role"
-    
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
@@ -100,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_060944) do
     t.string "category"
     t.integer "budget"
     t.integer "number_of_travelers"
+    t.boolean "open_to_bids", default: false
     t.integer "requirements_id"
     t.integer "schedule_id"
     t.datetime "created_at", null: false

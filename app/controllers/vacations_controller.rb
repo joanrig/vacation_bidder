@@ -9,8 +9,10 @@ class VacationsController < ApplicationController
 
   def new
     @user = current_user
+
     unless @user.bucket_list_items.empty?
       @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
+      binding.pry
       @vacation = @item.build_vacation(name: @item.name)
       @attractions = Attraction.all
     else
@@ -70,7 +72,7 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, attraction_ids: [])
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [])
     end
 
 

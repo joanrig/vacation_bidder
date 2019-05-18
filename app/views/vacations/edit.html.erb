@@ -8,8 +8,8 @@
           <p>Now editing <%= @user.first_name %>'s vacation:</p>
           <h2><%= @vacation.name %></h2>
 
-        <h5>
-          <%= form_for @vacation do |f| %>
+      <h5>
+        <%= form_for @vacation do |f| %>
           <%= f.label :name%><br>
           <%= f.text_field :name %><br><br>
           <%= f.label :budget%><br>
@@ -30,18 +30,20 @@
             <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
           <% end %><br>
 
-            <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
-              <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
-                <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
-            <% end %><br><br>
+          <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
+            <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
+              <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
+          <% end %><br><br>
 
+          <h4>
+          <%= f.radio_button :open_to_bids, "true" %>
+          <%= f.label :open_to_bids, "Yes, invite companies to bid on this vacation!" %><br>
+          <%= f.radio_button :open_to_bids, "false" %>
+          <%= f.label :open_to_bids, "No, I'm not ready for bids yet." %>
+          </h4><br><br>
 
-
-            <%= f.submit %><br><br>
-          <% end %>
-
-
-
+          <%= f.submit %><br><br>
+        <% end %>
 
         </div>
       </div>

@@ -3,35 +3,40 @@ Users = User.create([
     first_name: "Joan",
     last_name: "Gonzales",
     email: "joan@test.com",
-    role: "traveler"
+    role: "traveler",
+    password: "password"
   },
 
   {
     first_name: "Eric",
     last_name: "Jones",
     email: "eric@test.com",
-    role: "traveler"
+    role: "traveler",
+    password: "password"
   },
 
   {
     first_name: "Cambria",
     last_name: "Lee",
     email: "cam@test.com",
-    role: "traveler"
+    role: "traveler",
+    password: "password"
   },
 
   {
     first_name: "Indy",
     last_name: "Ward",
     email: "indy@test.com",
-    role: "traveler"
+    role: "traveler",
+    password: "password"
   },
 
   {
     first_name: "Katy",
     last_name: "June",
     email: "katy@test.com",
-    role: "bidder"
+    role: "bidder",
+    password: "password"
   }
 ])
 

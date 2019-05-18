@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role: [:traveler, :bidder, :admin]
+  enum role: [:traveler, :bidder]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
@@ -15,6 +15,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
+      binding.pry
       user.first_name = auth.info.name.split.first
       user.last_name = auth.info.name.split.last
       user.uid = auth.uid
