@@ -1,7 +1,7 @@
 class BucketListItem < ApplicationRecord
   belongs_to :user
-  belongs_to :vacation, optional:true
   validates :name, presence: true
+  belongs_to :vacation
 
   def attractions_names
     self.attractions.map(&:name).sort.join(", ")

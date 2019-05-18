@@ -8,7 +8,6 @@ class VacationsController < ApplicationController
   end
 
   def new
-    binding.pry
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new
@@ -17,12 +16,12 @@ class VacationsController < ApplicationController
   def create
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-    binding.pry
-    @vacation = @item.build_vacation(vacation_params)
+    @vacation = Vacation.new(vacation_params)
+    @vacation.bucket_list_item = @item
     @vacation.name = @item.name#better: pass in as hidden value from form
-    @vacation.save
 
-    if @vacation
+    if @vacation.save
+      binding.pry
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages

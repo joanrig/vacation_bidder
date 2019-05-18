@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :attractions
-  resources :bucket_vacations, only: [:new, :create]
   resources :bidders
 
 
