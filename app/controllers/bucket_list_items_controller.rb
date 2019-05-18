@@ -9,6 +9,7 @@ class BucketListItemsController < ApplicationController
   def new
     @user = current_user
     @item = BucketListItem.new
+    #validations are supposed to prevent saving item with same name but they are not working
   end
 
   def create
@@ -42,6 +43,13 @@ class BucketListItemsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @item = BucketListItem.find_by_id(params[:id])
+    @item.destroy
+    redirect_to bucket_list_items_path
+  end
+
 
   private
     def item_params
