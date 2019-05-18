@@ -14,15 +14,22 @@
             <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br>
             <h5>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h5><br>
 
-            <% unless @vacation.attractions.empty? %>
+            <% if @attractions %>
             <h1>Itinerary</h1>
               <% @vacation.attractions.uniq.sort_by(&:name).each do |a| %>
                 <h4><%= link_to a.name, attraction_path(a) %></h4>
               <% end %>
             <% else %>
-              <p>This vacation doesn't have any attractions yet.</p>
-              <p>Click below to add some</p>
+              <p>This vacation doesn't have any attractions yet. Click below to add some.</p>
             <% end %><br><br>
+
+            <% if @schedule %>
+              Departure city: <%= @schedule.departure_city %><br>
+              Departure date: <%= @schedule.departure_date %><br>
+              Return city: <%= @schedule.return_city %><br>
+              Return date: <%= @schedule.return_date %><br>
+            <% end %>
+
 
 
             <h4><%= link_to "Edit Vacation", edit_vacation_path(@vacation) %></h4>
