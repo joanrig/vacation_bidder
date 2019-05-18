@@ -38,6 +38,7 @@ class VacationsController < ApplicationController
     @attractions = @vacation.attractions
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
+    @schedule = Schedule.new
   end
 
   def update
@@ -49,8 +50,19 @@ class VacationsController < ApplicationController
       VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
     end
 
+    #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
+    if params[:vacation][:schedule]
+      @schedule = Schedule.new(vacation_id: @vacation_id, departure_city: params[:vacation][:schedule][:departure_city], departure_date: params[:vacation][:schedule][:departure_date], return_city: params[:vacation][:schedule][:return_city], return_date: params[:vacation][:schedule][:return_date])
+        binding.pry
+      if @schedule.save
+        flash[:alert] = "Successfully created schedule"
+      else
+        flash[:alert] = @schedule.errors.full_messages
+        render :edit
+      end
+    end
+
     if @vacation.save
-      #@user.vacations << @vacation
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
@@ -68,8 +80,9 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [])
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], :schedule_attributes => [:departure_city, :departure_date, :return_city, :return_date, :vacation_id])
     end
+
 
 
 end

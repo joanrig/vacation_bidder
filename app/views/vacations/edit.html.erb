@@ -8,37 +8,51 @@
           <p>Now editing <%= @user.first_name %>'s vacation:</p>
           <h2><%= @vacation.name %></h2>
 
-          <p>
-        <%= form_for @vacation do |f| %>
-          <%= f.label :name%><br>
-          <%= f.text_field :name %><br><br>
-          <%= f.label :budget%><br>
-          <%= f.text_field :budget %><br><br>
-          <%= f.label :number_of_travelers %><br>
-          <%= f.text_field :number_of_travelers %><br><br><br>
-        </p>
+          <%= form_for @vacation do |f| %>
+            <%= f.label :name%><br>
+            <%= f.text_field :name %><br><br>
+            <%= f.label :budget%><br>
+            <%= f.text_field :budget %><br><br>
+            <%= f.label :number_of_travelers %><br>
+            <%= f.text_field :number_of_travelers %><br><br><br>
 
-          <% unless @vacation.attractions.empty? %>
-            <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
-            <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
-              <div class="collection-check-box" style="font-size:1.25em">
-                <%= b.check_box %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          <% else %>
-            <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
-          <% end %><br>
+            <% unless @vacation.attractions.empty? %>
+              <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
+              <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
+                <div class="collection-check-box" style="font-size:1.25em">
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+              <% end %>
+            <% else %>
+              <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
+            <% end %><br>
 
-          <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |f| %>
-            <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
-              <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
-          <% end %><br><br>
-          <h1>hello where are my travel dates</h1>
-          <% link_to "Add travel dates", new_vacation_schedule_path(@vacation) %>
+          <%# add attractions by making new instances of join table %>
+            <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
+              <h4><%= v.label :attraction_id, "Update Attractions" %></h4><br>
+                <%= v.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
+            <% end %><br><br>
 
-          <%= f.submit %><br><br>
-        <% end %>
+            <h2>Add Travel Dates</h2><br>
+            <%= f.fields_for @schedule, url: new_vacation_schedule_path(@vacation) do |s| %>
+              <%= s.label :departure_city %>
+              <%= s.text_field :departure_city %><br><br>
+
+              <%= s.label :departure_date %>
+              <%= s.date_field :departure_date%><br><br>
+
+              <%= s.label :return_city %>
+              <%= s.text_field :return_city %><br><br>
+
+              <%= s.label :return_date %>
+              <%= s.date_field :return_date%><br><br>
+
+              <%= s.hidden_field :vacation_id, :value => @vacation.id %>
+            <% end %><br>
+
+            <%= f.submit %><br><br>
+          <% end %>
 
         </div>
       </div>
