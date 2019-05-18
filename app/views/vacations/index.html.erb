@@ -1,27 +1,7 @@
-<%= render 'layout' %>
-
-<br><br>
-<div class="center", style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-        <div class="col-sm-12 d-flex flex-row">
-
-          <h1> My Vacations </h1>
-
-          <% unless @user.vacations.empty? %>
-            <% @user.vacations.each do |v| %>
-              <h3><%= link_to v.name, vacation_path(v) %></h3>
-            <% end %>
-          <% else %>
-            <h3>No Vacations yet! Let's build one!</h3>
-          <% end %>
-
-          <%= link_to "New Vacation", new_vacation_path %>
 
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% if @user.role == "traveler" %>
+  <%= render 'index_travelers' %>
+<% elsif @user.role == "bidder "%>
+  <%= render 'index_bidders' %>
+<% end %>

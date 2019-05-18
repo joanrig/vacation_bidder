@@ -17,23 +17,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <header>
-<br>
+  <br>
 
 
-    <nav>
-      <div id="navbar"
-        <div class="text-center">
-          <% if current_user  %>
-            <%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %>
-            <%= link_to "My Vacations", vacations_path, class: 'nav_element' %>
-            <%= link_to "Inspire Me", categories_path, class: 'nav_element' %>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %>
-          <% end %>
-        </div>
+  <nav>
+    <div id="navbar"
+      <div class="text-center">
+        <% if current_user.role == "traveler"  %>
+          <%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %>
+          <%= link_to "My Vacations", vacations_path, class: 'nav_element' %>
+          <%= link_to "Inspire Me", categories_path, class: 'nav_element' %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %>
+        <% elsif current_user.role == "bidder" %>
+          <%= link_to "My Bids", bidder_bid_path(@bidder), class: 'nav_element' %>
+          <%= link_to "Vacations open for Bids", vacations_path, class: 'nav_element' %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %>
+        <% end %>
+          
       </div>
-    </nav>
+    </div>
+  </nav>
 
-</header>
+
+
+  </header>
 
   <body>
     <br><br>
