@@ -14,14 +14,11 @@ class VacationsController < ApplicationController
   end
 
   def create
-    @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
-    @vacation.bucket_list_item = @item
+    @vacation.bucket_list_items << @item
     @vacation.name = @item.name#better: pass in as hidden value from form
-
     if @vacation.save
-      binding.pry
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
@@ -33,7 +30,6 @@ class VacationsController < ApplicationController
   def show
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
-    binding.pry
   end
 
   def edit
@@ -42,10 +38,10 @@ class VacationsController < ApplicationController
     @attractions = @vacation.attractions
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
-
   end
 
   def update
+    binding.pry
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
     @vacation.update(vacation_params)
@@ -55,6 +51,7 @@ class VacationsController < ApplicationController
     end
 
     if @vacation.save
+      #@user.vacations << @vacation
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages

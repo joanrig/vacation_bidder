@@ -53,7 +53,7 @@ class BucketListItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:bucket_list_item).permit(:name, :user_id, :vacation_id, :notes, bucket_attraction_attributes: [:attraction_id], vacation_attributes:[:category, :budget, :number_of_travelers, :open_to_bids, :bucket_list_item_id])
+      params.require(:bucket_list_item).permit(:name, :user_id, :vacation_id, :notes, bucket_attraction_attributes: [:attraction_id])
     end
 
 end
