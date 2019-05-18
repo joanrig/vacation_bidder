@@ -7,7 +7,8 @@
         <div class="form" style="color:lightblue">
 
           <h3><%= @user.first_name %>'s next vacation:</h3>
-          <h1><%= @vacation.name %></h1>
+
+          <h1><%= @item.name %></h1>
 
           <%= form_for [@item, @vacation] do |f| %>
             <h5><%= f.label :budget%><br></h5>

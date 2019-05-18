@@ -8,23 +8,18 @@ class VacationsController < ApplicationController
   end
 
   def new
+    binding.pry
     @user = current_user
-
-    unless @user.bucket_list_items.empty?
-      @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-      @vacation = @item.build_vacation(name: @item.name)
-      @attractions = Attraction.all
-    else
-      flash[:alert] = "We need a bucket list item to build a vacation. Let's add to your bucket list!"
-      redirect_to new_bucket_list_item_path
-    end
+    @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
+    @vacation = Vacation.new
 
   end
 
   def create
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-    @vacation = Vacation.new(vacation_params)
+    binding.pry
+    @vacation = @item.build_vacation(vacation_params)
     @vacation.name = @item.name#better: pass in as hidden value from form
 
     if @vacation.save
@@ -39,6 +34,7 @@ class VacationsController < ApplicationController
   def show
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
+    binding.pry
   end
 
   def edit

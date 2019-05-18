@@ -82,8 +82,6 @@ ActiveRecord::Schema.define(version: 2019_05_18_032909) do
     t.string "first_name"
     t.string "last_name"
     t.string "role"
-    t.string "string"
-    t.string "bidder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
@@ -105,8 +103,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_032909) do
     t.integer "budget"
     t.integer "number_of_travelers"
     t.boolean "open_to_bids", default: false
-    t.integer "requirements_id"
-    t.integer "schedule_id"
+    t.integer "bucket_list_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

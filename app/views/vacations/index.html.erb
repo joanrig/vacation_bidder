@@ -8,16 +8,16 @@
         <div class="col-sm-12 d-flex flex-row">
 
           <h1> My Vacations </h1>
-
-          <% unless @user.vacations.empty? %>
+          <% binding.pry %>
+          <% if @user.vacations.empty? %>
+            <h3>No Vacations yet! Let's build one!</h3>
+          <% else %>
             <% @user.vacations.each do |v| %>
               <h3><%= link_to v.name, vacation_path(v) %></h3>
             <% end %>
-          <% else %>
-            <h3>No Vacations yet! Let's build one!</h3>
           <% end %>
 
-          <%= link_to "New Vacation", new_vacation_path %>
+          <%= link_to "New Vacation", bucket_list_items_path %>
 
 
         </div>
