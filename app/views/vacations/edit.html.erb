@@ -8,7 +8,7 @@
           <p>Now editing <%= @user.first_name %>'s vacation:</p>
           <h2><%= @vacation.name %></h2>
 
-      <h5>
+          <p>
         <%= form_for @vacation do |f| %>
           <%= f.label :name%><br>
           <%= f.text_field :name %><br><br>
@@ -16,9 +16,9 @@
           <%= f.text_field :budget %><br><br>
           <%= f.label :number_of_travelers %><br>
           <%= f.text_field :number_of_travelers %><br><br><br>
-        </h5>
-
-          <% if @attractions %>
+        </p>
+        <% binding.pry %>
+          <% unless @vacation.attractions.empty? %>
             <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
             <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
               <div class="collection-check-box" style="font-size:1.25em">
