@@ -12,7 +12,6 @@ class VacationsController < ApplicationController
 
     unless @user.bucket_list_items.empty?
       @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
-      binding.pry
       @vacation = @item.build_vacation(name: @item.name)
       @attractions = Attraction.all
     else
