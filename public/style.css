@@ -149,6 +149,19 @@ h5 a {
   text-decoration: none;
 }
 
+h6 {
+  color: rgb(235, 230, 230);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+h6 a {
+  color: rgb(235, 230, 230);
+  text-decoration: none;
+}
+
+
 .field {
   color: rgb(235, 230, 230);
   text-align: left;

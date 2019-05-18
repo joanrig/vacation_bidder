@@ -41,7 +41,6 @@ class VacationsController < ApplicationController
   end
 
   def update
-    binding.pry
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
     @vacation.update(vacation_params)

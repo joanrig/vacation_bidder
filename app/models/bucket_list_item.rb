@@ -1,6 +1,6 @@
 class BucketListItem < ApplicationRecord
   belongs_to :user
-  belongs_to :vacation
+  belongs_to :vacation, optional: true
 
   validates :name, presence: true
 
@@ -13,4 +13,5 @@ class BucketListItem < ApplicationRecord
        error.add(:name, 'has already been taken')
     end
   end
+
 end

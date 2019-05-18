@@ -4,6 +4,9 @@ class BucketListItemsController < ApplicationController
   def index
     @user = current_user
     @items = BucketListItem.where("user_id = ?", @user.id)
+    @dreams = @items.where(vacation_id: [nil, ""]) if @items
+    @real = @items - @dreams
+    @vacations = @real.map {|r| Vacation.find_by_id(r.vacation_id)}
   end
 
   def new
@@ -13,6 +16,7 @@ class BucketListItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = current_user
     @item = BucketListItem.new
     @item.update(item_params)

@@ -17,7 +17,7 @@
           <%= f.label :number_of_travelers %><br>
           <%= f.text_field :number_of_travelers %><br><br><br>
         </p>
-        <% binding.pry %>
+
           <% unless @vacation.attractions.empty? %>
             <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
             <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
@@ -34,7 +34,7 @@
             <h4><%= f.label :attraction_id, "Update Attractions" %></h4><br>
               <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
           <% end %><br><br>
-
+          <h1>hello where are my travel dates</h1>
           <% link_to "Add travel dates", new_vacation_schedule_path(@vacation) %>
 
           <%= f.submit %><br><br>

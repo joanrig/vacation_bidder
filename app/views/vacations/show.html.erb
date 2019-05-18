@@ -15,13 +15,13 @@
             <h5>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h5><br>
 
             <% unless @vacation.attractions.empty? %>
-            <h2>Itinerary</h2>
+            <h1>Itinerary</h1>
               <% @vacation.attractions.uniq.sort_by(&:name).each do |a| %>
                 <h4><%= link_to a.name, attraction_path(a) %></h4>
               <% end %>
             <% else %>
-              <h4>This vacation doesn't have any attractions yet.</h4>
-              <h4>Click edit to add some</h4>
+              <p>This vacation doesn't have any attractions yet.</p>
+              <p>Click below to add some</p>
             <% end %><br><br>
 
 

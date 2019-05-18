@@ -7,19 +7,26 @@
     <div class="panel-a" text-black>
       <div class="panel-body">
         <h1><%= @user.first_name %>'s bucket list</h1>
-        <h3>Click on a bucket list item to build a vacation</h3>
-        <br>
-        <% if @user.bucket_list_items.empty? %>
+        <% if @dreams.empty? %>
           <h3>Looks like your bucket list is empty! Let's fix that.</h3>
         <% else %>
-          <% @items.each do |item| %>
-            <h3><%= link_to item.name, bucket_list_item_path(item) %></h3><br>
+          <h3>Click on a bucket list item to build a vacation</h3>
+          <% @dreams.each do |dream| %>
+            <h3><%= link_to dream.name, bucket_list_item_path(dream) %></h3><br>
           <% end %>
         <% end %>
         <br>
-        <br>
-        <h3><%= link_to "Add to my bucket list", new_vacation_path %></h3>
+        <h3><%= link_to "Add to my bucket list", new_bucket_list_item_path %></h3>
         <br><br><br><br><br><br><br>
+
+        <% unless @real.empty? %>
+          <p>Here are the bucket list items you've aleady turned into vacations:</p>
+          <% @vacations.each do |v| %>
+            <h3><%= link_to v.name, vacation_path(v) %></h3><br>
+          <% end %>
+        <% end %>
+
+
       </div>
     </div>
   </div>
