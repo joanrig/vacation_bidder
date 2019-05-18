@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :vacations do
     resources :vacation_attractions, only: [:new, :create]
+    resources :schedules
   end
 
   resources :categories, only: [:index, :show]

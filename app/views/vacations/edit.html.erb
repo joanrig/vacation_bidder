@@ -35,12 +35,7 @@
               <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
           <% end %><br><br>
 
-          <h4>
-          <%= f.radio_button :open_to_bids, "true" %>
-          <%= f.label :open_to_bids, "Yes, invite companies to bid on this vacation!" %><br>
-          <%= f.radio_button :open_to_bids, "false" %>
-          <%= f.label :open_to_bids, "No, I'm not ready for bids yet." %>
-          </h4><br><br>
+          <% link_to "Add travel dates", link_to
 
           <%= f.submit %><br><br>
         <% end %>
