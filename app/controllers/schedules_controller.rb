@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
 
   def new
+    binding.pry
     @schedule = Schedule.new
   end
 
@@ -43,6 +44,6 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:departure_city, :departure_date, :return_city, :return_date, :vacation_id)
     end
-  
+
 
 end

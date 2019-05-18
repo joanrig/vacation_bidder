@@ -35,7 +35,7 @@
               <%= f.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
           <% end %><br><br>
 
-          <% link_to "Add travel dates", new_vacation_schedule_path %>
+          <% link_to "Add travel dates", new_vacation_schedule_path(@vacation) %>
 
           <%= f.submit %><br><br>
         <% end %>

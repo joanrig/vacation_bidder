@@ -12,6 +12,7 @@ class VacationsController < ApplicationController
 
     unless @user.bucket_list_items.empty?
       @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
+      binding.pry
       @vacation = @item.build_vacation(name: @item.name)
       @attractions = Attraction.all
     else
@@ -26,8 +27,9 @@ class VacationsController < ApplicationController
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
     @vacation.name = @item.name#better: pass in as hidden value from form
+    @vacation.save
 
-    if @vacation.save
+    if @vacation
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
@@ -65,6 +67,12 @@ class VacationsController < ApplicationController
       flash[:alert] = @vacation.errors.full_messages
       render :new
     end
+  end
+
+  def destroy
+    @vacation = Vacation.find_by_id(params[:id])
+    @vacation.destroy
+    redirect_to vacations_path
   end
 
 
