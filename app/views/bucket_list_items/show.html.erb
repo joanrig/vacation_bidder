@@ -11,7 +11,11 @@
           <h1><%= @item.name%></h1>
           <h3>Notes: <%= @item.try(:notes)  %></h3>
 
-          <%= render '/bucket_list_items/nav' %>
+            <h5>
+              <%= link_to "edit", edit_bucket_list_item_path(@item) %><br>
+              <%= link_to "delete", @item, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %><br>
+            </h5>
+
           <br>
           <br>
           <br>

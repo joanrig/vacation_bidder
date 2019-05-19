@@ -10,16 +10,17 @@
           <div class="text-center">
             <p><%= @user.first_name %>'s vacation</p>
             <h1><%= @vacation.name %></h1>
-            <h3>Budget: $<%= @vacation.budget %></h3>
-            <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br>
-            <h5>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h5><br>
+            <br><br>
+            <h4>Budget: $<%= @vacation.budget %></h4>
+            <h4>Number of Travelers: <%= @vacation.number_of_travelers %></h4>
+            <h4>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h4><br>
 
             <hr>
             <br>
             <br>
 
-            <% if @attractions %>
             <h2>Itinerary</h2>
+            <% unless @attractions.empty? %>
               <% @attractions.uniq.sort_by(&:name).each do |a| %>
                 <h4><%= link_to a.name, attraction_path(a) %></h4>
               <% end %>
@@ -31,8 +32,8 @@
             <br>
             <br>
 
-            <% if @schedule %>
             <h2>Schedule</h2>
+            <% if @schedule %>
             <h5>
               Departure city: <%= @schedule.departure_city %><br>
               Departure date: <%= @schedule.departure_date %><br>
@@ -51,7 +52,7 @@
 
 
             <h4><%= link_to "Edit Vacation", edit_vacation_path(@vacation) %></h4>
-            <p><%= link_to "delete", @vacation, :method => :delete %></p>
+            <p><%= link_to "delete", @vacation, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %></p>
 
 
 

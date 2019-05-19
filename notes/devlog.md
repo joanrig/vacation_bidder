@@ -1,15 +1,9 @@
 TODO
 
 
-
-
-
-  --- vacation extra fields ... travelers, schedule , budget etc can only be created through vacations.
-#add bidders and bids
-
-
-working
-#allow users to add attractions to their vacations - checkboxes not working
+Friday and Saturday
+DONE users to add attractions to their vacations - checkboxes not working
+DONE add schedules - create them through vacations
 
 
 Thursday

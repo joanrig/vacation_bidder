@@ -16,7 +16,6 @@ class BucketListItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = current_user
     @item = BucketListItem.new
     @item.update(item_params)
