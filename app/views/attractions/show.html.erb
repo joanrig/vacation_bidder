@@ -2,28 +2,32 @@
 
 <div class="col-sm-12 d-flex flex-row">
   <div class="text-center">
-
     <h1><%= @attraction.name %></h1>
-
+    <br>
+    <br>
+    <h2>Location</h2>
     <h4>
-      Categories:
+      <%= @attraction.city %>
+      <%= @attraction.state %>
+      <%= @attraction.country %>
+    </h4>
+    <br>
+    <br>
+    <h2>
+      <%= link_to "Website", @attraction.website %>
+      <br>
+      <br>
+    <h2>Categories</h2>
       <% @attraction.categories.uniq.each do |c|%>
         <%= link_to c.name, category_path(c) %>
       <% end %>
-    </h4>
 
     <br>
-    <h4>Notes:</h4>
+    <br>
+    <h2>Notes </h2>
     <h5><%= @attraction.notes %></h5>
-
-
-
     <br>
-    <h3><%= link_to "Website", @attraction.website %></h3>
-
     <br>
-    <%= submit_tag "Edit" %>
-
-
+    <%= link_to "Edit", edit_attraction_path(@attraction) %>
   </div>
 </div>

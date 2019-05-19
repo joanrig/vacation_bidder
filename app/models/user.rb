@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  enum role: [:traveler, :bidder]
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  #enum role: [:traveler, :bidder]
    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
    has_many :bucket_list_items
    has_many :vacations, through: :bucket_list_items
@@ -22,4 +20,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+
 end

@@ -24,4 +24,7 @@ class Vacation < ApplicationRecord
   #   end
   # end
 
+
+
+
 end

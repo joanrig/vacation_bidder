@@ -1,13 +1,6 @@
-<br>
-<div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-        <h3>Hi <%= @user.first_name %>!</h3>
-          <h2>What would you like to add to your bucket list?</h2>
-      </div>
-    </div>
+<%= render 'layout' %>
+  <div class="center" style="text-align:center">
+    <h1>New Attraction</h1>
   </div>
 
-<%= render partial: 'form', locals: { attraction: @attraction, user: @user }%>
-</div>
+  <%= render partial: 'form', locals: { attraction: @attraction, category_attraction: @category_attraction }%>

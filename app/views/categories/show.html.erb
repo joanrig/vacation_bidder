@@ -22,8 +22,12 @@
 
             <h1><%= @category.name %></h1>
             <% @category.attractions.each do |a| %>
-              <h3><a href="<%= a.website %>"><%= a.name %></a></h3>
+              <h3><%= link_to a.name, attraction_path(a) %></h3>
             <% end %>
+            <br>
+            <br>
+
+            <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
 
           </div>
         </div>

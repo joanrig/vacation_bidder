@@ -7,14 +7,36 @@
         <div class="form" style="color:lightblue">
 
           <h3><%= @user.first_name %>'s next vacation:</h3>
-
           <h1><%= @item.name %></h1>
 
           <%= form_for [@item, @vacation] do |f| %>
-            <h5><%= f.label :budget%><br></h5>
-            <%= f.text_field :budget %><br><br>
-            <h5><%= f.label :number_of_travelers %><br></h5>
-            <%= f.text_field :number_of_travelers %><br><br><br>
+
+            <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
+              <div class="center" style="text-align:center">
+                <%= f.label :name %><br>
+                <%= f.text_field :name %>
+              </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="center" style="text-align:center">
+                <%= f.label :budget%><br>
+                <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], 3),
+                          {},
+                          class: "chzn-select",
+                          style: "width: 150px" )%>
+            </div>
+            <br>
+            <br>
+
+            <%= f.label :number_of_travelers %><br>
+            <%= f.select(:number_of_travelers, options_for_select(0..10)) %>
+            <br>
+            <br>
+
+            <hr>
+            <br>
 
             <%= f.submit %><br><br>
           <% end %>
