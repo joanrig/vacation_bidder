@@ -164,8 +164,8 @@ Attractions = Attraction.create([
 
   {
     name: "Mt. Fuji",
-    website: "https://www.japan-guide.com/e/e6901.html"
-    country: "Japan",
+    website: "https://www.japan-guide.com/e/e6901.html",
+    country: "Japan"
   },
 
   {

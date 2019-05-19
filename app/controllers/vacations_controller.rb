@@ -44,8 +44,10 @@ class VacationsController < ApplicationController
 
   def update
     @vacation = Vacation.find_by_id(params[:id])
+    @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
     @user = current_user
     @vacation.update(vacation_params)
+    @all_attractions = Attraction.all
 
     if params[:vacation][:vacation_attraction][:attraction_id]
       VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
@@ -56,9 +58,6 @@ class VacationsController < ApplicationController
       @schedule = Schedule.new(vacation_id: @vacation.id, departure_city: params[:vacation][:schedule][:departure_city], departure_date: params[:vacation][:schedule][:departure_date], return_city: params[:vacation][:schedule][:return_city], return_date: params[:vacation][:schedule][:return_date])
       if @schedule.save
         flash[:alert] = "Successfully created schedule"
-      else
-        flash[:alert] = @schedule.errors.full_messages
-        render :edit
       end
     end
 
@@ -66,7 +65,8 @@ class VacationsController < ApplicationController
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
-      render :new
+      flash[:alert] = @schedule.errors.full_messages
+      render :edit
     end
   end
 
