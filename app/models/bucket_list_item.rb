@@ -1,6 +1,8 @@
 class BucketListItem < ApplicationRecord
   belongs_to :user
   belongs_to :vacation, optional: true
+  validates :notes, length: { minimum: 5 }
+  validates :notes, length: { maximum: 1000, too_long: "%{count} characters is the max allowed, but you can add links to external notes" }
 
   validates :name, presence: true
 

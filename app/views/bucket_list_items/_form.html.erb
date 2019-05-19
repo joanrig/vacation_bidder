@@ -8,11 +8,21 @@
 
 
         <%= form_for bucket_list_item do |f| %>
+        <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:name].any? %>">
+          <div class="center" style="text-align:center">
           <%= f.label :name %><br>
           <%= f.text_field :name %>
+          </div>
+        </div>
+
           <br><br>
-          <%= f.label :notes %><br>
-          <%= f.text_area :notes %>
+          <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:notes].any? %>">
+            <div class="center" style="text-align:center">
+              <%= f.label :notes %><br>
+              <%= f.text_area :notes %>
+            </div>
+          </div>
+
           <br><br>
           <%= f.hidden_field :user_id, :value => user.id %>
           <div style="color:black">
