@@ -91,72 +91,97 @@ Attractions = Attraction.create([
   {
     name: "Zion National Park",
     website: "https://www.nationalparks.org/explore-parks/zion-national-park",
-    notes: "must do the Narrows"
+    notes: "must do the Narrows",
+    city: "Springdale",
+    state: "Utah",
+    country: "U.S."
   },
 
   {
     name: "Crater Lake National Park",
     website: "https://www.nationalparks.org/explore-parks/crater-lake-national-park",
-    notes: "Wizard Island is the best"
+    notes: "Wizard Island is the best",
+    county: "Klamath",
+    state: "Oregon",
+    country: "U.S."
   },
 
   {
     name: "Ragbrai",
     website: "https://ragbrai.com/",
-    notes: "bring your own sag wagon"
+    notes: "bring your own sag wagon",
+    state: "Iowa",
+    country: "U.S."
+
   },
 
   {
     name: "Annapurna Circuit",
     website: "https://en.wikipedia.org/wiki/Annapurna_Circuit",
-    notes: "aim for October"
+    notes: "aim for October",
+    country: "Nepal"
   },
 
   {
     name: "Globe Theatre",
     website: "https://www.shakespearesglobe.com",
-    notes: "cheap tickets available through so-and-so"
+    notes: "cheap tickets available through so-and-so",
+    city: "London",
+    country: "U.K."
   },
 
   {
     name: "Shakespeare's birthplace",
     website: "https://www.shakespeare.org.uk/visit/shakespeares-birthplace/",
-    notes: "could be cool!"
+    notes: "could be cool!",
+    city: "Stratford-upon-Avon",
+    country: "UK"
   },
 
   {
     name: "Boston marathon",
     website: "https://www.baa.org/",
-    notes: "need to complete qualifying run"
+    notes: "need to complete qualifying run",
+    city: "Boston",
+    state: "Massachusetts",
+    country: "US"
   },
 
   {
     name: "Battle Road Trail",
     website: "https://www.nps.gov/mima/planyourvisit/placestogo.htm",
-    notes: "history and cycling!"
+    notes: "history and cycling!",
+    county: "Middlesex",
+    state: "Massachusetts"
   },
 
   {
     name: "Tour de Noto",
     website: "https://www.okujapan.com/trips/noto-peninsula-self-guided-cycling-7-days-116",
-    notes: "awesome riding"
+    notes: "awesome riding",
+    country: "Japan"
   },
 
   {
     name: "Mt. Fuji",
     website: "https://www.japan-guide.com/e/e6901.html"
+    country: "Japan",
   },
 
   {
     name: "Warner Brothers Studio - Harry Potter set",
     website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0",
-    notes: "this is a seven-hour tour?"
+    notes: "this is a seven-hour tour?",
+    city: "London",
+    country: "Japan"
   },
 
   {
     name: "Tio Tula School",
     website: "https://www.tiatula.com/",
-    notes: "classes start on a rolling basis"
+    notes: "classes start on a rolling basis",
+    city: "Salamanca",
+    country: "Spain"
   }
 ])
 

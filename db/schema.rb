@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2019_05_18_032909) do
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.string "website"
+    t.string "city"
+    t.string "state"
+    t.string "country"
     t.integer "destination_id"
     t.string "notes"
     t.datetime "created_at", null: false
