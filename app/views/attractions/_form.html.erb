@@ -20,6 +20,11 @@
         <br>
         <br>
 
+        <%= f.fields_for @attraction_category, url: attraction_categories_path do |ac| %>
+         p><%= ac.label :category_id, "Update Categories" %><br>
+           <%= ac.collection_select :category_id, Category.all.sort_by(&:name), :id, :name, :prompt => "Select One" %>
+       <% end %>
+
 
         <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
           <div class="center" style="text-align:center">
@@ -41,7 +46,7 @@
 
         <div class="center" style="text-align:center">
           <%= f.label :state %><br>
-          <%= select_tag :state, options_for_select(us_states), {prompt: "Optional, for U.S."} %>
+          <%= f.text_field :state %>
 
         <br>
         <br>
@@ -49,11 +54,21 @@
         <div class="field<%= ' field_with_errors' if @attraction.errors[:country].any? %>">
           <div class="center" style="text-align:center">
             <%= f.label :country %><br>
-            <%= country_select("user", "country_name", [ "United States" ])%>
+            <%= f.text_field :country %><br>
           </div>
         </div>
         <br>
         <br>
+
+        <div class="field<%= ' field_with_errors' if @attraction.errors[:notes].any? %>">
+          <div class="center" style="text-align:center">
+            <%= f.label :notes %><br>
+            <%= f.text_area :notes %><br>
+          </div>
+        </div>
+        <br>
+        <br>
+
 
 
         <%= f.submit %>

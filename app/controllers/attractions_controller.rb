@@ -5,13 +5,21 @@ class AttractionsController < ApplicationController
   def new
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
+    @attraction_category = AttractionCategory.new
+    @all_categories = Category.all
   end
 
   def create
-    binding.pry
-    @category = Category.find_by_id(params[:category_id])
-    @attraction = Attraction.new(attraction_params)
+    @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
+    @attraction = Attraction.create(attraction_params)
+    #need to save attraction id so it can be given to attraction_category
     @categories = Category.all
+
+
+    if params[:attraction][:attraction_category][:category_id]
+      binding.pry
+      @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
+    end
 
     if @attraction.save
       redirect_to attraction_path(@attraction)
@@ -29,19 +37,17 @@ class AttractionsController < ApplicationController
   def edit
     #binding.pry
     @attraction = Attraction.find_by_id(params[:id])
-    @categories = Attraction.find_by_id(params[:id]).categories
+    @categories = @attraction.categories
     @attraction_category = AttractionCategory.new(attraction_id: @atraction_id)
   end
 
   def update
-    binding.pry
-    @category = Category.find_by_id(params[:id])
-    # @attraction_category =
-    # AttractionCategory.create(category_id: @category.id)
-    #
-    # if params[:category][:attraction_category]
-    #   AttractionCategory.create(attraction_id: params[:category][:attraction_category][:attraction_id])
-    # end
+    @attraction = Attraction.find_by_id(params[:id])
+    @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
+
+    if @category
+      @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
+    end
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
@@ -55,7 +61,7 @@ class AttractionsController < ApplicationController
   def destroy
     @attraction = Attraction.find_by_id(params[:id])
     @attraction.destroy
-    redirect_to attractions_path
+    redirect_to categories_path
   end
 
 
@@ -63,7 +69,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes)
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id] )
     end
 
 end

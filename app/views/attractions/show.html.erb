@@ -8,6 +8,11 @@
         <div class="col-sm-12 d-flex flex-row">
           <div class="text-center">
             <h1><%= @attraction.name %></h1>
+
+            <h2>Categories</h2>
+            <% @attraction.categories.uniq.each do |c| %>
+            <h5><%= link_to c.name, category_path(c) %></h5>
+            <% end %>
             <br>
             <br>
             <h2>Location</h2>
@@ -24,15 +29,6 @@
               <%= button_to "Website", @attraction.website %>
             </div>
 
-
-              <br>
-              <br>
-            <h2>Categories</h2>
-              <% @attraction.categories.uniq.each do |c|%>
-                <%= link_to c.name, category_path(c) %>
-              <% end %>
-
-            <br>
             <br>
             <h2>Notes </h2>
             <h5><%= @attraction.notes %></h5>
@@ -40,6 +36,7 @@
             <br>
 
             <h1><%= link_to "Edit", edit_attraction_path(@attraction) %></h1>
+            <%= button_to "delete", @attraction, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %><br>
           </div>
         </div>
       </div>

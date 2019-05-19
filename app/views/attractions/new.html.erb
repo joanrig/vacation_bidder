@@ -1,7 +1,6 @@
 <%= render 'layout' %>
   <div class="center" style="text-align:center">
     <h1>New Attraction</h1>
-    <p>for Category: <%= @category.name %></p>
   </div>
 
   <%= render partial: 'form', locals: { attraction: @attraction, attraction_category: @attraction_category, all_categories: @all_categories, category: @category}%>
