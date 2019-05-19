@@ -1,33 +1,48 @@
 <%= render 'layout' %>
 
-<div class="col-sm-12 d-flex flex-row">
-  <div class="text-center">
-    <h1><%= @attraction.name %></h1>
-    <br>
-    <br>
-    <h2>Location</h2>
-    <h4>
-      <%= @attraction.city %>
-      <%= @attraction.state %>
-      <%= @attraction.country %>
-    </h4>
-    <br>
-    <br>
-    <h2>
-      <%= link_to "Website", @attraction.website %>
-      <br>
-      <br>
-    <h2>Categories</h2>
-      <% @attraction.categories.uniq.each do |c|%>
-        <%= link_to c.name, category_path(c) %>
-      <% end %>
 
-    <br>
-    <br>
-    <h2>Notes </h2>
-    <h5><%= @attraction.notes %></h5>
-    <br>
-    <br>
-    <%= link_to "Edit", edit_attraction_path(@attraction) %>
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+        <div class="col-sm-12 d-flex flex-row">
+          <div class="text-center">
+            <h1><%= @attraction.name %></h1>
+            <br>
+            <br>
+            <h2>Location</h2>
+            <h4>
+              <%= @attraction.city %>
+              <%= @attraction.state %>
+              <%= @attraction.country %>
+            </h4>
+            <br>
+            <br>
+            <h2>
+
+            <div style="color:midnightblue">
+              <%= button_to "Website", @attraction.website %>
+            </div>
+
+
+              <br>
+              <br>
+            <h2>Categories</h2>
+              <% @attraction.categories.uniq.each do |c|%>
+                <%= link_to c.name, category_path(c) %>
+              <% end %>
+
+            <br>
+            <br>
+            <h2>Notes </h2>
+            <h5><%= @attraction.notes %></h5>
+            <br>
+            <br>
+
+            <h1><%= link_to "Edit", edit_attraction_path(@attraction) %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

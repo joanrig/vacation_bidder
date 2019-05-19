@@ -3,4 +3,4 @@
     <h1>Edit Attraction</h1>
   </div>
 
-  <%= render partial: 'form', locals: { attraction: @attraction }%>
+<%= render partial: 'form', locals: { attraction: @attraction, attraction_category: @attraction_category, all_categories: @all_categories, category: @category}%>

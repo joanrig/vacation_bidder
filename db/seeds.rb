@@ -270,7 +270,7 @@ Categories = Category.create([
 
 ])
 
-AttractionCategories = CategoryAttraction.create([
+AttractionCategories = AttractionCategory.create([
   {
     attraction_id: 1,
     category_id: 1
