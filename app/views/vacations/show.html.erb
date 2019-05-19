@@ -14,8 +14,12 @@
             <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br>
             <h5>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h5><br>
 
+            <hr>
+            <br>
+            <br>
+
             <% if @attractions %>
-            <h1>Itinerary</h1>
+            <h2>Itinerary</h2>
               <% @vacation.attractions.uniq.sort_by(&:name).each do |a| %>
                 <h4><%= link_to a.name, attraction_path(a) %></h4>
               <% end %>
@@ -23,17 +27,33 @@
               <p>This vacation doesn't have any attractions yet. Click below to add some.</p>
             <% end %><br><br>
 
+            <hr>
+            <br>
+            <br>
+
             <% if @schedule %>
+            <h2>Schedule</h2>
+            <h5>
               Departure city: <%= @schedule.departure_city %><br>
               Departure date: <%= @schedule.departure_date %><br>
               Return city: <%= @schedule.return_city %><br>
               Return date: <%= @schedule.return_date %><br>
-            <% end %>
+            </h5>
+            <% else %>
+              <p>This vacation doesn't have a schedule yet. Click below to add one.</p>
+            <% end %><br><br>
+
+
+            <hr>
+            <br>
+            <br>
 
 
 
             <h4><%= link_to "Edit Vacation", edit_vacation_path(@vacation) %></h4>
             <p><%= button_to "delete", @vacation, :method => :delete %></p>
+
+
 
           </div>
         </div>

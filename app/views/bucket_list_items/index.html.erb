@@ -19,12 +19,7 @@
         <h3><%= link_to "Add to my bucket list", new_bucket_list_item_path %></h3>
         <br><br><br><br><br><br><br>
 
-        <% unless @real.empty? %>
-          <p>Here are the bucket list items you've aleady turned into vacations:</p>
-          <% @vacations.each do |v| %>
-            <h3><%= link_to v.name, vacation_path(v) %></h3><br>
-          <% end %>
-        <% end %>
+      
 
 
       </div>

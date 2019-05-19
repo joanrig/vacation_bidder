@@ -16,7 +16,7 @@
             <%= f.label :number_of_travelers %><br>
             <%= f.text_field :number_of_travelers %><br><br><br>
 
-            <% unless @vacation.attractions.empty? %>
+            <% if @attractions %>
               <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
               <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
                 <div class="collection-check-box" style="font-size:1.25em">
@@ -27,7 +27,7 @@
             <% else %>
               <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
             <% end %><br>
-
+            
           <%# add attractions by making new instances of join table %>
             <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
               <h4><%= v.label :attraction_id, "Update Attractions" %></h4><br>
