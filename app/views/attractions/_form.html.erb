@@ -20,7 +20,17 @@
         <br>
         <br>
 
-        <%= f.fields_for @attraction_category, url: attraction_categories_path do |ac| %>
+        <h2>Categories</h2>
+        <% unless attractions.categories.empty? %>
+          <% attraction.categories.uniq.sort_by(&:name).each do |a| %>
+            <h4><%= link_to c.name, category_path(c) %></h4>
+          <% end %>
+        <% else %>
+          <p>This attraction doesn't have any categories yet. Click below to add some.</p>
+        <% end %><br><br>
+
+
+        <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
          p><%= ac.label :category_id, "Update Categories" %><br>
            <%= ac.collection_select :category_id, Category.all.sort_by(&:name), :id, :name, :prompt => "Select One" %>
        <% end %>

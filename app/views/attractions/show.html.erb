@@ -8,6 +8,8 @@
         <div class="col-sm-12 d-flex flex-row">
           <div class="text-center">
             <h1><%= @attraction.name %></h1>
+            <br>
+            <br>
 
             <h2>Categories</h2>
             <% @attraction.categories.uniq.each do |c| %>
@@ -23,7 +25,7 @@
             </h4>
             <br>
             <br>
-            <h2>
+
 
             <div style="color:midnightblue">
               <%= button_to "Website", @attraction.website %>
@@ -35,8 +37,9 @@
             <br>
             <br>
 
+            <!-- #can't make button white? -->
             <h1><%= link_to "Edit", edit_attraction_path(@attraction) %></h1>
-            <%= button_to "delete", @attraction, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %><br>
+            <p><%= link_to "delete", @attraction, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %></p><br>
           </div>
         </div>
       </div>
