@@ -31,6 +31,7 @@ class VacationsController < ApplicationController
     @vacation = Vacation.find_by_id(params[:id])
     @user = current_user
     @schedule = @vacation.schedule
+    @attractions = @vacation.attractions
   end
 
   def edit

@@ -8,7 +8,7 @@
 
         <div class="col-sm-12 d-flex flex-row">
           <div class="text-center">
-
+            <p><%= @user.first_name %>'s vacation</p>
             <h1><%= @vacation.name %></h1>
             <h3>Budget: $<%= @vacation.budget %></h3>
             <h3>Number of Travelers: <%= @vacation.number_of_travelers %></h3><br>
@@ -20,7 +20,7 @@
 
             <% if @attractions %>
             <h2>Itinerary</h2>
-              <% @vacation.attractions.uniq.sort_by(&:name).each do |a| %>
+              <% @attractions.uniq.sort_by(&:name).each do |a| %>
                 <h4><%= link_to a.name, attraction_path(a) %></h4>
               <% end %>
             <% else %>
@@ -51,7 +51,7 @@
 
 
             <h4><%= link_to "Edit Vacation", edit_vacation_path(@vacation) %></h4>
-            <p><%= button_to "delete", @vacation, :method => :delete %></p>
+            <p><%= link_to "delete", @vacation, :method => :delete %></p>
 
 
 
