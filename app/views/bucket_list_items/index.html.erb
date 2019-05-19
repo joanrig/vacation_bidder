@@ -10,16 +10,28 @@
         <% if @dreams.empty? %>
           <h3>Looks like your bucket list is empty! Let's fix that.</h3>
         <% else %>
-          <h3>Click on a bucket list item to build a vacation</h3>
+          <p>Click on a bucket list item to edit, delete, or turn it into a vacation!</p>
+          <br>
           <% @dreams.each do |dream| %>
-            <h3><%= link_to dream.name, bucket_list_item_path(dream) %></h3><br>
+            <h3><%= link_to dream.name, bucket_list_item_path(dream) %></h3>
           <% end %>
         <% end %>
         <br>
-        <h3><%= link_to "Add to my bucket list", new_bucket_list_item_path %></h3>
-        <br><br><br><br><br><br><br>
+        <div class="black_button">
+          <p><%= button_to "Add to my bucket list", new_bucket_list_item_path %></p>
+          <br><br><br>
+        </div>
 
-      
+        <hr>
+        <% if @vacations %>
+        <h2>Bucket list items you've aleady turned into vacations:</h2>
+        <p>Click any one for details:</p>
+        <br>
+        <br>
+          <% @vacations.each do |v| %>
+            <h3><%= link_to v.name, vacation_path(v) %></h3>
+          <% end %>
+        <% end %>
 
 
       </div>

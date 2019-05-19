@@ -41,7 +41,7 @@
 
         <div class="center" style="text-align:center">
           <%= f.label :state %><br>
-          <%= select_tag :state, options_for_select(us_states), {include_blank: true} %>
+          <%= select_tag :state, options_for_select(us_states), {prompt: "Optional, for U.S."} %>
 
         <br>
         <br>
@@ -49,7 +49,7 @@
         <div class="field<%= ' field_with_errors' if @attraction.errors[:country].any? %>">
           <div class="center" style="text-align:center">
             <%= f.label :country %><br>
-            <%= country_select("user", "country_name" [ "United States"])%>
+            <%= country_select("user", "country_name" [ "United States"], {prompt: "Required"})%>
           </div>
         </div>
         <br>

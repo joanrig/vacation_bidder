@@ -4,6 +4,7 @@ class Attraction < ApplicationRecord
 
   has_many :attraction_categories
   has_many :categories, through: :attraction_categories
-  
+
   validates :name, presence: true, uniqueness: true
+  validates :country, presence: true
 end

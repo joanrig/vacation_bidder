@@ -36,12 +36,12 @@ class AttractionsController < ApplicationController
   def update
     binding.pry
     @category = Category.find_by_id(params[:id])
-    @attraction_category =
-    AttractionCategory.create(category_id: @category.id)
-
-    if params[:category][:attraction_category]
-      AttractionCategory.create(attraction_id: params[:category][:attraction_category][:attraction_id])
-    end
+    # @attraction_category =
+    # AttractionCategory.create(category_id: @category.id)
+    #
+    # if params[:category][:attraction_category]
+    #   AttractionCategory.create(attraction_id: params[:category][:attraction_category][:attraction_id])
+    # end
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
