@@ -6,8 +6,12 @@
     <div class="panel-a" text-black>
       <div class="panel-body">
         <div class="col-sm-12 d-flex flex-row">
+          <br>
+
 
           <h1> My Vacations </h1>
+          <br>
+          <br>
           <% if @user.vacations.empty? %>
             <h3>No Vacations yet! Let's build one!</h3>
           <% else %>
@@ -15,8 +19,11 @@
               <h3><%= link_to v.name, vacation_path(v) %></h3>
             <% end %>
           <% end %>
+          <br>
+          <br>
 
-          <%= link_to "New Vacation", bucket_list_items_path %>
+
+          <h2><%= link_to "New Vacation", bucket_list_items_path %></h2>
 
 
         </div>

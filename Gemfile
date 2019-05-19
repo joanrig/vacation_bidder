@@ -37,6 +37,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
 gem 'country-select', '~> 1.1', '>= 1.1.1'
+gem 'city-state'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

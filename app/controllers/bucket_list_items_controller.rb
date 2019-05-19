@@ -12,7 +12,6 @@ class BucketListItemsController < ApplicationController
   def new
     @user = current_user
     @item = BucketListItem.new
-    #validations are supposed to prevent saving item with same name but they are not working
   end
 
   def create
