@@ -39,6 +39,7 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by_id(params[:id])
     @categories = @attraction.categories
     @attraction_category = AttractionCategory.new(attraction_id: @atraction_id)
+    @all_categories = Category.all
   end
 
   def update
