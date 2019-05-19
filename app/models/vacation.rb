@@ -12,6 +12,10 @@ class Vacation < ApplicationRecord
   accepts_nested_attributes_for :schedule
 
   validates :name, presence: true
+
+
+
+
   # validate :validate_name
   #
   # def validate_name

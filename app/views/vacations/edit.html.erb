@@ -17,26 +17,29 @@
               <%= f.text_field :name %>
             </div>
           </div>
+          <br>
+          <br>
 
-          <div class="field<%= ' field_with_errors' if @vacation.errors[:budget].any? %>">
-            <div class="center" style="text-align:center">
+          <div class="center" style="text-align:center">
               <%= f.label :budget%><br>
-              <%= f.text_field :budget %>
-            </div>
+              <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], 3),
+                        {},
+                        class: "chzn-select",
+                        style: "width: 150px" )%>
           </div>
-          <br><br>
+          <br>
+          <br>
 
-          <div class="field<%= ' field_with_errors' if @vacation.errors[:number_of_travelers].any? %>">
-            <div class="center" style="text-align:center">
-              <%= f.label :number_of_travelers %><br>
-              <%= f.text_field :number_of_travelers %>
-            </div>
-          </div>
-          <br><br><br>
+          <%= f.label :number_of_travelers %><br>
+          <%= f.select(:number_of_travelers, options_for_select(0..10)) %>
+          <br>
+          <br>
 
+          <hr>
+          <br>
 
+          <h2>Itinerary</h2>
           <% if @attractions %>
-            <h4><%= f.label "Attractions already assigned to this vacation" %></h4>
             <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
               <div class="collection-check-box" style="font-size:1.25em">
                 <%= b.check_box %>
@@ -47,20 +50,30 @@
             <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
           <% end %><br>
 
-          <%# add attractions by making new instances of join table %>
-            <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
-              <h4><%= v.label :attraction_id, "Update Attractions" %></h4><br>
-                <%= v.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
-            <% end %><br><br>
+          <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
+            <p><%= v.label :attraction_id, "Update Attractions" %></p><br>
+              <%= v.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, :prompt => "Select One" %>
+          <% end %>
+          <br>
+          <br>
+          <br>
 
-            <h2>Add Travel Dates</h2><br>
-            <%= f.fields_for @schedule, url: new_vacation_schedule_path(@vacation) do |s| %>
+          <hr>
 
+          <br>
+
+
+          <h2>Travel Dates</h2><br>
+          <%= f.fields_for @schedule, url: new_vacation_schedule_path(@vacation) do |s| %>
+
+
+          <div class="col-sm-2 d-flex flex-row"></div>
+            <div class="col-sm-4 d-flex flex-row">
               <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_city].any? %>">
-                <div class="center" style="text-align:center">
-                  <%= s.label :departure_city %>
-                  <%= s.text_field :departure_city %>
-                </div>
+              <div class="center" style="text-align:center">
+                <%= s.label :departure_city %>
+                <%= s.text_field :departure_city %>
+              </div>
               </div>
               <br>
               <br>
@@ -71,9 +84,10 @@
                   <%= s.date_field :departure_date%>
                 </div>
               </div>
-              <br>
-              <br>
+            </div>
 
+
+            <div class="col-sm-4 d-flex flex-row">
               <div class="field<%= ' field_with_errors' if @schedule.errors[:return_city].any? %>">
                 <div class="center" style="text-align:center">
                   <%= s.label :return_city %>
@@ -86,17 +100,27 @@
               <div class="field<%= ' field_with_errors' if @schedule.errors[:return_date].any? %>">
                 <div class="center" style="text-align:center">
                   <%= s.label :return_date %>
-                  <%= s.text_field :return_date %>
+                  <%= s.date_field :return_date %>
                 </div>
               </div>
               <br>
               <br>
+            </div>
 
-              <%= s.hidden_field :vacation_id, :value => @vacation.id %>
-              <% end %><br>
+            <%= s.hidden_field :vacation_id, :value => @vacation.id %>
+            <% end %><br>
 
-            <%= f.submit %><br><br>
-          <% end %>
+
+
+          <div class="col-sm-12 d-flex flex-row">
+            <hr>
+            <br>
+            <h2><%= f.submit %></h2><br><br>
+            <% end %>
+            <br>
+            <br>
+            <br>
+          </div>
 
         </div>
       </div>

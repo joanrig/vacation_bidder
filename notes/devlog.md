@@ -1,5 +1,8 @@
 TODO
 
+###allow users to create attractions, add others attractions, have only their attractions show up in vacation maker
+###allow users to add notes to attractions
+
 
 Friday and Saturday
 DONE users to add attractions to their vacations - checkboxes not working
@@ -25,3 +28,5 @@ DONE pick background views, use bootstrap for stying
 
 
 WISHLIST
+###make different roles for users/ or diff sign up path for bidders - so bidders can bid on vacations
+###deploy to heroku
