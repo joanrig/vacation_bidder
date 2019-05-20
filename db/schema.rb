@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_215546) do
     t.string "category"
     t.integer "budget"
     t.integer "number_of_travelers"
+    t.string "notes"
     t.boolean "open_to_bids", default: false
     t.integer "bucket_list_item_id"
     t.datetime "created_at", null: false
