@@ -1,4 +1,4 @@
-<div style="color:black">  
+<div style="color:black">
 
   <%- if controller_name != 'sessions' %>
   <br>
@@ -23,7 +23,9 @@
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+      <div style="color:black">
+        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+      </div>
     <% end %>
   <% end %>
 

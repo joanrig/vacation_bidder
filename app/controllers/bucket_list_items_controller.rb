@@ -8,7 +8,6 @@ class BucketListItemsController < ApplicationController
     @dreams = helpers.dreams
     @real = helpers.real
     @vacations = helpers.vacations
-    binding.pry
   end
 
   def new

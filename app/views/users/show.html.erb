@@ -17,21 +17,34 @@
           <br>
 
           <h1>Welcome, <%= @user.first_name %>! </h1>
-          <h3>What would you like to do? </h3>
+          <h5>What would you like to do? </h5>
           <br>
           <br>
 
-          <h4><%= link_to "Visit My Bucket List", bucket_list_items_path %></h4><br>
-          <h4><%= link_to "Register as a bidder", new_bidder_path %></h4><br>
+          <h3>
+            <div style="color:white">
+              <%= link_to "Visit My Bucket List", bucket_list_items_path %>
+            </div>
+          </h3><br>
+          <!-- <h4><%= link_to "Register as a bidder", new_bidder_path %></h4><br> -->
+          <br>
+          <br>
+          <br>
+
+          <hr>
           <br>
           <br>
 
           <h5>
-            Your account information <br>
+            <h2>Account Information</h2> <br>
             First Name: <%= @user.first_name %><br>
             Last Name: <%= @user.last_name %><br>
             Email:  <%= @user.email %><br>
-            <%= link_to "Edit My Account Information", edit_user_registration_path(@user) %>
+            <br>
+            <br>
+            <h5><%= link_to "Edit My Account Information", edit_user_registration_path(@user) %></h5>
+            <br>
+            <br>
           </h5>
 
         </div>
