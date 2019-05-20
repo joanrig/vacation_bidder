@@ -20,6 +20,7 @@ class AttractionsController < ApplicationController
     end
 
     if @attraction.save
+      flash[:alert] = "Successfully created attraction."
       redirect_to attraction_path(@attraction)
     else
       flash[:alert] = @attraction.errors.full_messages

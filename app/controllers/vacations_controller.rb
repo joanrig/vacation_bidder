@@ -20,6 +20,7 @@ class VacationsController < ApplicationController
     @vacation.name = @item.name#better: pass in as hidden value from form
 
     if @vacation.save
+      flash[:alert] = "Successfully created vacation."
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
@@ -41,7 +42,6 @@ class VacationsController < ApplicationController
   end
 
   def update
-    #binding.pry
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
     @vacation.update(vacation_params)
     @all_attractions = Attraction.all
@@ -55,6 +55,9 @@ class VacationsController < ApplicationController
       @schedule = Schedule.new(vacation_id: @vacation.id, departure_city: params[:vacation][:schedule][:departure_city], departure_date: params[:vacation][:schedule][:departure_date], return_city: params[:vacation][:schedule][:return_city], return_date: params[:vacation][:schedule][:return_date])
       if @schedule.save
         flash[:alert] = "Successfully created schedule"
+      else
+        flash[:alert] = @schedule.errors.full_messages
+        render :edit
       end
     end
 
@@ -63,6 +66,7 @@ class VacationsController < ApplicationController
     end
 
     if @vacation.save
+      flash[:alert] = "Successfully updated vacation"
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
@@ -89,8 +93,6 @@ class VacationsController < ApplicationController
     def set_user
       @user = current_user
     end
-
-
 
 
 end

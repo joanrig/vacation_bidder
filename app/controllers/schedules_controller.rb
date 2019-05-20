@@ -10,8 +10,10 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
+      flash[:alert] = "Successfully created schedule."
       redirect_to schedule_path(@schedule)
     else
+      flash[:alert] = @schedule.errors.full_messages
       render :new
     end
 
@@ -27,8 +29,10 @@ class SchedulesController < ApplicationController
     @schedule = @vacation.schedule
     @schedule.update(schedule_params)
     if @schedule.save
+      flash[:alert] = "Successfully updated schedule."
       redirect_to schedule_path(@schedule)
     else
+      flash[:alert] = @schedule.errors.full_messages
       render :new
     end
   end

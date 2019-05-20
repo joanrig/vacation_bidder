@@ -18,6 +18,7 @@ class BucketListItemsController < ApplicationController
     @item = BucketListItem.new
     @item.update(item_params)
     if @item.save
+      flash[:alert] = "Successfully created bucket_list_item."
       redirect_to bucket_list_item_path(@item)
     else
       flash[:alert] = @item.errors.full_messages
@@ -34,6 +35,7 @@ class BucketListItemsController < ApplicationController
   def update
     @item.update(item_params)
     if @item.save
+      flash[:alert] = "Successfully updated bucket list item."
       redirect_to bucket_list_item_path(@item)
     else
       flash[:alert] = @item.errors.full_messages
