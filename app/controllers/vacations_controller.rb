@@ -79,7 +79,7 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], schedule_attributes:  [:departure_city, :departure_date, :return_city, :return_date, :vacation_id])
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], schedule_attributes:  [:departure_city, :departure_date, :return_city, :return_date, :notes, :vacation_id])
     end
 
     def set_vacation

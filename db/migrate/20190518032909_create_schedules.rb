@@ -5,6 +5,7 @@ class CreateSchedules < ActiveRecord::Migration[5.2]
       t.date :departure_date
       t.string :return_city
       t.date :return_date
+      t.string :notes
       t.string :vacation_id
 
       t.timestamps

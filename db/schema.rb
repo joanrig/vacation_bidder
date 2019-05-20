@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_215546) do
     t.date "departure_date"
     t.string "return_city"
     t.date "return_date"
+    t.string "notes"
     t.string "vacation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,8 +80,6 @@ ActiveRecord::Schema.define(version: 2019_05_19_215546) do
   create_table "user_attractions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "attraction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,8 +102,6 @@ ActiveRecord::Schema.define(version: 2019_05_19_215546) do
   create_table "vacation_attractions", force: :cascade do |t|
     t.integer "vacation_id"
     t.integer "attraction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "vacations", force: :cascade do |t|

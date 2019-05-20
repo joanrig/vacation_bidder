@@ -222,3 +222,7 @@ input[type="text"] {
    color: red;
    font-weight: 800;
 }
+
+#invisible {
+  display:none;
+}
