@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :vacations do
-    resources :vacation_attractions, only: [:new, :create]
     resources :schedules
+    resources :vacation_attractions, only: [:new, :create]
   end
 
   resources :categories, only: [:index, :show]

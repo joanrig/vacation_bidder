@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
 
   def new
-    binding.pry
+    #binding.pry
     @schedule = Schedule.new
   end
 

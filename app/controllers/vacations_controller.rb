@@ -11,6 +11,7 @@ class VacationsController < ApplicationController
     @user = current_user
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new
+
   end
 
   def create
@@ -44,6 +45,9 @@ class VacationsController < ApplicationController
   end
 
   def update
+    #binding.pry
+
+
     @vacation = Vacation.find_by_id(params[:id])
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
     @user = current_user

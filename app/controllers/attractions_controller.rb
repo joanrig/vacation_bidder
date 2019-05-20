@@ -13,11 +13,11 @@ class AttractionsController < ApplicationController
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     @attraction = Attraction.create(attraction_params)
     #need to save attraction id so it can be given to attraction_category
-    @categories = Category.all
+    @all_categories = Category.all
 
 
     if params[:attraction][:attraction_category][:category_id]
-      binding.pry
+      #binding.pry
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
     end
 

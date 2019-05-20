@@ -6,12 +6,12 @@ as of friday 822am
   <div class="container">
     <div class="panel-a" text-black>
       <div class="panel-body">
-        <div class="form" style="color:lightblue">
+        <div class="form" style="color:midnightblue">
           <p>Now editing:</p>
           <h2><%= @vacation.name %></h2>
 
         <p>
-          <%= form_for @vacation do |f| %>
+          <%= form_for @vacation, :html => {:class => "black_text"}  do |f| %>
             <%= f.label :name%><br>
             <%= f.text_field :name %><br><br>
             <%= f.label :budget%><br>

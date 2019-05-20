@@ -4,7 +4,7 @@
   <div class="container">
     <div class="panel-a" text-black>
       <div class="panel-body">
-        <div class="form" style="color:lightblue">
+        <div class="form" style="color:black">
 
           <p>Now editing <%= @user.first_name %>'s vacation:</p>
           <h2><%= @vacation.name %></h2>
@@ -13,8 +13,10 @@
 
           <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
             <div class="center" style="text-align:center">
-              <%= f.label :name %><br>
+              <div class="black_text">
+              <%= f.label :name, "Vacation Name" %><br>
               <%= f.text_field :name %>
+              <div class="black_text">
             </div>
           </div>
           <br>
@@ -56,6 +58,12 @@
           <% end %>
           <br>
           <br>
+
+          <p>or Add a New Attraction<p>
+
+
+          <br>
+          <br>
           <br>
 
           <hr>
@@ -64,7 +72,8 @@
 
 
           <h2>Travel Dates</h2><br>
-          <%= f.fields_for @schedule, url: new_vacation_schedule_path(@vacation) do |s| %>
+
+          <%= f.fields_for @schedule, url:  new_vacation_schedule_path(@vacation) do |s| %>
 
 
           <div class="col-sm-2 d-flex flex-row"></div>
@@ -76,7 +85,7 @@
               </div>
               </div>
               <br>
-              <br>
+              <br>`
 
               <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_date].any? %>">
                 <div class="center" style="text-align:center">
