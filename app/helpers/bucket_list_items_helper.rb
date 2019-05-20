@@ -1,7 +1,7 @@
 module BucketListItemsHelper
 
   def items
-    @items = BucketListItem.where("user_id = ?", @user.id)
+    @items = BucketListItem.where("user_id = ?", current_user.id)
   end
 
   def dreams
