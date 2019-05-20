@@ -1,4 +1,6 @@
 class AttractionsController < ApplicationController
+  before_action :set_attraction, except: [:new, :create]
+  before_action :all_categories, only: [:new, :create, :edit]
 
 
 
@@ -6,18 +8,14 @@ class AttractionsController < ApplicationController
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
     @attraction_category = AttractionCategory.new
-    @all_categories = Category.all
   end
 
   def create
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     @attraction = Attraction.create(attraction_params)
     #need to save attraction id so it can be given to attraction_category
-    @all_categories = Category.all
-
 
     if params[:attraction][:attraction_category][:category_id]
-      #binding.pry
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
     end
 
@@ -30,22 +28,17 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @attraction = Attraction.find_by_id(params[:id])
     @categories = @attraction.categories
   end
 
   def edit
     #binding.pry
-    @attraction = Attraction.find_by_id(params[:id])
     @categories = @attraction.categories
-    @attraction_category = AttractionCategory.new(attraction_id: @atraction_id)
-    @all_categories = Category.all
+    @attraction_category = AttractionCategory.new(attraction_id: @attraction_id)
   end
 
   def update
-    @attraction = Attraction.find_by_id(params[:id])
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
-
     if @category
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
     end
@@ -60,7 +53,6 @@ class AttractionsController < ApplicationController
   end
 
   def destroy
-    @attraction = Attraction.find_by_id(params[:id])
     @attraction.destroy
     redirect_to categories_path
   end
@@ -71,6 +63,14 @@ class AttractionsController < ApplicationController
 
     def attraction_params
       params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id] )
+    end
+
+    def set_attraction
+      @attraction = Attraction.find_by_id(params[:id])
+    end
+
+    def all_categories
+      @all_categories = Category.all
     end
 
 end
