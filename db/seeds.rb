@@ -235,37 +235,45 @@ VacationAttractions = VacationAttraction.create([
 Categories = Category.create([
   {
     name: "parks",
-    image: "https://images.unsplash.com/photo-1504827910875-50c950d5d13f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+    image: "https://images.unsplash.com/photo-1504827910875-50c950d5d13f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+    panel_a_rgb:()
+
   },
 
   {
     name:"bicycling",
-    image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+    image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80",
+    panel_a_rgb: "(165, 147, 116, 0.3)"
   },
 
   {
     name:"hiking",
-    image: "https://images.unsplash.com/photo-1547772863-4a1073b3f93c"
+    image: "https://images.unsplash.com/photo-1547772863-4a1073b3f93c",
+    panel_a_rgb: "(98, 60, 42, 0.3)"
   },
 
   {
     name:"theater",
-    image: "http://theatreprojects.com/files/projects/chicago-shakespeare-theater-navy-pier-01.jpg"
+    image: "http://theatreprojects.com/files/projects/chicago-shakespeare-theater-navy-pier-01.jpg",
+    panel_a_rgb: "(0, 0, 0, 0.8)"
   },
 
   {
     name:"tour",
-    image:"https://static1.squarespace.com/static/5558ab9fe4b02d567e71d61f/571fd1ca859fd093dd9eda99/571fd1d1cf80a163a4d4dc6c/1461703167640/DSC_4183.JPG?format=2500w"
+    image:"https://static1.squarespace.com/static/5558ab9fe4b02d567e71d61f/571fd1ca859fd093dd9eda99/571fd1d1cf80a163a4d4dc6c/1461703167640/DSC_4183.JPG?format=2500w",
+    panel_a_rgb: "(4, 35, 102, 0.3)"
   },
 
   {
     name:"running",
-    image: "https://wpassets.trainingpeaks.com/wp-content/uploads/2018/04/02142228/04078-hal-higdon-top-10-running-tips-blog-700x394.jpg"
+    image: "https://wpassets.trainingpeaks.com/wp-content/uploads/2018/04/02142228/04078-hal-higdon-top-10-running-tips-blog-700x394.jpg",
+    panel_a_rgb: "(3, 24, 60, 0.2)"
   },
 
   {
     name:"classes",
-    image:"https://img.grouponcdn.com/deal/dTi8d7uFDafiTprJSS2m/K8-2048x1229/v1/c700x420.jpg"
+    image:"https://img.grouponcdn.com/deal/dTi8d7uFDafiTprJSS2m/K8-2048x1229/v1/c700x420.jpg",
+    panel_a_rgb: "(107, 94, 86, 0.2)"
   },
 
 ])
