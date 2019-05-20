@@ -42,11 +42,11 @@ class VacationsController < ApplicationController
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
     @schedule = Schedule.new
+    @attraction = Attraction.new
   end
 
   def update
     #binding.pry
-
 
     @vacation = Vacation.find_by_id(params[:id])
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
@@ -64,6 +64,10 @@ class VacationsController < ApplicationController
       if @schedule.save
         flash[:alert] = "Successfully created schedule"
       end
+    end
+
+    if params[:vacation][:attraction]
+      @attraction = Attraction.new(name: params[:vacation][:attraction])
     end
 
     if @vacation.save

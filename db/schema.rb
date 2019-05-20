@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2019_05_19_215546) do
     t.string "city"
     t.string "state"
     t.string "country"
-    t.integer "destination_id"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

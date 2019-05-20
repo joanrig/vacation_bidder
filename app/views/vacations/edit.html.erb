@@ -1,22 +1,31 @@
 <%= render '/vacations/layout' %>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="center" style="text-align:center">
   <div class="container">
-    <div class="panel-a" text-black>
+    <div class="panel-a">
       <div class="panel-body">
-        <div class="form" style="color:black">
+        <div class="form" style="color:white">
+
 
           <p>Now editing <%= @user.first_name %>'s vacation:</p>
-          <h2><%= @vacation.name %></h2>
+          <h1><%= @vacation.name %></h1>
+          <br>
+          <br>
+          <hr>
+          <br>
+          <br>
 
           <%= form_for @vacation do |f| %>
 
           <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
             <div class="center" style="text-align:center">
-              <div class="black_text">
               <%= f.label :name, "Vacation Name" %><br>
               <%= f.text_field :name %>
-              <div class="black_text">
             </div>
           </div>
           <br>
@@ -53,14 +62,11 @@
           <% end %><br>
 
           <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
-            <p><%= v.label :attraction_id, "Update Attractions" %></p><br>
+            <%= v.label :attraction_id, "Update Attractions" %><br>
               <%= v.collection_select :attraction_id, @all_attractions.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
           <% end %>
           <br>
           <br>
-
-          <p>or Add a New Attraction<p>
-
 
           <br>
           <br>
@@ -69,8 +75,6 @@
           <hr>
 
           <br>
-
-
           <h2>Travel Dates</h2><br>
 
           <%= f.fields_for @schedule, url:  new_vacation_schedule_path(@vacation) do |s| %>
@@ -89,8 +93,8 @@
 
               <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_date].any? %>">
                 <div class="center" style="text-align:center">
-                  <%= s.label :departure_date %>
-                  <%= s.date_field :departure_date%>
+                  <%= s.label :return_city %>
+                  <%= s.text_field :return_city %>
                 </div>
               </div>
             </div>
@@ -99,10 +103,11 @@
             <div class="col-sm-4 d-flex flex-row">
               <div class="field<%= ' field_with_errors' if @schedule.errors[:return_city].any? %>">
                 <div class="center" style="text-align:center">
-                  <%= s.label :return_city %>
-                  <%= s.text_field :return_city %>
+                  <%= s.label :departure_date %>
+                  <%= s.date_field :departure_date%>
                 </div>
               </div>
+              <br>
               <br>
               <br>
 
@@ -124,8 +129,14 @@
           <div class="col-sm-12 d-flex flex-row">
             <hr>
             <br>
-            <h2><%= f.submit %></h2><br><br>
-            <% end %>
+            <h2>
+              <div style="color:black">
+                <%= f.submit %>
+              </div>
+            </h2>
+          <% end %>
+            <br>
+            <br>
             <br>
             <br>
             <br>

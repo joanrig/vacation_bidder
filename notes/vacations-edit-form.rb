@@ -4,7 +4,7 @@ as of friday 822am
 
 <div class="center" style="text-align:center">
   <div class="container">
-    <div class="panel-a" text-black>
+    <div class="panel-a">
       <div class="panel-body">
         <div class="form" style="color:midnightblue">
           <p>Now editing:</p>

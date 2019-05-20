@@ -1,8 +1,13 @@
 <%= render 'layout' %>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="center" style="text-align:center">
   <div class="container">
-    <div class="panel-a" text-black>
+    <div class="panel-a">
       <div class="panel-body">
 
 
@@ -36,9 +41,9 @@
             <% if @schedule %>
             <h5>
               Departure city: <%= @schedule.departure_city %><br>
-              Departure date: <%= @schedule.departure_date %><br><br><br>
+              Departure date: <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
               Return city: <%= @schedule.return_city %><br>
-              Return date: <%= @schedule.return_date %><br>
+              Return date: <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
             </h5>
             <% else %>
               <p>This vacation doesn't have a schedule yet. Click below to add one.</p>
