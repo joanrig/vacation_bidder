@@ -57,7 +57,8 @@ class VacationsController < ApplicationController
         flash[:alert] = "Successfully created schedule"
       else
         flash[:alert] = @schedule.errors.full_messages
-        render :edit
+        render :edit and return
+        #need and return to avoid double render error
       end
     end
 
@@ -70,7 +71,6 @@ class VacationsController < ApplicationController
       redirect_to vacation_path(@vacation)
     else
       flash[:alert] = @vacation.errors.full_messages
-      flash[:alert] = @schedule.errors.full_messages
       render :edit
     end
   end
