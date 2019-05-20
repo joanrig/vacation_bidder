@@ -189,6 +189,13 @@ select {
   text-align: center;
 }
 
+input[type="date"] {
+  font-family: 'Arial';
+  font-size: 13px;
+  text-align: center;
+  color: midnightblue;
+}
+
 input[type="text"] {
   font-family: 'Arial';
   font-size: 13px;

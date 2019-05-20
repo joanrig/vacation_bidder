@@ -1,14 +1,13 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_vacation, except: [:new, :destroy]
 
 
   def new
-    #binding.pry
     @schedule = Schedule.new
   end
 
   def create
-    @vacation = Vacation.find_by_params(:vacation_id)
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
       redirect_to schedule_path(@schedule)
@@ -17,17 +16,14 @@ class SchedulesController < ApplicationController
     end
 
   def show
-    @vacation = Vacation.find_by_id(params[:vacation_id])
     @schedule = @vacation.schedule
   end
 
   def edit
-    @vacation = Vacation.find_by_id(params[:vacation_id])
     @schedule = @vacation.schedule
   end
 
   def update
-    @vacation = Vacation.find_by_id(params[:vacation_id])
     @schedule = @vacation.schedule
     @schedule.update(schedule_params)
     if @schedule.save
@@ -46,6 +42,11 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:departure_city, :departure_date, :return_city, :return_date, :vacation_id)
     end
+
+    def set_vacation
+      @vacation = Vacation.find_by_id(params[:vacation_id])
+    end
+
 
 
 end
