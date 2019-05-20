@@ -26,9 +26,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :attractions
   resources :attraction_categories, only: [:new, :create]
-
-
-
   resources :bidders
 
 

@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Raleway&display=swap" rel="stylesheet">
   </head>
   <header>
 <br>
@@ -23,7 +24,9 @@
   <div class="panel-a" style="color:white">
     <div class="panel-body">
       <div class="text-center">
-        <h3>Bucket List Bidding System</h3>
+        <div class="banner">
+        <h3>bid on my bucket list.com</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -33,10 +36,15 @@
       <div id="navbar"
         <div class="text-center">
           <% if current_user  %>
+            <%= link_to "My Account", authenticated_root_path, class: 'nav_element' %>
             <%= link_to "My Bucket List", bucket_list_items_path, class: 'nav_element'  %>
             <%= link_to "My Vacations", vacations_path, class: 'nav_element' %>
             <%= link_to "Inspire Me", categories_path, class: 'nav_element' %>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav_element' %>
+          <% else %>
+            <div style="color:black">
+              Welcome! To build and live the bucket list of your dreams, please sign up or sign in.
+            </div>
           <% end %>
         </div>
       </div>

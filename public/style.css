@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway')
-
-
-
+.banner {
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 1.5em
+}
 
 html, body {
   height: 100%;
@@ -43,6 +43,7 @@ nav {
   height: 30px;
   margin-top: 30px;
   background-color: rgb(235, 230, 230);
+  font-family: 'Baloo Bhai', cursive;
 }
 
 .nav_element {
