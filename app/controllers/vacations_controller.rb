@@ -28,7 +28,6 @@ class VacationsController < ApplicationController
   end
 
   def show
-    binding.pry
     @schedule = @vacation.schedule
     @attractions = @vacation.attractions
   end
