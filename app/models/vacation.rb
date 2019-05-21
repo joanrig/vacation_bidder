@@ -11,7 +11,8 @@ class Vacation < ApplicationRecord
   has_one :schedule, inverse_of: :vacation, autosave: true
   accepts_nested_attributes_for :schedule
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50, too_long: "Please choose a shorter name" }
+
 
 
 
