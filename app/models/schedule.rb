@@ -12,7 +12,7 @@ class Schedule < ApplicationRecord
   def return_date_after_departure_date?
     if departure_date && return_date
       if return_date <= departure_date
-      errors.add :return_date, "Return date must be after departure date."
+      errors.add :return_date, "must be after departure date."
       end
     end
   end

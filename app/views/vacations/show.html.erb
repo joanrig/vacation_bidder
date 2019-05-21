@@ -18,7 +18,10 @@
             <br><br>
             <h4>Budget: $<%= @vacation.budget %></h4>
             <h4>Number of Travelers: <%= @vacation.number_of_travelers %></h4>
-            <h4>Open to Bids? <%= human_boolean(@vacation.open_to_bids) %></h4><br>
+            <h4>Budget per person: $<%= budget_per_person %></h4>
+            <h4>Budget per person per day: $<%= budget_per_person_per_day %></h4>
+            <br>
+            <br>
 
             <h4>Notes</h4>
             <% if @vacation.notes %>
@@ -29,7 +32,6 @@
 
 
             <hr>
-            <br>
             <br>
 
             <h2>Itinerary</h2>
@@ -45,24 +47,26 @@
             <br>
             <br>
 
-            <h2>Schedule</h2>
-            <% if @schedule %>
+            <h2>Travel Dates</h2>
+            <% if @schedule.valid? && days_long > 0 %>
+
+            <h1><%= days_long %></h1>
             <h5>
-              Departure city:    <%= @schedule.departure_city %><br>
+              days of fun!<br><br>
+              Departure city:   <%= @schedule.departure_city %><br>
               Departure date:    <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
               Return city:    <%= @schedule.return_city %><br>
               Return date:    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
             </h5>
             <% else %>
-              <p>This vacation doesn't have a schedule yet. Click below to add one.</p>
-            <% end %><br><br>
+              <p>This vacation doesn't have a schedule yet. </p>
+            <% end %>
 
-
+            <br>
+            <br>
+            <br>
             <hr>
             <br>
-            <br>
-
-
 
             <h4><%= link_to "Click to Edit Vacation", edit_vacation_path(@vacation) %></h4>
             <br>

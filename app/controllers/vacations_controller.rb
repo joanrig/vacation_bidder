@@ -53,10 +53,12 @@ class VacationsController < ApplicationController
 
     if params[:vacation][:vacation_attraction][:attraction_id]
       VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
+      flash[:alert] = "Success! Attraction added to itinerary."
     end
 
     #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
     if params[:vacation][:schedule]
+      binding.pry
       @schedule = Schedule.new(
         vacation_id: @vacation.id,
         departure_city: params[:vacation][:schedule][:departure_city],
@@ -92,7 +94,7 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], schedule_attributes:  [:departure_city, :departure_date, :return_city, :return_date, :notes, :vacation_id])
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], schedule_attributes: [:departure_city, :departure_date, :return_city, :return_date, :notes, :vacation_id])
     end
 
     def set_vacation

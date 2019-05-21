@@ -37,10 +37,10 @@
           <br>
 
           <div class="center" style="text-align:center">
-              <%= f.label :budget %>
+              <%= f.label :budget %>: $<%= @vacation.budget %>
 
                 <br>
-              <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], ),
+              <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], selected: @vacation.budget ||= nil ),
               {:include_blank => 'Select'},
               class: "chzn-select",
               style: "width: 150px")%>
@@ -49,10 +49,14 @@
           <br>
 
           <%= f.label :number_of_travelers %>: <%= @vacation.number_of_travelers %><br>
-          <%= f.select(:number_of_travelers, options_for_select(0..10), {:include_blank => 'Select'}) %>
+          <%# does not persist pre-selected value to show form %>
+          <%= f.select :number_of_travelers, options_for_select(1..10), { include_blank: true, selected_value: @vacation.budget || nil } %>
           <br>
           <br>
           <br>
+        
+
+
 
 
 
@@ -70,9 +74,6 @@
           </h6>
           <br>
           <br>
-
-
-
 
           <hr>
           <br>
@@ -111,21 +112,13 @@
           <br>
           <h2>Travel Dates</h2>
           <% if @schedule.departure_city %>
-          <h5>
-            Departure city:    <%= @schedule.departure_city %><br>
-            Departure date:    <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
-            Return city:    <%= @schedule.return_city %><br>
-            Return date:    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
-          </h5>
+
+          <h1><%= days_long %></h1> days of fun!<br><br>
           <% else %>
-            <p>This vacation doesn't have a schedule yet. </p>
+            <p>This vacation doesn't have a schedule yet. You can add dates later if you like. </p>
           <% end %>
           <br>
-          <br>
 
-
-
-          <p><em>If you're not ready to add a schedule yet, you can leave these field blank for now.</em></p>
           <br>
           <br>
 

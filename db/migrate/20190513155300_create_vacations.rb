@@ -4,7 +4,7 @@ class CreateVacations < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :category
       t.integer :budget
-      t.integer :number_of_travelers
+      t.integer :number_of_travelers, default: 1
       t.string :notes
       t.boolean :open_to_bids, :default => "false"
       t.integer :bucket_list_item_id
