@@ -47,7 +47,8 @@
             <br>
             <br>
             <h2>Travel Dates</h2>
-              <% if @schedule.departure_date && days_long %>
+            <% binding.pry %>
+              <% if @schedule && @schedule.departure_date && days_long %>
 
               <h1><%= days_long %></h1>
               <h5>

@@ -59,14 +59,18 @@ class VacationsController < ApplicationController
 
     #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
     if params[:vacation][:schedule]
-      @schedule = @vacation.schedule
+      if @vacation.schedule
+        @schedule = @vacation.schedule
+      else
+        @schedule = Schedule.new
+      end
+      binding.pry
       @schedule.update(
         vacation_id: @vacation.id,
         departure_city: params[:vacation][:schedule][:departure_city],
         departure_date: params[:vacation][:schedule][:departure_date],
         return_city: params[:vacation][:schedule][:return_city],
         return_date: params[:vacation][:schedule][:return_date])
-        binding.pry
         if @schedule.valid?
           flash[:alert] = "Successfully created schedule"
         else
