@@ -56,7 +56,7 @@
 
 
 
-          <%= f.label :notes %>: <%= @vacation.notes %><br>
+          <%= f.label :notes %><br>
           <div style="color:black">
             <%= f.text_area :notes, placeholder: @vacation.notes %>
           </div>
@@ -104,15 +104,28 @@
               <%= f.submit %>
             </div>
           </h6>
-
           <br>
           <br>
-
           <hr>
 
           <br>
           <h2>Travel Dates</h2>
-          <p><i>(leave blank if you don't want to add or change them)</i></p>
+          <% if @schedule.departure_city %>
+          <h5>
+            Departure city:    <%= @schedule.departure_city %><br>
+            Departure date:    <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
+            Return city:    <%= @schedule.return_city %><br>
+            Return date:    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
+          </h5>
+          <% else %>
+            <p>This vacation doesn't have a schedule yet. </p>
+          <% end %>
+          <br>
+          <br>
+
+
+
+          <p><em>If you're not ready to add a schedule yet, you can leave these field blank for now.</em></p>
           <br>
           <br>
 

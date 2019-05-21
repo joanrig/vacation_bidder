@@ -11,6 +11,7 @@ class VacationsController < ApplicationController
   def new
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new
+    @vacation.notes = @item.notes
   end
 
   def create
@@ -18,8 +19,6 @@ class VacationsController < ApplicationController
     @vacation = Vacation.new(vacation_params)
     @vacation.bucket_list_items << @item
     @vacation.name = @item.name#better: pass in as hidden value from form
-    @vacation.notes = @item.notes
-    binding.pry
 
     if @vacation.save
       flash[:alert] = "Successfully created vacation."
@@ -39,7 +38,11 @@ class VacationsController < ApplicationController
     @attractions = @vacation.attractions
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
-    @schedule = Schedule.new
+    if @vacation.schedule
+      @schedule = @vacation.schedule
+    else
+      @schedule = Schedule.new
+    end
     @attraction = Attraction.new
   end
 
