@@ -30,6 +30,7 @@ class VacationsController < ApplicationController
   end
 
   def show
+    #binding.pry
     @schedule = @vacation.schedule
     @attractions = @vacation.attractions
   end
@@ -58,19 +59,20 @@ class VacationsController < ApplicationController
 
     #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
     if params[:vacation][:schedule]
-      binding.pry
-      @schedule = Schedule.new(
+      @schedule = @vacation.schedule
+      @schedule.update(
         vacation_id: @vacation.id,
         departure_city: params[:vacation][:schedule][:departure_city],
         departure_date: params[:vacation][:schedule][:departure_date],
         return_city: params[:vacation][:schedule][:return_city],
         return_date: params[:vacation][:schedule][:return_date])
-        if @schedule.save
-        flash[:alert] = "Successfully created schedule"
-      else
-        flash[:alert] = @schedule.errors.full_messages
-        render :edit and return #need 'and return' to avoid double render error
-      end
+        binding.pry
+        if @schedule.valid?
+          flash[:alert] = "Successfully created schedule"
+        else
+          flash[:alert] = @schedule.errors.full_messages
+          render :edit and return #need 'and return' to avoid double render error
+        end
     end
 
     if params[:vacation][:attraction]

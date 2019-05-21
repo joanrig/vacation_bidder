@@ -8,7 +8,7 @@ class Vacation < ApplicationRecord
 
   #inverse_of : tells rails there is a relationship through foreign key and that it needs to be set on the nested model when saving your form data.
   #autosave: true saves parent record first so it has a parent_id to store in the nested attributes for the nested model.
-  has_one :schedule, inverse_of: :vacation, autosave: true
+  has_one :schedule, inverse_of: :vacation
   accepts_nested_attributes_for :schedule
 
   validates :name, presence: true, length: { maximum: 50, too_long: "Please choose a shorter name" }

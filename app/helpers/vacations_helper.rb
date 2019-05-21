@@ -8,7 +8,7 @@ module VacationsHelper
   end
 
   def budget_per_person
-    if @vacation.budget && @vacation.number_of_travelers
+    if @vacation.budget && @vacation.number_of_travelers > 0
       @vacation.budget/ @vacation.number_of_travelers
     end
   end
