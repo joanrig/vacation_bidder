@@ -47,17 +47,19 @@
             <br>
             <br>
             <h2>Travel Dates</h2>
-            <% binding.pry %>
               <% if @schedule && @schedule.departure_date && days_long %>
 
               <h1><%= days_long %></h1>
-              <h5>
-                days of fun!<br><br>
-                Departure city:   <%= @schedule.departure_city %><br>
-                Departure date:    <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
-                Return city:    <%= @schedule.return_city %><br>
-                Return date:    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
-              </h5>
+              <h4>
+                days of fun!
+                <br>
+                <br>
+                Depart from  <%= @schedule.departure_city %><br>
+                on  <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
+
+                Return to  <%= @schedule.return_city %><br>
+                on    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
+              </h4>
               <% else %>
                 <p>This vacation doesn't have a schedule yet. </p>
               <% end %>

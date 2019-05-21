@@ -57,26 +57,26 @@ class VacationsController < ApplicationController
       flash[:alert] = "Success! Attraction added to itinerary."
     end
 
-    #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
     if params[:vacation][:schedule]
       if @vacation.schedule
         @schedule = @vacation.schedule
       else
         @schedule = Schedule.new
       end
-      binding.pry
+
+  #Schedule.new(params[:vacation][:schedule]) returns forbidden attributes errors
       @schedule.update(
-        vacation_id: @vacation.id,
-        departure_city: params[:vacation][:schedule][:departure_city],
-        departure_date: params[:vacation][:schedule][:departure_date],
-        return_city: params[:vacation][:schedule][:return_city],
-        return_date: params[:vacation][:schedule][:return_date])
-        if @schedule.valid?
-          flash[:alert] = "Successfully created schedule"
-        else
-          flash[:alert] = @schedule.errors.full_messages
-          render :edit and return #need 'and return' to avoid double render error
-        end
+      vacation_id: @vacation.id,
+      departure_city: params[:vacation][:schedule][:departure_city].titleize,
+      departure_date: params[:vacation][:schedule][:departure_date],
+      return_city: params[:vacation][:schedule][:return_city].titleize,
+      return_date: params[:vacation][:schedule][:return_date])
+      if @schedule.valid?
+        flash[:alert] = "Successfully created schedule"
+      else
+        flash[:alert] = @schedule.errors.full_messages
+        render :edit and return #need 'and return' to avoid double render error
+      end
     end
 
     if params[:vacation][:attraction]
@@ -100,7 +100,7 @@ class VacationsController < ApplicationController
 
   private
     def vacation_params
-      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, attraction_ids: [], schedule_attributes: [:departure_city, :departure_date, :return_city, :return_date, :notes, :vacation_id])
+      params.require(:vacation).permit(:name, :category, :budget, :number_of_travelers, :bucket_list_item_id, :open_to_bids, :notes, attraction_ids: [], schedule_attributes: [:departure_city, :departure_date, :return_city, :return_date, :notes, :vacation_id])
     end
 
     def set_vacation
