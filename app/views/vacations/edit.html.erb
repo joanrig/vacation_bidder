@@ -49,12 +49,11 @@
           <br>
 
           <%= f.label :number_of_travelers %>: <%= @vacation.number_of_travelers %><br>
-          <%# does not persist pre-selected value to show form %>
-          <%= f.select :number_of_travelers, options_for_select(1..10), { include_blank: true, selected_value: @vacation.budget || nil } %>
+          <%= f.text_field :number_of_travelers %>
           <br>
           <br>
           <br>
-        
+
 
 
 
