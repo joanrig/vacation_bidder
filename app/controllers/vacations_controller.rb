@@ -18,6 +18,8 @@ class VacationsController < ApplicationController
     @vacation = Vacation.new(vacation_params)
     @vacation.bucket_list_items << @item
     @vacation.name = @item.name#better: pass in as hidden value from form
+    @vacation.notes = @item.notes
+    binding.pry
 
     if @vacation.save
       flash[:alert] = "Successfully created vacation."
@@ -29,7 +31,6 @@ class VacationsController < ApplicationController
   end
 
   def show
-    binding.pry
     @schedule = @vacation.schedule
     @attractions = @vacation.attractions
   end

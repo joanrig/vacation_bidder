@@ -1,8 +1,5 @@
 <%= render '/layouts/bucket_list_items' %>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <div class="center" style="text-align:center">
   <div class="container">
@@ -14,7 +11,7 @@
         <%= form_for bucket_list_item do |f| %>
         <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:name].any? %>">
           <div class="center" style="text-align:center">
-          <%= f.label :name %><br>
+          <%= f.label :name, "Name of bucket list item" %><br>
           <%= f.text_field :name %>
           </div>
         </div>
@@ -23,7 +20,9 @@
           <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:notes].any? %>">
             <div class="center" style="text-align:center">
               <%= f.label :notes %><br>
-              <%= f.text_area :notes %>
+              <div style="color:black">
+                <%= f.text_area :notes %>
+              </div>
             </div>
           </div>
 

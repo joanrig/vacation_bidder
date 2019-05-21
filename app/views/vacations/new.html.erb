@@ -4,10 +4,13 @@
   <div class="container">
     <div class="panel-a">
       <div class="panel-body">
-        <div class="form" style="color:lightblue">
+        <div class="form" style="color:white">
 
-          <h3><%= @user.first_name %>'s next vacation:</h3>
+          <h5><%= @user.first_name %>'s next vacation:</h5>
           <h1><%= @item.name %></h1>
+          <br>
+          <br>
+          <br>
 
           <%= form_for [@item, @vacation] do |f| %>
 
@@ -34,12 +37,13 @@
             <%= f.select(:number_of_travelers, options_for_select(0..10)) %>
             <br>
             <br>
-
-            <hr>
             <br>
 
             <%= f.label :notes %><br>
-            <%= f.text_field :notes %>
+            <div style="color:black">
+              <%= f.text_area :notes, default: @item.notes %>
+            </div>
+
             <br>
             <br>
 
@@ -47,8 +51,9 @@
             <br>
 
 
-
-            <%= f.submit %><br><br>
+            <div style="color:black">
+              <%= f.submit %><br><br>
+            </div>
           <% end %>
 
 

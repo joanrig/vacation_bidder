@@ -37,7 +37,9 @@
           <br>
 
           <div class="center" style="text-align:center">
-              <%= f.label :budget%><br>
+              <%= f.label :budget %>
+
+                <br>
               <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], ),
               {:include_blank => 'Select'},
               class: "chzn-select",
@@ -51,6 +53,16 @@
           <br>
           <br>
           <br>
+
+
+
+          <%= f.label :notes %>: <%= @vacation.notes %><br>
+          <div style="color:black">
+            <%= f.text_area :notes, placeholder: @vacation.notes %>
+          </div>
+          <br>
+          <br>
+          <br>
           <h6>
             <div style="color:black">
               <%= f.submit %>
@@ -58,6 +70,8 @@
           </h6>
           <br>
           <br>
+
+
 
 
           <hr>
