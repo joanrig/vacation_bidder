@@ -5,82 +5,74 @@
 <br>
 <br>
 <br>
-<div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
+
+<div class="container panel-a panel-body">
+  <div class="col-sm-12 d-flex flex-row">
+    <div class="text-center">
+      <p><%= @user.first_name %>'s vacation</p>
+      <h1><%= @vacation.name %></h1>
+      <br><br>
+      <h4>Budget: $<%= @vacation.budget %></h4>
+      <h4>Number of Travelers: <%= @vacation.number_of_travelers %></h4>
+      <h4>Budget per person: $<%= budget_per_person %></h4>
+      <h4>Budget per person per day: $<%= budget_per_person_per_day %></h4>
+      <br>
+      <br>
+
+      <h4>Notes</h4>
+      <% if @vacation.notes %>
+        <p><%= @vacation.notes %></p>
+        <% else %>
+          <p>This vacation doesn't have any notes yet. Click below to add some.</p>
+        <% end %><br><br>
 
 
-        <div class="col-sm-12 d-flex flex-row">
-          <div class="text-center">
-            <p><%= @user.first_name %>'s vacation</p>
-            <h1><%= @vacation.name %></h1>
-            <br><br>
-            <h4>Budget: $<%= @vacation.budget %></h4>
-            <h4>Number of Travelers: <%= @vacation.number_of_travelers %></h4>
-            <h4>Budget per person: $<%= budget_per_person %></h4>
-            <h4>Budget per person per day: $<%= budget_per_person_per_day %></h4>
-            <br>
-            <br>
+      <hr>
+      <br>
 
-            <h4>Notes</h4>
-            <% if @vacation.notes %>
-              <p><%= @vacation.notes %></p>
-              <% else %>
-                <p>This vacation doesn't have any notes yet. Click below to add some.</p>
-              <% end %><br><br>
+      <h2>Itinerary</h2>
+      <% unless @attractions.empty? %>
+        <% @attractions.uniq.sort_by(&:name).each do |a| %>
+          <h4><%= link_to a.name, attraction_path(a) %></h4>
+        <% end %>
+      <% else %>
+        <p>This vacation doesn't have any attractions yet. Click below to add some.</p>
+      <% end %><br><br>
 
+      <hr>
+      <br>
+      <br>
+      <h2>Travel Dates</h2>
+        <% if @schedule && @schedule.departure_date && days_long %>
 
-            <hr>
-            <br>
+        <h1><%= days_long %></h1>
+        <h4>
+          days of fun!
+          <br>
+          <br>
+          Depart from  <%= @schedule.departure_city %><br>
+          on  <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
 
-            <h2>Itinerary</h2>
-            <% unless @attractions.empty? %>
-              <% @attractions.uniq.sort_by(&:name).each do |a| %>
-                <h4><%= link_to a.name, attraction_path(a) %></h4>
-              <% end %>
-            <% else %>
-              <p>This vacation doesn't have any attractions yet. Click below to add some.</p>
-            <% end %><br><br>
-
-            <hr>
-            <br>
-            <br>
-            <h2>Travel Dates</h2>
-              <% if @schedule && @schedule.departure_date && days_long %>
-
-              <h1><%= days_long %></h1>
-              <h4>
-                days of fun!
-                <br>
-                <br>
-                Depart from  <%= @schedule.departure_city %><br>
-                on  <%= @schedule.departure_date.strftime("%b %d, %Y") %><br><br><br>
-
-                Return to  <%= @schedule.return_city %><br>
-                on    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
-              </h4>
-              <% else %>
-                <p>This vacation doesn't have a schedule yet. </p>
-              <% end %>
+          Return to  <%= @schedule.return_city %><br>
+          on    <%= @schedule.return_date.strftime("%b %d, %Y") %><br>
+        </h4>
+        <% else %>
+          <p>This vacation doesn't have a schedule yet. </p>
+        <% end %>
 
 
-            <br>
-            <br>
-            <br>
-            <hr>
-            <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <br>
 
-            <h4><%= link_to "Click to Edit Vacation", edit_vacation_path(@vacation) %></h4>
-            <br>
-            <br>
-            <p><%= link_to "delete", @vacation, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %></p>
+      <h4><%= link_to "Click to Edit Vacation", edit_vacation_path(@vacation) %></h4>
+      <br>
+      <br>
+      <p><%= link_to "delete", @vacation, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %></p>
 
 
-
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

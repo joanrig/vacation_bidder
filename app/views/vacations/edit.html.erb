@@ -6,184 +6,181 @@
 <br>
 
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
-        <div class="form" style="color:white">
+  <div class="container panel-a panel-body">
+
+    <div class="form" style="color:white">
 
 
-          <p>Now editing <%= @user.first_name %>'s vacation:</p>
-          <h1><%= @vacation.name %></h1>
-          <br>
-          <br>
-          <hr>
-          <br>
-          <br>
-          <h2>Basics</h2>
-          <br>
-          <br>
+      <p>Now editing <%= @user.first_name %>'s vacation:</p>
+      <h1><%= @vacation.name %></h1>
+      <br>
+      <br>
+      <hr>
+      <br>
+      <br>
+      <h2>Basics</h2>
+      <br>
+      <br>
 
-          <%= form_for @vacation do |f| %>
+      <%= form_for @vacation do |f| %>
 
-          <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
-            <div class="center" style="text-align:center">
-              <%= f.label :name, "Vacation Name" %><br>
-              <div class="wide_text_field">
-                <%= f.text_field :name %>
-              </div>
-            </div>
+      <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :name, "Vacation Name" %><br>
+          <div class="wide_text_field">
+            <%= f.text_field :name %>
           </div>
-          <br>
-          <br>
-
-          <div class="center" style="text-align:center">
-              <%= f.label :budget %>
-
-                <br>
-              <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], selected: @vacation.budget ||= nil ),
-              {:include_blank => 'Select'},
-              class: "chzn-select",
-              style: "width: 150px")%>
-          </div>
-          <br>
-          <br>
-
-          <%= f.label :number_of_travelers %><br>
-          <%= f.text_field :number_of_travelers %>
-          <br>
-          <br>
-          <br>
-
-
-          <%= f.label :notes %><br>
-          <div style="color:black">
-            <%= f.text_area :notes, placeholder: @vacation.notes %>
-          </div>
-          <br>
-          <br>
-          <br>
-          <h6>
-            <div style="color:black">
-              <%= f.submit %>
-            </div>
-          </h6>
-          <br>
-          <br>
-
-          <hr>
-          <br>
-
-          <h2>Itinerary</h2>
-          <% if @attractions %>
-            <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
-              <div class="collection-check-box" style="font-size:1.25em">
-                <%= b.check_box %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          <% else %>
-            <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
-          <% end %>
-          <br>
-          <br>
-
-          <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
-            <%= v.label :attraction_id, "Add Attractions from my Collection" %><br>
-              <%= v.collection_select :attraction_id, current_user.attractions.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
-          <% end %>
-          <br>
-          <br>
-          <br>
-          <h6><b><%= link_to "Add More Attractions to my Collection", categories_path %></b></h6>
-          <br>
-          <br>
-          <h6>
-            <div style="color:black">
-              <%= f.submit %>
-            </div>
-          </h6>
-          <br>
-          <br>
-          <hr>
-
-          <br>
-          <h2>Travel Dates</h2>
-          <% if @schedule.departure_city %>
-
-          <h1><%= days_long %></h1> days of fun!<br><br>
-          <% else %>
-            <p>This vacation doesn't have a schedule yet. You can add dates later if you like. </p>
-          <% end %>
-          <br>
-
-          <br>
-          <br>
-
-          <%= f.fields_for @schedule, url:  new_vacation_schedule_path(@vacation) do |s| %>
-
-
-          <div class="col-sm-2 d-flex flex-row"></div>
-            <div class="col-sm-4 d-flex flex-row">
-              <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_city].any? %>">
-              <div class="center" style="text-align:center">
-                <%= s.label :departure_city %>
-                <%= s.text_field :departure_city %>
-              </div>
-              </div>
-              <br>
-              <br>`
-
-              <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_date].any? %>">
-                <div class="center" style="text-align:center">
-                  <%= s.label :return_city %>
-                  <%= s.text_field :return_city %>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-sm-4 d-flex flex-row">
-              <div class="field<%= ' field_with_errors' if @schedule.errors[:return_city].any? %>">
-                <div class="center" style="text-align:center">
-                  <%= s.label :departure_date %>
-                  <%= s.date_field :departure_date%>
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-
-              <div class="field<%= ' field_with_errors' if @schedule.errors[:return_date].any? %>">
-                <div class="center" style="text-align:center">
-                  <%= s.label :return_date %>
-                  <%= s.date_field :return_date %>
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-            </div>
-
-
-            <div class="col-sm-12 d-flex flex-row">
-              <h6>
-                <div style="color:black">
-                  <%= f.submit %>
-                </div>
-              </h6>
-            </div>
-
-            <%= s.hidden_field :vacation_id, :value => @vacation.id %>
-            <% end %><br>
-          <% end %>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-          </div>
-
         </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="center" style="text-align:center">
+          <%= f.label :budget %>
+
+            <br>
+          <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], selected: @vacation.budget ||= nil ),
+          {:include_blank => 'Select'},
+          class: "chzn-select",
+          style: "width: 150px")%>
+      </div>
+      <br>
+      <br>
+
+      <%= f.label :number_of_travelers %><br>
+      <%= f.text_field :number_of_travelers %>
+      <br>
+      <br>
+      <br>
+
+
+      <%= f.label :notes %><br>
+      <div style="color:black">
+        <%= f.text_area :notes, placeholder: @vacation.notes %>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h6>
+        <div style="color:black">
+          <%= f.submit %>
+        </div>
+      </h6>
+      <br>
+      <br>
+
+      <hr>
+      <br>
+
+      <h2>Itinerary</h2>
+      <% if @attractions %>
+        <%= f.collection_check_boxes :attraction_ids, @attractions.uniq, :id, :name do |b| %>
+          <div class="collection-check-box" style="font-size:1.25em">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      <% else %>
+        <h4>This vacation doesn't have any attractions yet. Let's add some.</h4>
+      <% end %>
+      <br>
+      <br>
+
+      <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
+        <%= v.label :attraction_id, "Add Attractions from my Collection" %><br>
+          <%= v.collection_select :attraction_id, current_user.attractions.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
+      <% end %>
+      <br>
+      <br>
+      <br>
+      <h6><b><%= link_to "Add More Attractions to my Collection", categories_path %></b></h6>
+      <br>
+      <br>
+      <h6>
+        <div style="color:black">
+          <%= f.submit %>
+        </div>
+      </h6>
+      <br>
+      <br>
+      <hr>
+
+      <br>
+      <h2>Travel Dates</h2>
+      <% if @schedule.departure_city %>
+
+      <h1><%= days_long %></h1> days of fun!<br><br>
+      <% else %>
+        <p>This vacation doesn't have a schedule yet. You can add dates later if you like. </p>
+      <% end %>
+      <br>
+
+      <br>
+      <br>
+
+      <%= f.fields_for @schedule, url:  new_vacation_schedule_path(@vacation) do |s| %>
+
+
+      <div class="col-sm-2 d-flex flex-row"></div>
+        <div class="col-sm-4 d-flex flex-row">
+          <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_city].any? %>">
+          <div class="center" style="text-align:center">
+            <%= s.label :departure_city %>
+            <%= s.text_field :departure_city %>
+          </div>
+          </div>
+          <br>
+          <br>`
+
+          <div class="field<%= ' field_with_errors' if @schedule.errors[:departure_date].any? %>">
+            <div class="center" style="text-align:center">
+              <%= s.label :return_city %>
+              <%= s.text_field :return_city %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-4 d-flex flex-row">
+          <div class="field<%= ' field_with_errors' if @schedule.errors[:return_city].any? %>">
+            <div class="center" style="text-align:center">
+              <%= s.label :departure_date %>
+              <%= s.date_field :departure_date%>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+
+          <div class="field<%= ' field_with_errors' if @schedule.errors[:return_date].any? %>">
+            <div class="center" style="text-align:center">
+              <%= s.label :return_date %>
+              <%= s.date_field :return_date %>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+        </div>
+
+
+        <div class="col-sm-12 d-flex flex-row">
+          <h6>
+            <div style="color:black">
+              <%= f.submit %>
+            </div>
+          </h6>
+        </div>
+
+        <%= s.hidden_field :vacation_id, :value => @vacation.id %>
+        <% end %><br>
+      <% end %>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
       </div>
     </div>
   </div>

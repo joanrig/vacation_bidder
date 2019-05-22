@@ -1,64 +1,59 @@
 <%= render '/layouts/vacations' %>
 
-<div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
-        <div class="form" style="color:white">
 
-          <h5><%= @user.first_name %>'s next vacation:</h5>
-          <h1><%= @item.name %></h1>
-          <br>
-          <br>
-          <br>
+<div class="container panel-a panel-body">
+  <div class="form" style="color:white">
 
-          <%= form_for [@item, @vacation] do |f| %>
+    <h5><%= @user.first_name %>'s next vacation:</h5>
+    <h1><%= @item.name %></h1>
+    <br>
+    <br>
+    <br>
 
-            <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
-              <div class="center" style="text-align:center">
-                <%= f.label :name, "Update Vacation Name or leave blank to use name above" %><br>
-                <%= f.text_field :name %>
-              </div>
-            </div>
-            <br>
-            <br>
+    <%= form_for [@item, @vacation] do |f| %>
 
-            <div class="center" style="text-align:center">
-                <%= f.label :budget%><br>
-                <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], 3),
-                          {},
-                          class: "chzn-select",
-                          style: "width: 150px" )%>
-            </div>
-            <br>
-            <br>
-
-            <%= f.label :number_of_travelers %><br>
-            <%= f.select(:number_of_travelers, options_for_select(0..10)) %>
-            <br>
-            <br>
-            <br>
-
-            <%= f.label :notes %><br>
-            <div style="color:black">
-              <%= f.text_area :notes, default: @item.notes %>
-            </div>
-
-            <br>
-            <br>
-
-            <hr>
-            <br>
-
-
-            <div style="color:black">
-              <%= f.submit %><br><br>
-            </div>
-          <% end %>
-
-
+      <div class="field<%= ' field_with_errors' if @vacation.errors[:name].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :name, "Update Vacation Name or leave blank to use name above" %><br>
+          <%= f.text_field :name %>
         </div>
       </div>
-    </div>
+      <br>
+      <br>
+
+      <div class="center" style="text-align:center">
+          <%= f.label :budget%><br>
+          <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], 3),
+                    {},
+                    class: "chzn-select",
+                    style: "width: 150px" )%>
+      </div>
+      <br>
+      <br>
+
+      <%= f.label :number_of_travelers %><br>
+      <%= f.select(:number_of_travelers, options_for_select(0..10)) %>
+      <br>
+      <br>
+      <br>
+
+      <%= f.label :notes %><br>
+      <div style="color:black">
+        <%= f.text_area :notes, default: @item.notes %>
+      </div>
+
+      <br>
+      <br>
+
+      <hr>
+      <br>
+
+
+      <div style="color:black">
+        <%= f.submit %><br><br>
+      </div>
+    <% end %>
+
+
   </div>
 </div>
