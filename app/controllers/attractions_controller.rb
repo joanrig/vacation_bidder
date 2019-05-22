@@ -3,11 +3,11 @@ class AttractionsController < ApplicationController
   before_action :all_categories, only: [:new, :create, :edit]
 
 
-
   def new
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
     @attraction_category = AttractionCategory.new
+
   end
 
   def create
@@ -30,11 +30,10 @@ class AttractionsController < ApplicationController
 
   def show
     @categories = @attraction.categories
-    @user_attraction = UserAttraction.new
+    @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
   end
 
   def edit
-    #binding.pry
     @categories = @attraction.categories
     @attraction_category = AttractionCategory.new(attraction_id: @attraction_id)
   end
@@ -61,7 +60,6 @@ class AttractionsController < ApplicationController
       flash[:alert] = @attraction.errors.full_message
       render :edit
     end
-    binding.pry
   end
 
   def destroy
@@ -74,7 +72,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id] )
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes] )
     end
 
     def set_attraction

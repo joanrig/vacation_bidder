@@ -76,12 +76,16 @@
         <br>
         <br>
 
-        <div class="field<%= ' field_with_errors' if @attraction.errors[:notes].any? %>">
-          <div class="center" style="text-align:center">
-            <%= f.label :notes %><br>
-            <%= f.text_area :notes %><br>
+        <% if @user.attractions.include?(@attraction), url: attraction_user_attractions_path(@attraction.id) %>
+          <% fields_for @user_attraction do |ua|
+          <div class="field<%= ' field_with_errors' if @user_attraction.errors[:notes].any? %>">
+            <div class="center" style="text-align:center">
+              <%= ua.label :notes %><br>
+              <%= ua.text_area :notes %><br>
+            </div>
           </div>
-        </div>
+          <% end %>
+        <% end %>
         <br>
         <br>
 
@@ -90,7 +94,11 @@
         <%= f.submit %>
 
         <% end %>
-        <br><br><br><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
 
       </div>
