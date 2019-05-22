@@ -35,12 +35,11 @@
 
         <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
          <h4><%= ac.label :category_id, "Update Categories" %></h4><br>
-           <%= ac.collection_select :category_id, @all_categories.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
+           <%= ac.collection_select :category_id, all_categories.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
        <% end %>
        <br>
        <br>
        <br>
-
 
         <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
           <div class="center" style="text-align:center">
@@ -63,11 +62,10 @@
         <div class="center" style="text-align:center">
           <%= f.label :state %><br>
           <%= f.text_field :state %>
-
         <br>
         <br>
 
-        <div class="field<%= ' field_with_errors' if @attraction.errors[:country].any? %>">
+        <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
           <div class="center" style="text-align:center">
             <%= f.label :country %><br>
             <%= f.text_field :country %><br>
@@ -76,9 +74,9 @@
         <br>
         <br>
 
-        <% if @user.attractions.include?(@attraction), url: attraction_user_attractions_path(@attraction.id) %>
-          <% fields_for @user_attraction do |ua|
-          <div class="field<%= ' field_with_errors' if @user_attraction.errors[:notes].any? %>">
+        <% if current_user.attractions.include?(attraction) %>
+          <% fields_for user_attraction, url: attraction_user_attractions_path(attraction.id) do |ua| %>
+          <div class="field<%= ' field_with_errors' if user_attraction.errors[:notes].any? %>">
             <div class="center" style="text-align:center">
               <%= ua.label :notes %><br>
               <%= ua.text_area :notes %><br>
@@ -89,8 +87,6 @@
         <br>
         <br>
 
-
-
         <%= f.submit %>
 
         <% end %>
@@ -99,7 +95,6 @@
         <br>
         <br>
         <br>
-
 
       </div>
     </div>

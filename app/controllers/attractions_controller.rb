@@ -1,13 +1,15 @@
 class AttractionsController < ApplicationController
-  before_action :set_attraction, except: [:new, :create]
-  before_action :all_categories, only: [:new, :create, :edit]
+  before_action :set_attraction
+  before_action :all_categories, only: [:index, :new, :create, :edit]
+
+  def index
+  end
 
 
   def new
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
     @attraction_category = AttractionCategory.new
-
   end
 
   def create
@@ -18,6 +20,8 @@ class AttractionsController < ApplicationController
     if params[:attraction][:attraction_category][:category_id]
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
     end
+
+    UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
 
     if @attraction.save
       flash[:success] = "Successfully created attraction."
@@ -30,7 +34,8 @@ class AttractionsController < ApplicationController
 
   def show
     @categories = @attraction.categories
-    @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
+    ua = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
+    ua ? @user_attraction = ua : @user_attraction = UserAttraction.new
   end
 
   def edit
@@ -39,7 +44,6 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    binding.pry
     if params[:attraction][:category]
       @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     end
@@ -49,8 +53,12 @@ class AttractionsController < ApplicationController
     end
 
     if params[:attraction][:user_attraction]
-      UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
-      flash[:success] = "Successfully added attraction to your collection."
+      if UserAttraction.find_by(user_id: current_user.id, attraction_id: @attraction.id)
+        flash[:alert] = "You already have this attraction in your collection"
+      else
+        UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
+        flash[:success] = "Successfully added attraction to your collection."
+      end
     end
 
     if @attraction.update(attraction_params)
@@ -72,7 +80,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes] )
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes])
     end
 
     def set_attraction

@@ -1,1 +1,31 @@
 <%= render '/layouts/attractions' %>
+
+<br>
+<br>
+<div class="center" style="text-align:center">
+  <div class="container">
+    <div class="panel-a" text-black>
+      <div class="panel-body">
+
+        <div class="col-sm-12 d-flex flex-row">
+          <div class="text-center">
+          <h1>My Attractions</h1>
+
+          <% @all_categories.each do |c| %>
+            <br>
+            <h2> <%= c.name %></h2>
+            <% (c.attractions & current_user.attractions).uniq.each do |a| %>
+              <h5><%= link_to a.name, attraction_path(a) %></h5>
+            <% end %>
+          <% end %>
+
+          <br>
+          <br>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
