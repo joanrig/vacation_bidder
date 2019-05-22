@@ -3,33 +3,31 @@
 <br>
 <br>
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-
-        <div class="col-sm-12 d-flex flex-row">
-          <div class="text-center">
-          <h1>My Attractions</h1>
-
-          <% @all_categories.sort_by(&:name).each do |c| %>
-            <br>
-            <br>
-            <h2> <%= c.name %></h2>
-            <% (c.attractions & current_user.attractions).uniq.sort_by(&:name).each do |a| %>
-              <h5><%= link_to a.name, attraction_path(a) %></h5>
-            <% end %>
-          <% end %>
-
-          <br>
-          <br>
-          <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
-          <br>
-          <br>
-          <br>
+  <div class="container panel-a panel-body">
 
 
-          </div>
-        </div>
+    <div class="col-sm-12 d-flex flex-row">
+      <div class="text-center">
+      <h1>My Attractions</h1>
+
+      <% @all_categories.sort_by(&:name).each do |c| %>
+        <br>
+        <br>
+        <h2> <%= c.name %></h2>
+        <% (c.attractions & current_user.attractions).uniq.sort_by(&:name).each do |a| %>
+          <h5><%= link_to a.name, attraction_path(a) %></h5>
+        <% end %>
+      <% end %>
+
+      <br>
+      <br>
+      <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
+      <br>
+      <br>
+      <br>
+
+
+
       </div>
     </div>
   </div>

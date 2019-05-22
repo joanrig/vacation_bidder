@@ -1,102 +1,100 @@
 
 
 
-<br><br>
+<br>
+<br>
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-        <div class="form" style="color:midnightblue">
+  <div class="container panel-a panel-body">
+
+    <div class="form" style="color:midnightblue">
 
 
-        <%= form_for attraction do |f| %>
+    <%= form_for attraction do |f| %>
 
-        <div class="field<%= ' field_with_errors' if attraction.errors[:name].any? %>">
-          <div class="center" style="text-align:center">
-            <%= f.label :name %><br>
-            <%= f.text_field :name %>
-          </div>
-        </div>
-        <br>
-        <br>
-
-        <h2>Categories</h2>
-        <% if attraction.categories %>
-          <%= f.collection_check_boxes :category_ids, attraction.categories.uniq, :id, :name do |b| %>
-            <div class="collection-check-box" style="font-size:1.25em">
-              <%= b.check_box %>
-              <%= b.label %>
-            </div>
-          <% end %>
-        <% else %>
-          <p>This attraction doesn't have any categories yet. Click below to add some.</p>
-        <% end %><br>
-
-
-        <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
-         <h4><%= ac.label :category_id, "Update Categories" %></h4><br>
-           <%= ac.collection_select :category_id, all_categories.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
-       <% end %>
-       <br>
-       <br>
-       <br>
-
-        <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
-          <div class="center" style="text-align:center">
-            <%= f.label :website %><br>
-            <%= f.text_field :website %>
-          </div>
-        </div>
-        <br>
-        <br>
-
-        <div class="field<%= ' field_with_errors' if attraction.errors[:city].any? %>">
-          <div class="center" style="text-align:center">
-            <%= f.label :city %><br>
-            <%= f.text_field :city %>
-          </div>
-        </div>
-        <br>
-        <br>
-
-        <div class="center" style="text-align:center">
-          <%= f.label :state %><br>
-          <%= f.text_field :state %>
-        <br>
-        <br>
-
-        <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
-          <div class="center" style="text-align:center">
-            <%= f.label :country %><br>
-            <%= f.text_field :country %><br>
-          </div>
-        </div>
-        <br>
-        <br>
-
-        <% if current_user.attractions.include?(attraction) %>
-          <% fields_for user_attraction, url: attraction_user_attractions_path(attraction.id) do |ua| %>
-          <div class="field<%= ' field_with_errors' if user_attraction.errors[:notes].any? %>">
-            <div class="center" style="text-align:center">
-              <%= ua.label :notes %><br>
-              <%= ua.text_area :notes %><br>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-        <br>
-        <br>
-
-        <%= f.submit %>
-
-        <% end %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
+    <div class="field<%= ' field_with_errors' if attraction.errors[:name].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
       </div>
     </div>
+    <br>
+    <br>
+
+    <h2>Categories</h2>
+    <% if attraction.categories %>
+      <%= f.collection_check_boxes :category_ids, attraction.categories.uniq, :id, :name do |b| %>
+        <div class="collection-check-box" style="font-size:1.25em">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>This attraction doesn't have any categories yet. Click below to add some.</p>
+    <% end %><br>
+
+
+    <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
+     <h4><%= ac.label :category_id, "Update Categories" %></h4><br>
+       <%= ac.collection_select :category_id, all_categories.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
+   <% end %>
+   <br>
+   <br>
+   <br>
+
+    <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :website %><br>
+        <%= f.text_field :website %>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="field<%= ' field_with_errors' if attraction.errors[:city].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :city %><br>
+        <%= f.text_field :city %>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="center" style="text-align:center">
+      <%= f.label :state %><br>
+      <%= f.text_field :state %>
+    <br>
+    <br>
+
+    <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :country %><br>
+        <%= f.text_field :country %><br>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <% if current_user.attractions.include?(attraction) %>
+      <% fields_for user_attraction, url: attraction_user_attractions_path(attraction.id) do |ua| %>
+      <div class="field<%= ' field_with_errors' if user_attraction.errors[:notes].any? %>">
+        <div class="center" style="text-align:center">
+          <%= ua.label :notes %><br>
+          <%= ua.text_area :notes %><br>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <br>
+    <br>
+
+    <%= f.submit %>
+
+    <% end %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
   </div>
 </div>
