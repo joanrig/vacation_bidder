@@ -20,7 +20,7 @@ class AttractionsController < ApplicationController
     end
 
     if @attraction.save
-      flash[:alert] = "Successfully created attraction."
+      flash[:success] = "Successfully created attraction."
       redirect_to attraction_path(@attraction)
     else
       flash[:alert] = @attraction.errors.full_messages
@@ -30,6 +30,7 @@ class AttractionsController < ApplicationController
 
   def show
     @categories = @attraction.categories
+    @user_attraction = UserAttraction.new
   end
 
   def edit
@@ -39,9 +40,18 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
+    binding.pry
+    if params[:attraction][:category]
+      @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
+    end
+
     if @category
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
+    end
+
+    if params[:attraction][:user_attraction]
+      UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
+      flash[:success] = "Successfully added attraction to your collection."
     end
 
     if @attraction.update(attraction_params)
@@ -51,6 +61,7 @@ class AttractionsController < ApplicationController
       flash[:alert] = @attraction.errors.full_message
       render :edit
     end
+    binding.pry
   end
 
   def destroy
@@ -63,7 +74,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id] )
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id] )
     end
 
     def set_attraction

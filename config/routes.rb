@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :views
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "callbacks" }
@@ -24,9 +25,14 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-  resources :attractions
+
+  resources :attractions do
+    resources :user_attractions, only: [:create, :destroy]
+  end
+
   resources :attraction_categories, only: [:new, :create]
   resources :bidders
+
 
 
   get '/attractions/index', to: 'categories#index'

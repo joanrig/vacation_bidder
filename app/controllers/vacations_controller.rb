@@ -54,7 +54,7 @@ class VacationsController < ApplicationController
 
     if params[:vacation][:vacation_attraction][:attraction_id]
       VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
-      flash[:alert] = "Success! Attraction added to itinerary."
+      flash[:success] = "Successfully added attraction to itinerary."
     end
 
     if params[:vacation][:schedule]

@@ -25,13 +25,21 @@
             </h4>
             <br>
             <br>
-
+            <h4><%= form_for @attraction do |f| %>
+              <% f.fields_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |ua| %></h4>
+                <%= ua.hidden_field :attraction_id, value: @attraction.id %>
+                <%= ua.hidden_field :user_id, value: current_user.id %>
+                <%= ua.submit "Add to my collection" %>
+              <% end %>
+            <% end %>
 
             <div style="color:midnightblue">
               <%= button_to "Website", @attraction.website %>
             </div>
 
+
             <br>
+            <!-- if included in user attractions, show this -->
             <h2>Notes </h2>
             <h5><%= @attraction.notes %></h5>
             <br>
