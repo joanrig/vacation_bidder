@@ -4,7 +4,8 @@
   <div class="container panel-a panel-body">
     <div class="form" style="color:darkgrey">
 
-      <br><br>
+      <br>
+      <br>
       <h1><%= @item.name%></h1>
       <h3>Notes: <%= @item.try(:notes)  %></h3>
 
@@ -16,11 +17,7 @@
       <br>
       <br>
       <br>
-
-
-
       <h3><%= link_to "Ready to make this real? Click here.", new_bucket_list_item_vacation_path(@item) %><br><br>
-
       <hr>
       <br>
       <br>
@@ -28,7 +25,6 @@
       <br>
       <br>
       <br>
-
     </div>
   </div>
 </div>
