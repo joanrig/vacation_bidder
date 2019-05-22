@@ -4,14 +4,11 @@
 <br>
 <br>
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-        <h3>Hi <%= @user.first_name %>!</h3>
-          <h2>What would you like to add to your bucket list?</h2>
-      </div>
-    </div>
-  </div>
+  <div class="container panel-a panel-body">
+    <h3>Hi <%= @user.first_name %>!</h3>
+    <h2>What would you like to add to your bucket list?</h2>
 
-<%= render partial: 'form', locals: { bucket_list_item: @item, user: @user }%>
+  </div>
+  <%= render partial: 'form', locals: { bucket_list_item: @item, user: @user }%>
+  </div>
 </div>

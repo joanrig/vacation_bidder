@@ -1,38 +1,34 @@
 <%= render '/layouts/bucket_list_items' %>
 
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" text-black>
-      <div class="panel-body">
-        <div class="form" style="color:darkgrey">
+  <div class="container panel-a panel-body">
+    <div class="form" style="color:darkgrey">
 
+      <br><br>
+      <h1><%= @item.name%></h1>
+      <h3>Notes: <%= @item.try(:notes)  %></h3>
 
-          <br><br>
-          <h1><%= @item.name%></h1>
-          <h3>Notes: <%= @item.try(:notes)  %></h3>
+        <h5>
+          <%= link_to "edit", edit_bucket_list_item_path(@item) %><br>
+          <%= link_to "delete", @item, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %><br>
+        </h5>
 
-            <h5>
-              <%= link_to "edit", edit_bucket_list_item_path(@item) %><br>
-              <%= link_to "delete", @item, :method => :delete, data: {confirm: "Are you sure? This can't be undone!"} %><br>
-            </h5>
-
-          <br>
-          <br>
-          <br>
+      <br>
+      <br>
+      <br>
 
 
 
-          <h3><%= link_to "Ready to make this real? Click here.", new_bucket_list_item_vacation_path(@item) %><br><br>
+      <h3><%= link_to "Ready to make this real? Click here.", new_bucket_list_item_vacation_path(@item) %><br><br>
 
-          <hr>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-        </div>
-      </div>
+      <hr>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
     </div>
   </div>
 </div>

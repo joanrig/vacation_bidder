@@ -2,64 +2,62 @@
 
 
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
-        <div class="col-sm-12 d-flex flex-row">
-          <div class="text-center">
-            <h1><%= @attraction.name %></h1>
-            <br>
-            <br>
+  <div class="container panel-a panel-body">
 
-            <h2>Categories</h2>
-            <% @attraction.categories.uniq.each do |c| %>
-            <h5><%= link_to c.name, category_path(c) %></h5>
-            <% end %>
-            <br>
-            <br>
-            <h2>Location</h2>
-            <h4>
-              <%= @attraction.city %>
-              <%= @attraction.state %>
-              <%= @attraction.country %>
-            </h4>
-            <br>
-            <br>
-            <br>
+    <div class="col-sm-12 d-flex flex-row">
+      <div class="text-center">
+        <h1><%= @attraction.name %></h1>
+        <br>
+        <br>
 
-            <div style="color:midnightblue">
-              <h4><%= link_to "visit website", @attraction.website %></h4>
-            </div>
-            <br>
-            <br>
-            <!-- if included in user attractions, show this -->
-            <% if current_user.attractions.include?(@attraction) %>
-              <%= form_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |f| %>
-                <h2><%= f.label :notes, "My Notes" %></h2>
-                <%= f.text_area :notes %>
-              <% end %>
-            <% end %>
-            <br>
-            <br>
+        <h2>Categories</h2>
+        <% @attraction.categories.uniq.each do |c| %>
+        <h5><%= link_to c.name, category_path(c) %></h5>
+        <% end %>
+        <br>
+        <br>
+        <h2>Location</h2>
+        <h4>
+          <%= @attraction.city %>
+          <%= @attraction.state %>
+          <%= @attraction.country %>
+        </h4>
+        <br>
+        <br>
+        <br>
 
-            <% if current_user.attractions.include?(@attraction) %>
-              <h5><%= link_to "Remove from my collection", attraction_user_attraction_path(@attraction), method: :delete %></h5>
-            <% else %>
-              <%= form_for @attraction do |f| %>
-                <% f.fields_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |ua| %>
-                  <%= ua.hidden_field :attraction_id, value: @attraction.id %>
-                  <%= ua.hidden_field :user_id, value: current_user.id %>
-                  <%= ua.submit "Add to my collection" %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <br>
-            <br>
-            <br>
-
-
-          </div>
+        <div style="color:midnightblue">
+          <h4><%= link_to "visit website", @attraction.website %></h4>
         </div>
+        <br>
+        <br>
+        <!-- if included in user attractions, show this -->
+        <% if current_user.attractions.include?(@attraction) %>
+          <%= form_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |f| %>
+            <h2><%= f.label :notes, "My Notes" %></h2>
+            <%= f.text_area :notes %>
+          <% end %>
+        <% end %>
+        <br>
+        <br>
+
+        <% if current_user.attractions.include?(@attraction) %>
+          <h5><%= link_to "Remove from my collection", attraction_user_attraction_path(@attraction), method: :delete %></h5>
+        <% else %>
+          <%= form_for @attraction do |f| %>
+            <% f.fields_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |ua| %>
+              <%= ua.hidden_field :attraction_id, value: @attraction.id %>
+              <%= ua.hidden_field :user_id, value: current_user.id %>
+              <%= ua.submit "Add to my collection" %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+
+
+
       </div>
     </div>
   </div>
