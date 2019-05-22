@@ -80,6 +80,7 @@ class VacationsController < ApplicationController
       return_city: params[:vacation][:schedule][:return_city].titleize,
       return_date: params[:vacation][:schedule][:return_date])
       if @schedule.valid?
+        binding.pry
         flash[:alert] = "Successfully created schedule"
       else
         flash[:alert] = @schedule.errors.full_messages
