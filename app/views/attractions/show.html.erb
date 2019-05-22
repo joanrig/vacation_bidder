@@ -31,6 +31,7 @@
               <h4><%= link_to "visit website", @attraction.website %></h4>
             </div>
             <br>
+            <br>
             <!-- if included in user attractions, show this -->
             <% if current_user.attractions.include?(@attraction) %>
               <%= form_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |f| %>

@@ -54,7 +54,7 @@ class AttractionsController < ApplicationController
 
     if params[:attraction][:user_attraction]
       if UserAttraction.find_by(user_id: current_user.id, attraction_id: @attraction.id)
-        flash[:alert] = "You already have this attraction in your collection"
+        flash[:notice] = "You already have this attraction in your collection"
       else
         UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
         flash[:success] = "Successfully added attraction to your collection."

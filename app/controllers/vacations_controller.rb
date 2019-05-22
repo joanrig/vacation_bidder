@@ -39,6 +39,14 @@ class VacationsController < ApplicationController
     @attractions = @vacation.attractions
     @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
+
+    # if you want to create attractions from vacations edit page
+    # @attraction = Attraction.new
+    # @attraction_category = AttractionCategory.new
+    # @all_categories = Category.all
+    # @category = Category.new
+
+
     if @vacation.schedule
       @schedule = @vacation.schedule
     else

@@ -13,12 +13,17 @@
 
           <% @all_categories.each do |c| %>
             <br>
+            <br>
             <h2> <%= c.name %></h2>
             <% (c.attractions & current_user.attractions).uniq.each do |a| %>
               <h5><%= link_to a.name, attraction_path(a) %></h5>
             <% end %>
           <% end %>
 
+          <br>
+          <br>
+          <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
+          <br>
           <br>
           <br>
 
