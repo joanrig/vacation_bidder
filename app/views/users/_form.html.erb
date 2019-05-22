@@ -1,27 +1,25 @@
 <%= render '/layouts/users' %>
-<br><br><br>
-<div class="container">
-  <div class="panel-a" text-black>
-    <div class="panel-body">
-      <div class="form" style="color:darkgrey">
-      <%= form_for user do |f| %>
-        <%= f.label :first_name %><br>
-        <%= f.text_field :first_name %>
-        <br><br>
-        <%= f.label :last_name %><br>
-        <%= f.text_field :last_name %>
-        <br><br>
-        <%= f.label :password %><br>
-        <%= f.password_field :password %>
-        <br><br>
-        <%= f.label :email %><br>
-        <%= f.text_field :email %>
-        <br><br>
-        <br><br>
-        <div style="color:black">
-        <%= f.submit %>
-        </div>
-      <% end %>
+<br>
+<br>
+<br>
+<div class="container panel-a panel-body">
+  <div class="form" style="color:darkgrey">
+  <%= form_for user do |f| %>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+    <br><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+    <br><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+    <br><br>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+    <br><br>
+    <br><br>
+    <div style="color:black">
+    <%= f.submit %>
     </div>
-  </div>
+  <% end %>
 </div>

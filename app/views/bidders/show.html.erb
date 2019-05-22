@@ -2,35 +2,28 @@
 
 
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
-        <div class="form" color="rgb(82, 89, 99)">
+  <div class="container panel-a panel-body">
+    <div class="form" color="rgb(82, 89, 99)">
 
+      <br><br>
+      <h1><%= @bidder.name%></h1>
+      <h3><%= @bidder.email %></h3>
+      <h3><%= @bidder.website %></h3>
+      <%= link_to "Edit", edit_bidder_path(@bidder) %>
+      <br><br><br>
 
-          <br><br>
-          <h1><%= @bidder.name%></h1>
-          <h3><%= @bidder.email %></h3>
-          <h3><%= @bidder.website %></h3>
-          <%= link_to "Edit", edit_bidder_path(@bidder) %>
-          <br><br><br>
+      <% if @bidder.bids.any? %>
+        <% @bidder.each do |bid| %>
+          <%= @bid.vacation.name %>br
+          <%= @bid.link %>br
+          <%= @bid.amount %><br>
+        <% end %>
+      <% else %>
+        <h3>You haven't placed any bids yet. Let's get started!</h3>
+      <% end %>
 
-          <% if @bidder.bids.any? %>
-            <% @bidder.each do |bid| %>
-              <%= @bid.vacation.name %>br
-              <%= @bid.link %>br
-              <%= @bid.amount %><br>
-            <% end %>
-          <% else %>
-            <h3>You haven't placed any bids yet. Let's get started!</h3>
-          <% end %>
+      <h3><%= link_to "Let's Bid!", new_bidder_bid_path(@bidder)%></h3>
 
-
-          <h3><%= link_to "Let's Bid!", new_bidder_bid_path(@bidder)%></h3>
-
-
-        </div>
-      </div>
     </div>
   </div>
 </div>

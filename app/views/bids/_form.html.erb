@@ -3,28 +3,27 @@
 
 <br><br>
 <div class="center" style="text-align:center">
-  <div class="container">
-    <div class="panel-a">
-      <div class="panel-body">
-        <div class="form" style="color:midnightblue">
+  <div class="container panel-a panel-body">
+    <div class="form" style="color:midnightblue">
 
 
-        <%= form_for bid, url: new_bidder_bid_path(@bidder) do |f| %>
-          <%= f.collection_select :vacation_id, Vacation.all, :id, :name %><br>
-          <%= f.label :amount %><br>
-          <%= f.text_field :amount %>
-          <br><br>
-          <%= f.label :link %><br>
-          <%= f.text_field :link %>
-          <br><br>
-          <%= f.hidden_field :bidder_id, value: @bidder.id %><br>
-          <%= f.submit %>
-          </div>
-        <% end %>
-        <br><br><br><br><br>
-
-
+    <%= form_for bid, url: new_bidder_bid_path(@bidder) do |f| %>
+      <%= f.collection_select :vacation_id, Vacation.all, :id, :name %><br>
+      <%= f.label :amount %><br>
+      <%= f.text_field :amount %>
+      <br><br>
+      <%= f.label :link %><br>
+      <%= f.text_field :link %>
+      <br><br>
+      <%= f.hidden_field :bidder_id, value: @bidder.id %><br>
+      <%= f.submit %>
       </div>
-    </div>
+    <% end %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
   </div>
 </div>

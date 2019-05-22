@@ -4,27 +4,28 @@
 <br>
 
 <div class="col-sm-12 d-flex flex-row" style="text-align:center">
-  <div class="container">
-    <div class="panel-a" style="color:white">
-      <div class="panel-body">
-        <div class="col-sm-4 d-flex flex-row"></div>
-          <div class="col-sm-4 d-flex flex-row">
-            <h1>Attractions</h1>
-            <br>
-            <hr>
-            <br>
-            <em>Choose any category to see its attractions.<br>Click on any attraction to add it to your collection.</em>
-            <br>
-            <br>
-            <% @categories.sort_by(&:name).each do |c| %>
-            <h3><%= link_to c.name, category_path(c)%></h3><br>
-          <% end %>
-          <br>
-          <br>
-          <br>
-          <br>
-        </div>
-      </div>
+  <div class="container panel-a panel-body">
+
+    <div class="col-sm-4 d-flex flex-row"></div>
+      <div class="col-sm-4 d-flex flex-row">
+        <h1>Attractions</h1>
+        <br>
+        <hr>
+        <br>
+        <em>
+          <div style="color:white">
+            Choose any category to see its attractions.<br>Click on any attraction to add it to your collection.</em>
+          </div>
+        <br>
+        <br>
+        <% @categories.sort_by(&:name).each do |c| %>
+        <h3><%= link_to c.name, category_path(c)%></h3><br>
+      <% end %>
+      <br>
+      <br>
+      <br>
+      <br>
+
     </div>
   </div>
 </div>
