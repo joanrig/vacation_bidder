@@ -173,7 +173,7 @@ Attractions = Attraction.create([
     website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0",
     notes: "this is a seven-hour tour?",
     city: "London",
-    country: "Japan"
+    country: "England"
   },
 
   {

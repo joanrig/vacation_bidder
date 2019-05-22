@@ -37,7 +37,7 @@
           <br>
 
           <div class="center" style="text-align:center">
-              <%= f.label :budget %>: $<%= @vacation.budget %>
+              <%= f.label :budget %>
 
                 <br>
               <%= f.select(:budget, options_for_select(['500', '1000', '2500', '5000', '7500', '10000', '15000', '20000'], selected: @vacation.budget ||= nil ),
@@ -48,7 +48,7 @@
           <br>
           <br>
 
-          <%= f.label :number_of_travelers %>: <%= @vacation.number_of_travelers %><br>
+          <%= f.label :number_of_travelers %><br>
           <%= f.text_field :number_of_travelers %>
           <br>
           <br>
@@ -93,7 +93,8 @@
           <% end %>
           <br>
           <br>
-          <p><%= link_to "Add More Attractions to my Collection", categories_path %></p>
+          <br>
+          <h6><b><%= link_to "Add More Attractions to my Collection", categories_path %></b></h6>
           <br>
           <br>
           <h6>

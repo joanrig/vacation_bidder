@@ -19,9 +19,10 @@ allow users to
 
 allow users to
 2 make their attractions (not attraction notes) public, included in all Attractions
-3 create their own categories (not viewable by others)
+3 create their own categories (not viewable by others) will involve user category join table
 2 collect others' categories
 3 mass assign categories to attractions
+? share vacations view? with guests.
 
 3 deploy to heroku
 

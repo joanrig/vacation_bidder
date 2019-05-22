@@ -11,11 +11,11 @@
           <div class="text-center">
           <h1>My Attractions</h1>
 
-          <% @all_categories.each do |c| %>
+          <% @all_categories.sort_by(&:name).each do |c| %>
             <br>
             <br>
             <h2> <%= c.name %></h2>
-            <% (c.attractions & current_user.attractions).uniq.each do |a| %>
+            <% (c.attractions & current_user.attractions).uniq.sort_by(&:name).each do |a| %>
               <h5><%= link_to a.name, attraction_path(a) %></h5>
             <% end %>
           <% end %>
