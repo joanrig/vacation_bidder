@@ -28,13 +28,15 @@
         <div style="color:midnightblue">
           <h4><%= link_to "visit website", @attraction.website %></h4>
         </div>
-        
         <br>
-        <%= if @user_attraction.notes %>
-        <% binding.pry %>
-          <h4>Notes: </h4>
-          <% @user_attraction.notes %>
+        <br>
+
+        <% if @user_attraction %>
+          <h2>My Notes</h2>
+          <h4><%= @user_attraction.notes %></h4>
         <% end %>
+
+        <br>
         <br>
         <br>
         <br>

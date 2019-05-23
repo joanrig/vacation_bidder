@@ -5,7 +5,6 @@ class AttractionsController < ApplicationController
   def index
   end
 
-
   def new
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
@@ -13,7 +12,6 @@ class AttractionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     @attraction = Attraction.find_or_create_by(name: attraction_params[:name])
     @attraction.update(attraction_params)
@@ -35,9 +33,13 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @categories = @attraction.categories
-    ua = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
-    ua ? @user_attraction = ua : @user_attraction = UserAttraction.new
+    @categories = @attraction.categories.uniq
+    if UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
+      @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
+    else
+      @user_attraction = UserAttraction.new
+      binding.pry
+    end
   end
 
   def edit
@@ -56,17 +58,21 @@ class AttractionsController < ApplicationController
     end
 
     if params[:attraction][:user_attraction]
-      if UserAttraction.find_by(user_id: current_user.id, attraction_id: @attraction.id)
-        flash[:notice] = "You already have this attraction in your collection"
+      ua = UserAttraction.find_by(user_id: current_user.id, attraction_id: @attraction.id)
+      if ua
+        @user_attraction = ua
       else
-        UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
+        @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
         flash[:success] = "Successfully added attraction to your collection."
       end
 
-      
+      if params[:attraction][:user_attraction][:notes] && @user_attraction.update(notes: params[:attraction][:user_attraction][:notes])
+        flash[:success] = "Successfully added private notes to this attraction."
+      else
+        flash[:alert] = @user_attraction.errors.full_messages
+      end
     end
 
-    binding.pry
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
