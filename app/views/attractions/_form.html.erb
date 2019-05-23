@@ -1,115 +1,124 @@
 
 
 
-<br>
-<br>
 <div class="center" style="text-align:center">
   <div class="container panel-a panel-body">
-
     <div class="form" style="color:midnightblue">
-
 
     <%= form_for attraction do |f| %>
 
-    <div class="field<%= ' field_with_errors' if attraction.errors[:name].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <h2>Categories</h2>
-    <% if attraction.categories %>
-      <%= f.collection_check_boxes :category_ids, attraction.categories.uniq, :id, :name do |b| %>
-        <div class="collection-check-box" style="font-size:1.25em">
-          <%= b.check_box %>
-          <%= b.label %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>This attraction doesn't have any categories yet. Click below to add some.</p>
-    <% end %><br>
-
-
-    <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
-     <h4><%= ac.label :category_id, "Update Categories" %></h4><br>
-       <%= ac.collection_select :category_id, all_categories.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
-   <% end %>
-   <br>
-   <br>
-   <br>
-
-    <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :website %><br>
-        <%= f.text_field :website %>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <div class="field<%= ' field_with_errors' if attraction.errors[:city].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :city %><br>
-        <%= f.text_field :city %>
-      </div>
-    </div>
-    <br>
-    <br>
-
-
-    <div class="field<%= ' field_with_errors' if attraction.errors[:state].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :state %><br>
-        <%= f.text_field :state %>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :country %><br>
-        <%= f.text_field :country %><br>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <% if current_user.attractions.include?(attraction) %>
-      <% fields_for user_attraction, url: attraction_user_attractions_path(attraction.id) do |ua| %>
-      <div class="field<%= ' field_with_errors' if user_attraction.errors[:notes].any? %>">
+      <div class="field<%= ' field_with_errors' if attraction.errors[:name].any? %>">
         <div class="center" style="text-align:center">
-          <%= ua.label :notes %><br>
-          <%= ua.text_area :notes %><br>
+          <%= f.label :name, 'rename?' %><br>
+          <%= f.text_field :name %>
         </div>
       </div>
+      <br>
+      <br>
+
+      <h2>Categories</h2>
+      <% if attraction.categories %>
+        <p><em>To remove any category, uncheck its box.</em></p>
+        <%= f.collection_check_boxes :category_ids, attraction.categories.uniq, :id, :name do |b| %>
+          <div class="collection-check-box" style="font-size:1.25em">
+            <div style="color:white">
+              <%= b.check_box %>
+              <%= b.label %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>This attraction doesn't have any categories yet. Click below to add some.</p>
+      <% end %><br>
+
+      <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
+       <h4><%= ac.label :category_id, "Add Categories" %></h4><br>
+         <%= ac.collection_check_boxes :category_id, all_categories.uniq.sort_by(&:name), :id, :name do |b| %>
+          <div class="collection-check-box" style="font-size:1.25em">
+           <div style="color:white">
+             <%= b.check_box %>
+             <%= b.label %>
+           </div>
+         </div>
+        <% end %>
       <% end %>
-    <% end %>
-    <br>
-    <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <p><em>Most of the fields below are optional!</em></p>
 
-    <div class="field<%= ' field_with_errors' if attraction.errors[:public].any? %>">
-      <div class="center" style="text-align:center">
-        <%= f.label :public, "Make this attraction public?"%><br>
-        <%= f.label :public, "Yes", :value => "true"  %>
-        <%= f.radio_button :public, true %>
-        <%= f.label :public, "No", :value => "false" %>
-        <%= f.radio_button :public, false, :checked => true %>
+      <div class="field<%= ' field_with_errors' if attraction.errors[:website].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :website %><br>
+          <%= f.text_field :website %>
+        </div>
       </div>
-    </div>
-    <br>
-    <br>
+      <br>
+      <br>
 
-    <div class="field">
+      <div class="field<%= ' field_with_errors' if attraction.errors[:city].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :city %><br>
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <br>
+      <br>
 
+      <div class="field<%= ' field_with_errors' if attraction.errors[:county].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :county %><br>
+          <%= f.text_field :county %>
+        </div>
+      </div>
+      <br>
+      <br>
 
-  </div>
+      <div class="field<%= ' field_with_errors' if attraction.errors[:state].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :state %><br>
+          <%= f.text_field :state %>
+        </div>
+      </div>
+      <br>
+      <br>
 
+      <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :country, 'Country (required)' %><br>
+          <%= f.text_field :country %><br>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <!-- this field wont' show up in browser -->
+      <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.fields_for user_attraction, attraction_user_attraction_path(attraction) do |ua| %>
+            <%= ua.label :notes, 'My private notes' %><br>
+            <%= ua.text_area :notes %>
+          <% end %>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="field<%= ' field_with_errors' if attraction.errors[:public].any? %>">
+        <div class="center" style="text-align:center">
+          <%= f.label :public, "Make this attraction public?"%><br>
+          <p><em>Even if you make it public, only you will be able to see your private notes. </em></p>
+          <%= f.label :public, "Yes", :value => "true"  %>
+          <%= f.radio_button :public, true %>
+          <%= f.label :public, "No", :value => "false" %>
+          <%= f.radio_button :public, false, :checked => true %>
+        </div>
+      </div>
+      <br>
+      <br>
     <%= f.submit %>
-
     <% end %>
     <br>
     <br>

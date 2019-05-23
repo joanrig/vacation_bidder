@@ -15,7 +15,6 @@ class CategoriesController < ApplicationController
     else
       @category_attractions = @public
     end
-    binding.pry
 
   end
 

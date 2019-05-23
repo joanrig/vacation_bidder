@@ -1,12 +1,10 @@
 <%= render '/layouts/attractions' %>
 <br>
-<br>
-<br>
-<br>
 
 
   <div class="center" style="text-align:center">
-    <h3>Edit Attraction</h3>
+    <h4>edit attraction</h4>
+    <h1><%= @attraction.name %></h1>
   </div>
 
 <%= render partial: 'form', locals: { attraction: @attraction, attraction_category: @attraction_category, all_categories: @all_categories, category: @category, user_attraction: @user_attraction}%>

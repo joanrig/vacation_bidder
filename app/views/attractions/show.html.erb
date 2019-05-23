@@ -20,28 +20,25 @@
         <h4>
           <%= @attraction.city %>
           <%= @attraction.state %>
+          <%= @attraction.county%>
           <%= @attraction.country %>
         </h4>
-        <br>
-        <br>
         <br>
 
         <div style="color:midnightblue">
           <h4><%= link_to "visit website", @attraction.website %></h4>
         </div>
+        
         <br>
-        <br>
-        <!-- if included in user attractions, show this -->
-        <% if current_user.attractions.include?(@attraction) %>
-          <%= form_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |f| %>
-            <h2><%= f.label :notes, "My Notes" %></h2>
-            <%= f.text_area :notes %>
-          <% end %>
+        <%= if @user_attraction.notes %>
+        <% binding.pry %>
+          <h4>Notes: </h4>
+          <% @user_attraction.notes %>
         <% end %>
         <br>
         <br>
-
-        <% if @attraction.public && @attraction.users.include?(current_user)%>
+        <br>
+        <% if @attraction.users.include?(current_user) && @attraction.public %>
           <h5><%= link_to "Remove from my collection", attraction_user_attraction_path(@attraction), method: :delete %></h5>
         <% elsif @attraction.public && !@attraction.users.include?(current_user) %>
           <%= form_for @attraction do |f| %>
@@ -51,17 +48,19 @@
               <%= ua.submit "Add to my collection" %>
             <% end %>
           <% end %>
-        <% else %>
-          <h5><%= link_to "Delete this attraction", attraction_path(@attraction), method: :delete, data: { confirm: "Are you sure? This can't be undone!" } %></h5>
+          <% binding.pry %>
+        <% elsif @attraction.created_by == current_user.id && @attraction.public == false %>
+
+          <h5><%= link_to "edit", edit_attraction_path(@attraction) %></h5>
+          <br>
+          <p><%= link_to "delete", attraction_path(@attraction), method: :delete, data: { confirm: "Are you sure? This can't be undone!" } %></p>
+
         <% end %>
-
-
-
-
-
         <br>
         <br>
         <br>
+
+
 
 
 

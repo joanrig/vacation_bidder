@@ -13,15 +13,17 @@ class AttractionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
-    @attraction = Attraction.create(attraction_params)
-    #need to save attraction id so it can be given to attraction_category
+    @attraction = Attraction.find_or_create_by(name: attraction_params[:name])
+    @attraction.update(attraction_params)
+    @attraction.created_by = current_user.id
 
     if params[:attraction][:attraction_category][:category_id]
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
     end
 
-    UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
+    @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
 
     if @attraction.save
       flash[:success] = "Successfully created attraction."
@@ -41,6 +43,7 @@ class AttractionsController < ApplicationController
   def edit
     @categories = @attraction.categories
     @attraction_category = AttractionCategory.new(attraction_id: @attraction_id)
+    @user_attraction = UserAttraction.find_by(attraction_id:@attraction.id, user_id:current_user.id)
   end
 
   def update
@@ -56,10 +59,14 @@ class AttractionsController < ApplicationController
       if UserAttraction.find_by(user_id: current_user.id, attraction_id: @attraction.id)
         flash[:notice] = "You already have this attraction in your collection"
       else
-        UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
+        UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
         flash[:success] = "Successfully added attraction to your collection."
       end
+
+      
     end
+
+    binding.pry
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
@@ -82,7 +89,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, :public, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes])
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, :public, :created_by, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes])
     end
 
     def set_attraction
