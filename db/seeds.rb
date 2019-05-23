@@ -106,6 +106,7 @@ Attractions = Attraction.create([
     state: "Oregon",
     country: "U.S.",
     public: true
+
   },
 
   {
@@ -161,6 +162,7 @@ Attractions = Attraction.create([
     county: "Middlesex",
     state: "Massachusetts",
     public: true
+
   },
 
   {
@@ -185,6 +187,7 @@ Attractions = Attraction.create([
     city: "London",
     country: "U.K.",
     public: true
+
   },
 
   {
