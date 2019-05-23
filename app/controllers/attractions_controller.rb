@@ -71,7 +71,9 @@ class AttractionsController < ApplicationController
   end
 
   def destroy
-    @attraction.destroy
+    #remove from my collection; it will remain in public attractions
+    @user_attraction = UserAttraction.find_by(user_id: current_user.id, attraction_id:@attraction.id)
+    @user_attraction.destroy
     redirect_to categories_path
   end
 
@@ -80,7 +82,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes])
+      params.require(:attraction).permit(:name, :category_ids, :city, :state, :country, :website, :notes, :public, attraction_category_attributes: [:attraction_id, :category_id], user_attraction_attributes: [:user_id, :attraction_id, :notes])
     end
 
     def set_attraction

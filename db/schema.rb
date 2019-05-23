@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_053715) do
+ActiveRecord::Schema.define(version: 2019_05_23_152504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 2019_05_22_053715) do
     t.string "website"
     t.string "city"
     t.string "state"
+    t.string "county"
     t.string "country"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "county"
+    t.boolean "public", default: false
   end
 
   create_table "bidders", force: :cascade do |t|
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_053715) do
     t.string "name"
     t.string "category"
     t.integer "budget"
-    t.integer "number_of_travelers"
+    t.integer "number_of_travelers", default: 1
     t.string "notes"
     t.boolean "open_to_bids", default: false
     t.integer "bucket_list_item_id"

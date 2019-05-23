@@ -17,14 +17,14 @@
 <br>
 <br>
 <div class="center" style="text-align:center">
-  <div class="containe panel-a panel-bodyr">
+  <div class="container panel-a panel-bodyr">
     <div class="col-sm-12 d-flex flex-row">
       <div class="text-center">
 
         <h1><%= @category.name %></h1>
-        <% @category.attractions.uniq.sort_by(&:name).each do |a| %>
-          <h3><%= link_to a.name, attraction_path(a) %></h3>
-        <% end %>
+          <% @category_attractions.uniq.sort_by(&:name).each do |a| %>
+            <h3><%= link_to a.name, attraction_path(a) %></h3>
+          <% end %>
         <br>
         <br>
 

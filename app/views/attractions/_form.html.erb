@@ -59,9 +59,13 @@
     <br>
     <br>
 
-    <div class="center" style="text-align:center">
-      <%= f.label :state %><br>
-      <%= f.text_field :state %>
+
+    <div class="field<%= ' field_with_errors' if attraction.errors[:state].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :state %><br>
+        <%= f.text_field :state %>
+      </div>
+    </div>
     <br>
     <br>
 
@@ -86,6 +90,23 @@
     <% end %>
     <br>
     <br>
+
+    <div class="field<%= ' field_with_errors' if attraction.errors[:public].any? %>">
+      <div class="center" style="text-align:center">
+        <%= f.label :public, "Make this attraction public?"%><br>
+        <%= f.label :public, "Yes", :value => "true"  %>
+        <%= f.radio_button :public, true %>
+        <%= f.label :public, "No", :value => "false" %>
+        <%= f.radio_button :public, false, :checked => true %>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="field">
+
+
+  </div>
 
     <%= f.submit %>
 

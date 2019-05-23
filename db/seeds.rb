@@ -94,7 +94,8 @@ Attractions = Attraction.create([
     notes: "must do the Narrows",
     city: "Springdale",
     state: "Utah",
-    country: "U.S."
+    country: "U.S.",
+    public: true
   },
 
   {
@@ -103,7 +104,8 @@ Attractions = Attraction.create([
     notes: "Wizard Island is the best",
     county: "Klamath",
     state: "Oregon",
-    country: "U.S."
+    country: "U.S.",
+    public: true
   },
 
   {
@@ -111,7 +113,8 @@ Attractions = Attraction.create([
     website: "https://ragbrai.com/",
     notes: "bring your own sag wagon",
     state: "Iowa",
-    country: "U.S."
+    country: "U.S.",
+    public: true
 
   },
 
@@ -119,7 +122,8 @@ Attractions = Attraction.create([
     name: "Annapurna Circuit",
     website: "https://en.wikipedia.org/wiki/Annapurna_Circuit",
     notes: "aim for October",
-    country: "Nepal"
+    country: "Nepal",
+    public: true
   },
 
   {
@@ -127,7 +131,8 @@ Attractions = Attraction.create([
     website: "https://www.shakespearesglobe.com",
     notes: "cheap tickets available through so-and-so",
     city: "London",
-    country: "U.K."
+    country: "U.K.",
+    public: true
   },
 
   {
@@ -135,7 +140,8 @@ Attractions = Attraction.create([
     website: "https://www.shakespeare.org.uk/visit/shakespeares-birthplace/",
     notes: "could be cool!",
     city: "Stratford-upon-Avon",
-    country: "UK"
+    country: "U.K.",
+    public: true
   },
 
   {
@@ -144,7 +150,8 @@ Attractions = Attraction.create([
     notes: "need to complete qualifying run",
     city: "Boston",
     state: "Massachusetts",
-    country: "US"
+    country: "U.S.",
+    public: true
   },
 
   {
@@ -152,20 +159,23 @@ Attractions = Attraction.create([
     website: "https://www.nps.gov/mima/planyourvisit/placestogo.htm",
     notes: "history and cycling!",
     county: "Middlesex",
-    state: "Massachusetts"
+    state: "Massachusetts",
+    public: true
   },
 
   {
     name: "Tour de Noto",
     website: "https://www.okujapan.com/trips/noto-peninsula-self-guided-cycling-7-days-116",
     notes: "awesome riding",
-    country: "Japan"
+    country: "Japan",
+    public: true
   },
 
   {
     name: "Mt. Fuji",
     website: "https://www.japan-guide.com/e/e6901.html",
-    country: "Japan"
+    country: "Japan",
+    public: true
   },
 
   {
@@ -173,7 +183,8 @@ Attractions = Attraction.create([
     website: "https://www.getyourguide.com/london-l57/warner-bros-studio-tour-london-including-transportation-t16403/?utm_force=0",
     notes: "this is a seven-hour tour?",
     city: "London",
-    country: "England"
+    country: "U.K.",
+    public: true
   },
 
   {
@@ -181,7 +192,8 @@ Attractions = Attraction.create([
     website: "https://www.tiatula.com/",
     notes: "classes start on a rolling basis",
     city: "Salamanca",
-    country: "Spain"
+    country: "Spain",
+    public: true
   }
 ])
 
