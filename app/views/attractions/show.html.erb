@@ -41,9 +41,9 @@
         <br>
         <br>
 
-        <% if current_user.attractions.include?(@attraction) %>
+        <% if @attraction.public && @attraction.users.include?(current_user)%>
           <h5><%= link_to "Remove from my collection", attraction_user_attraction_path(@attraction), method: :delete %></h5>
-        <% else %>
+        <% elsif @attraction.public && !@attraction.users.include?(current_user) %>
           <%= form_for @attraction do |f| %>
             <% f.fields_for @user_attraction, url: attraction_user_attractions_path(@attraction) do |ua| %>
               <%= ua.hidden_field :attraction_id, value: @attraction.id %>
@@ -51,7 +51,14 @@
               <%= ua.submit "Add to my collection" %>
             <% end %>
           <% end %>
+        <% else %>
+          <h5><%= link_to "Delete this attraction", attraction_path(@attraction), method: :delete, data: { confirm: "Are you sure? This can't be undone!" } %></h5>
         <% end %>
+
+
+
+
+
         <br>
         <br>
         <br>
