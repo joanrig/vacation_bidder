@@ -85,8 +85,8 @@
       <br>
 
       <%= f.fields_for @vacation_attraction, url: vacation_vacation_attractions_path(@vacation) do |v| %>
-        <%= v.label :attraction_id, "Add Attractions from my Collection" %><br>
-          <%= v.collection_select :attraction_id, current_user.attractions.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
+        <%= v.label :attraction_id, "Add Attractions" %><br>
+        <%= v.collection_select :attraction_id, @both.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
       <% end %>
       <br>
       <br>

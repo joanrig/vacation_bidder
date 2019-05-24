@@ -36,8 +36,12 @@ class VacationsController < ApplicationController
 
   def edit
     @attractions = @vacation.attractions
-    @all_attractions = Attraction.all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
+
+    @public =  Attraction.where(public:true)
+    @private =  Attraction.select{|a| a.created_by = current_user.id}
+    binding.pry
+    @both = @public + @private
 
     # if you want to create attractions from vacations edit page
     # @attraction = Attraction.new
@@ -79,7 +83,6 @@ class VacationsController < ApplicationController
       return_city: params[:vacation][:schedule][:return_city].titleize,
       return_date: params[:vacation][:schedule][:return_date])
       if @schedule.valid?
-        binding.pry
         flash[:alert] = "Successfully created schedule"
       else
         flash[:alert] = @schedule.errors.full_messages
@@ -87,8 +90,9 @@ class VacationsController < ApplicationController
       end
     end
 
-    if params[:vacation][:attraction]
-      @attraction = Attraction.new(name: params[:vacation][:attraction])
+    p = params[:vacation][:vacation_attraction]
+    if p
+      @attraction = Attraction.new(name: p)
     end
 
     if @vacation.save
@@ -98,6 +102,7 @@ class VacationsController < ApplicationController
       flash[:alert] = @vacation.errors.full_messages
       render :edit
     end
+    binding.pry
   end
 
   def destroy
