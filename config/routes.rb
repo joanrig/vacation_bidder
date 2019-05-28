@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get '/attractions/index', to: 'categories#index'
 
   resources :attractions do
-    resources :user_attractions, only: [:create]
+    resources :user_attractions, only: [:create, :show]
   end
 
   resources :attraction_categories, only: [:new, :create]

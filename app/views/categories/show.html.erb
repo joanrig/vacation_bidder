@@ -22,10 +22,26 @@
       <div class="text-center">
 
         <h1><%= @category.name %></h1>
-        <% binding.pry %>
-          <% @category_attractions.uniq.sort_by(&:name).each do |a| %>
-            <h3><%= link_to a.name, attraction_path(a) %></h3>
+
+
+        <hr>
+        <h2>Public</h2>
+        <br>
+          <% @category.public_attractions.sort_by(&:name).each do |a| %>
+              <h3><%= link_to a.name, attraction_path(a) %></h3>
           <% end %>
+
+        <br>
+        <br>
+        <br>
+
+        <hr>
+        <h2>Private</h2>
+        <br>
+        <% @category.private_attractions.sort_by(&:name).each do |a| %>
+          <h3><%= link_to a.name, attraction_path(a) %></h3>
+        <% end %>
+fff
         <br>
         <br>
 

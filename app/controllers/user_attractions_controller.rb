@@ -1,5 +1,8 @@
 class UserAttractionsController < ApplicationController
 
+  def show
+  end
+  
   def destroy
     @attraction = Attraction.find_by_id(params[:attraction_id])
     @user_attraction = UserAttraction.where(attraction_id:@attraction.id).select{|ua| ua.users.include?(current_user)}

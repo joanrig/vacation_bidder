@@ -48,13 +48,11 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    binding.pry
     @categories = @attraction.categories.uniq
     if UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
       @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
     else
       @user_attraction = UserAttraction.new
-      #binding.pry
     end
   end
 
