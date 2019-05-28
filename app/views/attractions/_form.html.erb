@@ -34,7 +34,7 @@
 
       <%= f.fields_for attraction_category, url: attraction_categories_path do |ac| %>
        <h4><%= ac.label :category_id, "Add Categories" %></h4><br>
-         <%= ac.collection_check_boxes :category_id, all_categories.uniq.sort_by(&:name), :id, :name do |b| %>
+         <%= ac.collection_check_boxes :category_id, (all_categories.uniq - attraction.categories.uniq).sort_by(&:name), :id, :name do |b| %>
           <div class="collection-check-box" style="font-size:1.25em">
            <div style="color:white">
              <%= b.check_box %>
