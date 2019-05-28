@@ -3,6 +3,7 @@ class AttractionsController < ApplicationController
   before_action :all_categories, only: [:index, :new, :create, :edit]
 
   def index
+    @categories = Category.all
   end
 
 
@@ -30,23 +31,24 @@ class AttractionsController < ApplicationController
     @attraction.update(attraction_params)
     @attraction.created_by = current_user.id
 
-    if params[:attraction][:attraction_category][:category_id]
-      @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
-    end
-
-    @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
-    #rbinding.pry
-
     if @attraction.save
+      @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
+
+      if params[:attraction][:attraction_category][:category_id]
+        @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id][01])
+      end
+
       flash[:success] = "Successfully created attraction."
       redirect_to attraction_path(@attraction)
     else
       flash[:alert] = @attraction.errors.full_messages
       render :new
     end
+    binding.pry
   end
 
   def show
+    binding.pry
     @categories = @attraction.categories.uniq
     if UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
       @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)

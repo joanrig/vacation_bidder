@@ -14,12 +14,13 @@
         Attraction<%= text_field_tag :attraction%>
       <%= submit_tag 'Search' %>
       <% end %>
+      <br>
+      <br>
 
-      <% @all_categories.sort_by(&:name).each do |c| %>
-        <br>
-        <br>
+      <% @categories.sort_by(&:name).each do |c| %>
         <h2> <%= c.name %></h2>
-        <% (c.attractions & current_user.attractions).uniq.sort_by(&:name).each do |a| %>
+        <% binding.pry %>
+        <% c.attractions.uniq.sort_by(&:name).each do |a| %>
           <h5><%= link_to a.name, attraction_path(a) %></h5>
         <% end %>
       <% end %>
