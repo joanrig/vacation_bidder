@@ -50,9 +50,8 @@
               <%= ua.submit "Add to my collection" %>
             <% end %>
           <% end %>
-          <% binding.pry %>
-        <% elsif @attraction.created_by == current_user.id && @attraction.public == false %>
 
+        <% elsif @attraction.created_by == current_user.id && @attraction.public == false %>
           <h5><%= link_to "edit", edit_attraction_path(@attraction) %></h5>
           <br>
           <p><%= link_to "delete", attraction_path(@attraction), method: :delete, data: { confirm: "Are you sure? This can't be undone!" } %></p>

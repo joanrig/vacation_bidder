@@ -357,6 +357,7 @@ Vacations = Vacation.create([
     category: "cultural",
     budget: 5000,
     number_of_travelers: 4,
+    open_to_bids: true
   },
 
   {
@@ -364,5 +365,6 @@ Vacations = Vacation.create([
     category: "outdoors",
     budget: 6000,
     number_of_travelers: 4,
+    open_to_bids: true
   }
 ])

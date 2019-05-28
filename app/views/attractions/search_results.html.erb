@@ -1,0 +1,14 @@
+<%= render '/layouts/attractions' %>
+
+<div class="center" style="text-align:center">
+  <div class="container panel-a panel-body">
+    <div class="form" style="color:midnightblue">
+      <h3>Search Results</h3>
+
+
+      <% @attractions.each do |a| %>
+        <%= link_to a.name, attraction_path(a) %>
+      <% end %>
+    </div>
+  </div>
+</div>

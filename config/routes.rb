@@ -26,15 +26,22 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
 
+  post '/attractions/search', to: 'attractions#search', as: 'attractions_search'
+  get '/attractions/index', to: 'categories#index'
+
   resources :attractions do
-    resources :user_attractions, only: [:create, :destroy]
+    resources :user_attractions, only: [:create]
   end
 
   resources :attraction_categories, only: [:new, :create]
-  resources :bidders
+
+  resources :bidders do
+    resources :bids
+  end
 
 
 
-  get '/attractions/index', to: 'categories#index'
+
+
 
 end

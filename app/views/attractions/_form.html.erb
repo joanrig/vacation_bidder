@@ -94,13 +94,13 @@
       <br>
 
       <!-- this field wont' show up in browser -->
-      <div class="field<%= ' field_with_errors' if attraction.errors[:country].any? %>">
+      <div class="field<%= ' field_with_errors' if attraction.errors[:user_attraction].any? %>">
         <div class="center" style="text-align:center">
-          <%= f.fields_for user_attraction, attraction_user_attraction_path(attraction) do |ua| %>
+          <%= f.fields_for user_attraction do |ua| %>
             <%= ua.label :notes, 'My private notes' %><br>
             <div style="color:black">
               <%= ua.text_area :notes %>
-            </div>            
+            </div>
           <% end %>
         </div>
       </div>

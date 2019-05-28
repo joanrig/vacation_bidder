@@ -5,10 +5,23 @@ class AttractionsController < ApplicationController
   def index
   end
 
+
+  def search
+    @attractions = Attraction.where("name LIKE ?", "%#{params[:attraction]}%")
+    #binding.pry
+    if @attractions
+      render :search_results
+    else
+      flash[:alert] = "Sorry, couldn't find anything by that name, please try again"
+      render :index
+    end
+  end
+
   def new
     @category = Category.find_by_id(params[:format])
     @attraction = Attraction.new
     @attraction_category = AttractionCategory.new
+    @user_attraction = UserAttraction.new
   end
 
   def create
@@ -21,7 +34,8 @@ class AttractionsController < ApplicationController
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id])
     end
 
-    @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id)
+    @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
+    #rbinding.pry
 
     if @attraction.save
       flash[:success] = "Successfully created attraction."
@@ -38,7 +52,7 @@ class AttractionsController < ApplicationController
       @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
     else
       @user_attraction = UserAttraction.new
-      binding.pry
+      #binding.pry
     end
   end
 

@@ -4,6 +4,7 @@ class BidsController < ApplicationController
   def new
     @bidder = Bidder.find_by_id(params[:bidder_id])
     @bid = Bid.new
+    @vacations = Vacation.where("open_to_bids = ?", true)
   end
 
   def create

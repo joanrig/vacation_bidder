@@ -2,8 +2,7 @@ TODO
 
 
 WISHLIST
-3 add roles to users - so you can be a traveler or a bidder
-3 make separate signup path for bidders/ or toggle role between user and bidder
+4 make separate signup path for bidders/ or toggle role between user and bidder
 
 allow bidders to  
 1 see all vacations open to bid - no personal user info
@@ -16,17 +15,13 @@ allow users to
 1 add user notes to bid (viewable by bidder)
 3 choose finalists - set user status of bids to declined, finalist, accepted
 
-
-allow users to
-2 make their attractions (not attraction notes) public, included in all Attractions
-3 create their own categories (not viewable by others) will involve user category join table
-2 collect others' categories
 3 mass assign categories to attractions
 ? share vacations view? with guests.
 
 3 deploy to heroku
 
-
+Thurs
+DONE let users make their attractions (not attraction notes) public, included in all Attractions
 
 
 Sunday - Tuesday

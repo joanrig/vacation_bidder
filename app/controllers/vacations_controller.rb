@@ -40,7 +40,7 @@ class VacationsController < ApplicationController
 
     @public =  Attraction.where(public:true)
     @private =  Attraction.select{|a| a.created_by = current_user.id}
-    binding.pry
+    #binding.pry
     @both = @public + @private
 
     # if you want to create attractions from vacations edit page
@@ -102,7 +102,7 @@ class VacationsController < ApplicationController
       flash[:alert] = @vacation.errors.full_messages
       render :edit
     end
-    binding.pry
+    #binding.pry
   end
 
   def destroy

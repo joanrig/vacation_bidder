@@ -10,6 +10,11 @@
       <div class="text-center">
       <h1>My Attractions</h1>
 
+      <%= form_tag(attractions_search_path) do %>
+        Attraction<%= text_field_tag :attraction%>
+      <%= submit_tag 'Search' %>
+      <% end %>
+
       <% @all_categories.sort_by(&:name).each do |c| %>
         <br>
         <br>
