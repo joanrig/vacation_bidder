@@ -6,6 +6,10 @@ class VacationsController < ApplicationController
 
   def index
     @vacations = @user.vacations
+     respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @vacations}
+    end
   end
 
   def new

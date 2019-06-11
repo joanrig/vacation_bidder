@@ -63,12 +63,14 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    binding.pry
     if params[:attraction][:category]
       @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     end
 
     if @category
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
+      binding.pry
     end
 
     if params[:attraction][:user_attraction]
