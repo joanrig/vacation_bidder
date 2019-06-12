@@ -1,16 +1,12 @@
-console.log("hello")
-
 $(function() {
     console.log('vacations.js is loaded ...')
     listenForClick()
 })
 
-
 function listenForClick() {
     $('button#vacations-data').one('click', function(event) {
         event.preventDefault()
         getVacations()
-
     })
 }
 
@@ -20,8 +16,6 @@ function getVacations() {
         method: 'get',
         dataType: 'json',
         success: function(data) {
-            // console log does not work
-            console.log(data)
             data.map(vacation => {
                 // new js object 
                 const newVacation = new Vacation(vacation)
@@ -54,9 +48,8 @@ class Vacation {
         this.number_of_travelers = obj.number_of_travelers
         this.notes = obj.notes
         this.open_to_bids = obj.open_to_bids
-        this.bucket_list_item_id = obj.bucket_list_item_id
         this.attractions = obj.attractions
-        allVacations << this
+        allVacations.push(this)
     }
 
     static newVacationForm() {
@@ -64,10 +57,9 @@ class Vacation {
 		<strong>New vacation form</strong>
 			<form>
 				<input id='vacation-name' type='text' name='name'></input><br>
-
-        <input type='text' name='budget'></input><br>
-        <input type='text' name='number_of_travelers'></input><br>
-        <input type='text' name='notes'></input><br>    
+                <input type='text' name='budget'></input><br>
+                <input type='text' name='number_of_travelers'></input><br>
+                <input type='text' name='notes'></input><br>    
 				<input type='submit' />
 			</form>
 		`)
@@ -85,12 +77,16 @@ Vacation.prototype.vacationHTML = function() {
 
 function listenForHover() {
     $('div.vacation-js').mouseenter(function(event) {
-        debugger
-        let id = event.target.parentElement.id
-        let found = allVacations.map(v => v.id === this.id)
-
         event.preventDefault()
+        const id = event.target.parentElement.id
+        const found = allVacations.find(vacation => vacation.id === 'id')
+        debugger
 
-
+        attractionsHTML = (`	
+		    <div class='vacation_attractions'>
+                <h3>${this.attractions}</h3>
+		    </div>
+        `)
     })
+    document.getElementById('vacation_attractions').innerHTML = attractionsHTML
 }
