@@ -4,15 +4,15 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 <div class="center", style="text-align:center">
   <div class="container panel-a panel-body">
     <div class="col-sm-12 d-flex flex-row">
       <br>
       <hr> 
       <h3>Javascript button</h3>
-      <button id:"vacations-data">My Vacations</button>
+      <button id="vacations-data">My Vacations</button>
+      <div id="ajax-vacations">
+      </div>
       <hr>
 
 
@@ -36,8 +36,103 @@
         </div>
       </h4>
 
+      <h4>Javascript new vacation form </h4>
+      <div id="new-vacation-form-div">
+      </div>
+
 
 
     </div>
   </div>
 </div>
+
+<script>
+$(function() {
+    console.log('vacations.js is loaded ...')
+    listenForClick()
+})
+
+function listenForClick() {
+    $('button#vacations-data').on('click', function(event) {
+        event.preventDefault()
+        getVacations()
+    })
+}
+
+function getVacations() {
+	$.ajax({
+		url: 'http://localhost:3000/vacations',
+		method: 'get',
+		dataType: 'json',
+		success: function (data) {
+			console.log("the data is: ", data)
+			data.map(vacation => {
+				const newVacation = new Vacation(vacation)
+				const newVacationHtml = newVacation.vacationHTML()
+				document.getElementById('ajax-vacations').innerHTML += newVacationHtml
+			})
+		}
+	})
+}
+
+function listenFornewVacationFormClick() {
+	$('button#ajax-new-vacation').on('click', function (event) {
+		event.preventDefault()
+		let newVacationForm = Vacation.newVacationForm()
+		// $('div#new-vacation-form-div')
+		document.querySelector('div#new-vacation-form-div').innerHTML = newVacationForm
+	})
+}
+
+class Vacation {
+    constructor(obj) {
+        this.name = obj.name
+        debugger
+        this.category = obj.category
+        this.budget = obj.budget
+        this.number_of_travelers = obj.number_of_travelers
+        this.notes = obj.notes
+        this.open_to_bids = obj.open_to_bids
+        this.bucket_list_item_id = obj.bucket_list_item_id
+        this.attractions = obj.attractions
+    }
+
+	static newVacationForm() {
+		return (`
+		<strong>New vacation form</strong>
+			<form>
+				<input id='vacation-name' type='text' name='name'></input><br>
+        <input type='text' name='budget'></input><br>
+        <input type='text' name='number_of_travelers'></input><br>
+        <input type='text' name='notes'></input><br>    
+				<input type='submit' />
+			</form>
+		`)
+	}
+}
+
+Vacation.prototype.vacationHTML = function() {
+	let vacationAttractions = this.attractions.map(attraction => {
+		return (`
+      <p>${attraction.name}</p>
+      debugger
+      <p><${attraction.website} can't get link to work</p>
+      <p>${attraction.city}</p>
+      <p>${attraction.state}</p>
+      <p>${attraction.country}</p>
+      <p>${attraction.notes}</p>
+		`)
+	}).join('')
+
+	return (`	
+		<div class='vacation'>
+      <h3>${this.name}</h3>
+      <p>${this.budget}</p>
+      <p>${this.number_of_travelers}</p>
+			<p>${this.notes}</p>
+			<p>${vacationAttractions}</p>
+		</div>
+	`)
+}
+
+</script>
