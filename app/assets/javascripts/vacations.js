@@ -1,8 +1,10 @@
 $(function() {
+    // console.log doesn't work anywhere in my program!
     console.log('vacations.js is loaded ...')
     listenForClick()
 })
 
+// this is a click but it should be on document ready ?
 function listenForClick() {
     $('button#vacations-data').one('click', function(event) {
         event.preventDefault()
@@ -72,21 +74,25 @@ Vacation.prototype.vacationHTML = function() {
       <h3>${this.name}</h3>
 		</div>
 	`)
-
 }
 
 function listenForHover() {
     $('div.vacation-js').mouseenter(function(event) {
         event.preventDefault()
         const id = event.target.parentElement.id
-        const found = allVacations.find(vacation => vacation.id === 'id')
-        debugger
 
-        attractionsHTML = (`	
+        // this doesn't work: 
+        // const found = allVacations.find(v => v.id === id)
+        const found = allVacations.find(v => v.id === 1)
+
+        const attractionsHTML = (`	
 		    <div class='vacation_attractions'>
-                <h3>${this.attractions}</h3>
+                <h3>${found.attractions}</h3>
 		    </div>
         `)
+
+        // trying to add above html to DOM
+        $('div.vacation-js').innerHTML += attractionsHTML
+        debugger
     })
-    document.getElementById('vacation_attractions').innerHTML = attractionsHTML
 }
