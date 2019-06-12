@@ -19,10 +19,10 @@
       <h1> My Vacations </h1>
       <br>
       <br>
-      <% if @user.vacations.empty? %>
+      <% if @vacations.empty? %>
         <h3>No Vacations yet! Let's build one!</h3>
       <% else %>
-        <% @user.vacations.order(created_at: :desc).each do |v| %>
+        <% @vacations.uniq.sort.each do |v| %>
           <h3><%= link_to v.name, vacation_path(v) %></h3>
         <% end %>
       <% end %>
@@ -53,9 +53,10 @@ $(function() {
 })
 
 function listenForClick() {
-    $('button#vacations-data').on('click', function(event) {
+    $('button#vacations-data').oneg('click', function(event) {
         event.preventDefault()
         getVacations()
+
     })
 }
 
@@ -112,15 +113,7 @@ class Vacation {
 }
 
 Vacation.prototype.vacationHTML = function() {
-	let vacationAttractions = this.attractions.map(attraction => {
-		return (`
-      <p>${attraction.name}</p>
-      debugger
-      <p><${attraction.website} can't get link to work</p>
-      <p>${attraction.country}</p>
-      <p>${attraction.notes}</p>
-		`)
-	}).join('')
+
 
 
 	return (`	

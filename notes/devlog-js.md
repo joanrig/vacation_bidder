@@ -1,24 +1,26 @@
 
 
-INDEX 
-1. make sure vacations displayed on index page are user's vacations, not all vacations
+###INDEX 
 
-2. my vacations button - should not adds all vacations *each* time it is clicked.
+[ X ] make sure vacations displayed on index page are user's vacations, not all vacations
 
-3. make sure each vacation lands in a div with its vacation-id
+[  ] my vacations button - should not show duplicates -- .distinct is not helping
+
+[  ] my vacations button - should not adds all vacations *each* time it is clicked.
+https://www.the-art-of-web.com/javascript/doublesubmit/
+
+[  ] make sure each vacation lands in a div with its vacation-id
 this was done in rails:
   <div id="product-<%= product.id %>"><%= truncate(product.description) %></div>
   <button class="js-more" data-id="<%= product.id %>">More Info</button>
 
+[  ] add link to this vacations' url
 
-4. add link to this vacations' url
-
-5. 
+[  ] add hover event listener, so something interesting happens when you hover over vacations (ie shows all attractions)
 
 
-SHOW
-
+###SHOW
 
 
 
-NEW ATTRACTIONS FORM?
+###NEW ATTRACTIONS FORM?
