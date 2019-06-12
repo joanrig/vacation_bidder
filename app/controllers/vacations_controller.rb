@@ -5,7 +5,7 @@ class VacationsController < ApplicationController
 
 
   def index
-    @vacations = @user.vacations
+    @vacations = @user.vacations.uniq
   end
 
   def new

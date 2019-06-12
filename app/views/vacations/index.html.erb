@@ -15,10 +15,10 @@
       <h1> My Vacations </h1>
       <br>
       <br>
-      <% if @user.vacations.empty? %>
+      <% if @vacations.empty? %>
         <h3>No Vacations yet! Let's build one!</h3>
       <% else %>
-        <% @user.vacations.order(created_at: :desc).each do |v| %>
+        <% @vacations.sort.each do |v| %>
           <h3><%= link_to v.name, vacation_path(v) %></h3>
         <% end %>
       <% end %>
