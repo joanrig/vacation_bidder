@@ -87,7 +87,6 @@ function listenFornewVacationFormClick() {
 class Vacation {
     constructor(obj) {
         this.name = obj.name
-        debugger
         this.category = obj.category
         this.budget = obj.budget
         this.number_of_travelers = obj.number_of_travelers
@@ -102,6 +101,7 @@ class Vacation {
 		<strong>New vacation form</strong>
 			<form>
 				<input id='vacation-name' type='text' name='name'></input><br>
+
         <input type='text' name='budget'></input><br>
         <input type='text' name='number_of_travelers'></input><br>
         <input type='text' name='notes'></input><br>    
@@ -117,20 +117,15 @@ Vacation.prototype.vacationHTML = function() {
       <p>${attraction.name}</p>
       debugger
       <p><${attraction.website} can't get link to work</p>
-      <p>${attraction.city}</p>
-      <p>${attraction.state}</p>
       <p>${attraction.country}</p>
       <p>${attraction.notes}</p>
 		`)
 	}).join('')
 
+
 	return (`	
 		<div class='vacation'>
       <h3>${this.name}</h3>
-      <p>${this.budget}</p>
-      <p>${this.number_of_travelers}</p>
-			<p>${this.notes}</p>
-			<p>${vacationAttractions}</p>
 		</div>
 	`)
 }

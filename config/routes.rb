@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :bucket_list_items do
     resources :vacations, only: [:new, :create]
   end
