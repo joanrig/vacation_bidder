@@ -55,17 +55,19 @@ class Vacation {
 	  // `)
   }
 
-
-
 function listenForHover() {
-  $('div.vacation').mouseenter(function(event) {
-    debugger
+  $('h3.vacation').mouseenter(function(event) {
     event.preventDefault()
-    const id = event.target.parentElement.id
-
     // this doesn't work:
     // const found = allVacations.find(v => v.id === id)
-    const found = allVacations.find(v => v.id === 1)
+    const id = event.target.parentElement.id
+    //sample code does not work:
+    //myArray.find(x => x.id === '45')
+    // $.grep(myArray, function(e){ return e.id == id; })
+    const found = $.grep(allVacations, function(v){
+      return v.id == id
+    })
+    debugger
     const attractionsHTML = found.attractions.map(attraction => {
       return
       (`
