@@ -13,6 +13,4 @@
 //= require jquery3
 //= require rails-ujs
 //= require activestorage
-//= require vacations
 //= require_tree .
-console.log("hello")

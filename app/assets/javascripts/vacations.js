@@ -80,6 +80,7 @@ function listenForHover() {
   $('div.vacation-js').mouseenter(function(event) {
     event.preventDefault()
     const id = event.target.parentElement.id
+
     // this doesn't work:
     // const found = allVacations.find(v => v.id === id)
     const found = allVacations.find(v => v.id === 1)
@@ -90,6 +91,7 @@ function listenForHover() {
             <h3>${attraction.name}</h3>
         </div>
       `)
+      debugger
       // then add above html to DOM
     })
   })
