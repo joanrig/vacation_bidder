@@ -44,6 +44,7 @@ function showAttractions() {
     return(`
         <a href="${a.url}" class="attraction">${a.name}</a>
         <br>
+        <div class="hide">"hide"</div>
     `)
   })
 }

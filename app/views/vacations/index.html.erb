@@ -6,25 +6,21 @@
 <div class="center", style="text-align:center">
   <div class="container panel-a panel-body">
     <div class="col-sm-12 d-flex flex-row">
-      <br>
+      <br style="text-align:center">
         <h1> My Vacations </h1>
         <br>
         <br>
         <% if @vacations.empty? %>
           <h3>No Vacations yet! Let's build one!</h3>
         <% else %>
-        <div class="vacations">
           <% @vacations.uniq.sort.each do |v| %>
               <div id="vacation-<%= v.id %>">
                 <h3><%= link_to v.name, vacation_path(v) %></h3>
-
-                <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()"></button>
-
+                  <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()"></button>
                 <div class="attractions-list" id="attractions-<%= v.id %>" style="color:lightgrey">
                 </div>
               </div>
           <% end %>
-          </div>
         <% end %>
       <br>
       <br>
