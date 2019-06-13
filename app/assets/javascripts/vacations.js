@@ -15,19 +15,6 @@ function getVacations() {
   })
 }
 
-function getVacations() {
-  $.ajax({
-        url: 'http://localhost:3000/vacations',
-        method: 'get',
-        dataType: 'json',
-        success: function(data) {data.map(vacation => {
-            // new js object
-            const newVacation = new Vacation(vacation)
-        })
-      }
-  })
-}
-
 const allVacations = []
 
 class Vacation {
@@ -44,7 +31,6 @@ class Vacation {
     }
   }
 
-//works correctly for top vacation in list, shows all other info in wrong place (top div) and flickers like a bat out of hell.
 function showAttractions() {
   const id = event.target.id
   const thisVacation = $.grep(allVacations, function(v){
@@ -53,10 +39,11 @@ function showAttractions() {
 
   const attractions = thisVacation[0].attractions
   const attractionsDiv = document.getElementById(`attractions-${id}`)
-  
+
   attractionsDiv.innerHTML = attractions.map(a => {
     return(`
-        ${a.name}
+        <a href="${a.url}" class="attraction">${a.name}</a>
+        <br>
     `)
   })
 }

@@ -57,10 +57,24 @@ nav {
   padding-bottom: 5px;
 }
 
-
-
 .white_text{
   color: rgb(255, 255, 255);
+}
+
+/* //on vacations index page */
+a.attraction {
+  color: lightgrey
+}
+
+.attractions-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: .5em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 
@@ -155,7 +169,6 @@ h6 a {
 .field {
   color: white;
   text-align: left;
-
 }
 
 .bidder {
@@ -171,6 +184,7 @@ h6 a {
 .black_button {
   color: black;
 }
+
 
 select {
   font-family: 'Raleway', sans-serif;
@@ -190,10 +204,6 @@ input[type="text"] {
   font-size: 13px;
   text-align: left;
   color: midnightblue;
-}
-
-.attractions-button {
-  font-size: 5px;
 }
 
 
@@ -229,4 +239,9 @@ input[type="text"] {
 
 .text_area {
   color: black
+}
+
+.travel-icon {
+    width: 20px;
+    height: 20px;
 }

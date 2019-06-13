@@ -16,10 +16,11 @@
         <div class="vacations">
           <% @vacations.uniq.sort.each do |v| %>
               <div id="vacation-<%= v.id %>">
-                <h3><%= link_to v.name, vacation_path(v) %>
-                  <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()">Attractions</button>
-                </h3>
-                <div id="attractions-<%= v.id %>">
+                <h3><%= link_to v.name, vacation_path(v) %></h3>
+
+                <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()"></button>
+
+                <div class="attractions-list" id="attractions-<%= v.id %>" style="color:lightgrey">
                 </div>
               </div>
           <% end %>
@@ -34,10 +35,6 @@
           <%= link_to "New Vacation", bucket_list_items_path %>
         </div>
       </h4>
-
-
-
-
 
     </div>
   </div>
