@@ -55,8 +55,12 @@ class Vacation {
 	  // `)
   }
 
+
+
 function showAttractionsOnHover() {
-  $('.vacation').mouseenter(function(event) {
+  $('.vacation').hover
+  // start hover
+  (function(event) {
     event.preventDefault()
     const id = event.target.parentElement.id
     const found = $.grep(allVacations, function(v){
@@ -66,26 +70,14 @@ function showAttractionsOnHover() {
     const attractionsHTML = attractions.map(a => {
       return(`
           <div class="attractions">
-            <h3>${a.name}</h3>
-            <p>${a.country}</p>
-            <p>${a.notes}</p>
+            <h5>${a.name}</h5>
           </div>
         `)
     })
-    debugger
-
-
-
-
-    // const attractionsHTML = found.attractions.map(attraction => {
-    //   return
-    //   (`
-    //     <div class='attractions'>
-    //         <h3>${attraction.name}</h3>
-    //     </div>
-    //   `)
-    //   debugger
-    //   // then add above html to DOM
-    // })
+    document.getElementById("attractions-js").innerHTML = attractionsHTML
+  })
+  //end hover
+  (function(event) {
+    document.getElementById("attractions-js").innerHTML =""
   })
 }
