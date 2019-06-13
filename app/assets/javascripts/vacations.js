@@ -17,16 +17,6 @@ function getVacations() {
   })
 }
 
-// function listenFornewVacationFormClick() {
-//     $('button#ajax-new-vacation').on('click', function(event) {
-//         event.preventDefault()
-//         let newVacationForm = Vacation.newVacationForm()
-//             // $('div#new-vacation-form-div')
-//         document.querySelector('div#new-vacation-form-div').innerHTML = newVacationForm
-//
-//     })
-// }
-
 const allVacations = []
 
 class Vacation {
@@ -41,22 +31,9 @@ class Vacation {
         this.attractions = obj.attractions
         allVacations.push(this)
     }
-
-    // static newVacationForm() {
-    //     return (`
-    // 	<strong>New vacation form</strong>
-    // 		<form>
-    // 			<input id='vacation-name' type='text' name='name'></input><br>
-    //               <input type='text' name='budget'></input><br>
-    //               <input type='text' name='number_of_travelers'></input><br>
-    //               <input type='text' name='notes'></input><br>
-    // 			<input type='submit' />
-    // 		</form>
-	  // `)
   }
 
-
-
+//works correctly for top vacation in list, shows all other info in wrong place (top div) and flickers like a bat out of hell.
 function showAttractionsOnHover() {
   $('.vacation').mouseover(function(event) {
     event.preventDefault()
