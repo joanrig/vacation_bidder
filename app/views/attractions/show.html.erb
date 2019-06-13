@@ -46,7 +46,7 @@
         <hr>
         <br>
         <br>
-        <% binding.pry %>
+        
         <%# for public attractions already collected %>
         <% if @attraction.users.include?(current_user) && @attraction.public %>
           <h5><%= link_to "add or update notes", edit_attraction_path(@attraction) %></h5>

@@ -1,10 +1,10 @@
 
 
-###INDEX 
+###SHOW
 
 [ X ] make sure vacations displayed on index page are user's vacations, not all vacations
 
-[  ] my vacations button - should not show duplicates -- .distinct is not helping
+[ X ] my vacations button - should not show duplicates -- .distinct is not helping
 
 [ X ] my vacations button - should not adds all vacations *each* time it is clicked.
       https://www.the-art-of-web.com/javascript/doublesubmit/
@@ -16,13 +16,14 @@ this was done in rails:
   <button class="js-more" data-id="<%= product.id %>">More Info</button>
   https://stackoverflow.com/questions/11480365/iterating-over-divs-with-same-id-and-adding-number
 
-[  ] add link to this vacations' url
+[ X  ] add link to this vacations' url (kept it from rails)
 
-[  ] add hover event listener, so something interesting happens when you hover over vacations (ie shows all attractions)
-
-
-###SHOW
+[  ] add hover event listener, so you can see a vacation's attractions when you hover over vacation
+--mostly working, text placement and flicker issues
 
 
+###INDEX
 
-###NEW ATTRACTIONS FORM?
+
+
+###NEW BUCKET LIST ITEMS FORM
