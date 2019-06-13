@@ -14,8 +14,8 @@
         <h3>No Vacations yet! Let's build one!</h3>
       <% else %>
         <% @vacations.uniq.sort.each do |v| %>
-          <div id="attractions-js">
-            <h3 class="vacation" id="<%= v.id %>"><%= link_to v.name, vacation_path(v) %></h3>
+          <h3 class="vacation" id="<%= v.id %>"><%= link_to v.name, vacation_path(v) %></h3>
+          <div class="attractions">
           </div>
         <% end %>
       <% end %>

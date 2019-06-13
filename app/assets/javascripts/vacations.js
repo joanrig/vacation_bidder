@@ -58,26 +58,24 @@ class Vacation {
 
 
 function showAttractionsOnHover() {
-  $('.vacation').hover
-  // start hover
-  (function(event) {
+  $('.vacation').mouseover(function(event) {
     event.preventDefault()
     const id = event.target.parentElement.id
-    const found = $.grep(allVacations, function(v){
+    const thisVacation = $.grep(allVacations, function(v){
       return v.id == id
     })
-    const attractions = found[0].attractions
-    const attractionsHTML = attractions.map(a => {
+
+    const attractions = thisVacation[0].attractions
+    const attractionsDiv = document.querySelector('div.attractions')
+    attractionsDiv.innerHTML = attractions.map(a => {
       return(`
-          <div class="attractions">
-            <h5>${a.name}</h5>
-          </div>
-        `)
+          ${a.name}, ${a.country}
+      `)
     })
-    document.getElementById("attractions-js").innerHTML = attractionsHTML
-  })
-  //end hover
-  (function(event) {
-    document.getElementById("attractions-js").innerHTML =""
+
+    //end hover
+    $('.vacation').mouseout(function(event) {
+      attractionsDiv.innerHTML = ""
+    })
   })
 }
