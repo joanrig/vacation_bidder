@@ -44,7 +44,7 @@ class VacationsController < ApplicationController
 
     @public =  Attraction.where(public:true)
     @private =  Attraction.select{|a| a.created_by = current_user.id}
-    #binding.pry
+    binding.pry
     @both = @public + @private
 
     # if you want to create attractions from vacations edit page

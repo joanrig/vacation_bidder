@@ -3,6 +3,18 @@ $(document).ready(function() {
   showAttractionsOnHover()
 })
 
+function getVacations() {
+  $.ajax({
+        url: 'http://localhost:3000/vacations',
+        method: 'get',
+        dataType: 'json',
+        success: function(data) {data.map(vacation => {
+            // new js object
+            const newVacation = new Vacation(vacation)
+        })
+      }
+  })
+}
 
 function getVacations() {
   $.ajax({
@@ -35,23 +47,28 @@ class Vacation {
 
 //works correctly for top vacation in list, shows all other info in wrong place (top div) and flickers like a bat out of hell.
 function showAttractionsOnHover() {
-  $('.vacation').mouseover(function(event) {
+  $('.vacations').mouseenter (function(event) {
     event.preventDefault()
+    //find vacation based on hover location
     const id = event.target.parentElement.id
-    const thisVacation = $.grep(allVacations, function(v){
-      return v.id == id
-    })
+    if (id){
+      const thisVacation = $.grep(allVacations, function(v){
+        return v.id == id
+      })
 
-    const attractions = thisVacation[0].attractions
-    const attractionsDiv = document.querySelector('div.attractions')
-    attractionsDiv.innerHTML = attractions.map(a => {
-      return(`
-          ${a.name}, ${a.country}
-      `)
-    })
+      const attractions = thisVacation[0].attractions
+      const attractionsDiv = document.getElementById(id).getElementsByClassName('attractions')[0]
+      debugger
+
+      attractionsDiv.innerHTML = attractions.map(a => {
+        return(`
+            ${a.name}
+        `)
+      })
+    }
 
     //end hover
-    $('.vacation').mouseout(function(event) {
+    $('.vacations').mouseout(function(event) {
       attractionsDiv.innerHTML = ""
     })
   })
