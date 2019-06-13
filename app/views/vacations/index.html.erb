@@ -7,14 +7,6 @@
   <div class="container panel-a panel-body">
     <div class="col-sm-12 d-flex flex-row">
       <br>
-      <hr> 
-      <h3>Javascript button</h3>
-      <button id="vacations-data">My Vacations</button>
-      <div id="ajax-vacations">
-      </div>
-      <hr>
-
-
       <h1> My Vacations </h1>
       <br>
       <br>
@@ -22,7 +14,9 @@
         <h3>No Vacations yet! Let's build one!</h3>
       <% else %>
         <% @vacations.uniq.sort.each do |v| %>
-          <h3><%= link_to v.name, vacation_path(v) %></h3>
+          <div class="vacation" id="<%= v.id %>">
+            <h3><%= link_to v.name, vacation_path(v) %></h3>
+          </div>
         <% end %>
       <% end %>
       <br>
