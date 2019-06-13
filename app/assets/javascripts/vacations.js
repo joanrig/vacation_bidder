@@ -1,6 +1,6 @@
 $(document).ready(function() {
   getVacations()
-  listenForHover()
+  showAttractionsOnHover()
 })
 
 
@@ -55,28 +55,37 @@ class Vacation {
 	  // `)
   }
 
-function listenForHover() {
-  $('h3.vacation').mouseenter(function(event) {
+function showAttractionsOnHover() {
+  $('.vacation').mouseenter(function(event) {
     event.preventDefault()
-    // this doesn't work:
-    // const found = allVacations.find(v => v.id === id)
     const id = event.target.parentElement.id
-    //sample code does not work:
-    //myArray.find(x => x.id === '45')
-    // $.grep(myArray, function(e){ return e.id == id; })
     const found = $.grep(allVacations, function(v){
       return v.id == id
     })
-    debugger
-    const attractionsHTML = found.attractions.map(attraction => {
-      return
-      (`
-        <div class='attractions'>
-            <h3>${attraction.name}</h3>
-        </div>
-      `)
-      debugger
-      // then add above html to DOM
+    const attractions = found[0].attractions
+    const attractionsHTML = attractions.map(a => {
+      return(`
+          <div class="attractions">
+            <h3>${a.name}</h3>
+            <p>${a.country}</p>
+            <p>${a.notes}</p>
+          </div>
+        `)
     })
+    debugger
+
+
+
+
+    // const attractionsHTML = found.attractions.map(attraction => {
+    //   return
+    //   (`
+    //     <div class='attractions'>
+    //         <h3>${attraction.name}</h3>
+    //     </div>
+    //   `)
+    //   debugger
+    //   // then add above html to DOM
+    // })
   })
 }
