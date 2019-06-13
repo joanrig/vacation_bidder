@@ -1,19 +1,10 @@
-$(function() {
-    // console.log doesn't work anywhere in my program!
-    console.log('vacations.js is loaded ...')
-    listenForClick()
+$(document).ready(function() {
+  getVacations()
 })
 
-// this is a click but it should be on document ready ?
-function listenForClick() {
-    $('button#vacations-data').one('click', function(event) {
-        event.preventDefault()
-        getVacations()
-    })
-}
 
 function getVacations() {
-    $.ajax({
+  $.ajax({
         url: 'http://localhost:3000/vacations',
         method: 'get',
         dataType: 'json',
