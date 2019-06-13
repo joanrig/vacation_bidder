@@ -1,6 +1,5 @@
 $(document).ready(function() {
   getVacations()
-  showAttractionsOnHover()
 })
 
 function getVacations() {
@@ -46,30 +45,18 @@ class Vacation {
   }
 
 //works correctly for top vacation in list, shows all other info in wrong place (top div) and flickers like a bat out of hell.
-function showAttractionsOnHover() {
-  $('.vacations').mouseenter (function(event) {
-    event.preventDefault()
-    //find vacation based on hover location
-    const id = event.target.parentElement.id
-    if (id){
-      const thisVacation = $.grep(allVacations, function(v){
-        return v.id == id
-      })
+function showAttractions() {
+  const id = event.target.id
+  const thisVacation = $.grep(allVacations, function(v){
+    return v.id == id
+  })
 
-      const attractions = thisVacation[0].attractions
-      const attractionsDiv = document.getElementById(id).getElementsByClassName('attractions')[0]
-      debugger
-
-      attractionsDiv.innerHTML = attractions.map(a => {
-        return(`
-            ${a.name}
-        `)
-      })
-    }
-
-    //end hover
-    $('.vacations').mouseout(function(event) {
-      attractionsDiv.innerHTML = ""
-    })
+  const attractions = thisVacation[0].attractions
+  const attractionsDiv = document.getElementById(`attractions-${id}`)
+  
+  attractionsDiv.innerHTML = attractions.map(a => {
+    return(`
+        ${a.name}
+    `)
   })
 }

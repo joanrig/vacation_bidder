@@ -15,9 +15,11 @@
         <% else %>
         <div class="vacations">
           <% @vacations.uniq.sort.each do |v| %>
-              <div id="<%= v.id %>">
-                <h3><%= link_to v.name, vacation_path(v) %></h3>
-                <div class="attractions">
+              <div id="vacation-<%= v.id %>">
+                <h3><%= link_to v.name, vacation_path(v) %>
+                  <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()">Attractions</button>
+                </h3>
+                <div id="attractions-<%= v.id %>">
                 </div>
               </div>
           <% end %>

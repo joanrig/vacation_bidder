@@ -192,6 +192,11 @@ input[type="text"] {
   color: midnightblue;
 }
 
+.attractions-button {
+  font-size: 5px;
+}
+
+
 .element::-webkit-input-placeholder {
     color: blue;
     font-weight: bold;
