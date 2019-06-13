@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  listenFornewBucketListItemFormClick()
+})
+
 
 function listenFornewBucketListItemFormClick() {
     $('button#new-bucket-list-item').on('click', function(event) {
@@ -18,7 +22,7 @@ class BucketListItem {
         this.name = obj.name
         this.user = obj.user
         this.notes = obj.notes
-        this.vacation = obj.vacation_id
+        this.vacation = obj.vacation
         allBucketListItems.push(this)
     }
   }
@@ -27,11 +31,31 @@ class BucketListItem {
 
   static newBucketListItemForm() {
       return (`
-  	     <strong>Let's add to your bucket list!</strong>
-  		   <form>
-  			    <input id='vacation-name' type='text' name='name'></input><br>
-            <input type='text' name='notes'></input><br>
-  			    <input type='submit' />
-  		   </form>
+        <%= form_for bucket_list_item do |f| %>
+        <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:name].any? %>">
+          <div class="center" style="text-align:center">
+          <%= f.label :name, "Name of bucket list item" %><br>
+          <%= f.text_field :name %>
+          </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="field<%= ' field_with_errors' if bucket_list_item.errors[:notes].any? %>">
+          <div class="center" style="text-align:center">
+            <%= f.label :notes %><br>
+            <div style="color:black">
+              <%= f.text_area :notes %>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+        <%= f.hidden_field :user_id, :value => user.id %>
+        <div style="color:black">
+          <%= f.submit %>
+        </div>
+        <% end %>
       `)
   }
