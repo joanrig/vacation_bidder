@@ -15,8 +15,9 @@
         <% else %>
           <% @vacations.uniq.sort.each do |v| %>
               <div id="vacation-<%= v.id %>">
-                <h3><%= link_to v.name, vacation_path(v) %></h3>
-                  <button class="attractions-button" id="<%= v.id %>" onclick="showAttractions()"></button>
+                <h3><%= link_to v.name, vacation_path(v) %><a href="#">
+                  <span id="<%= v.id %>" class="glyphicon glyphicon-camera"></span>
+                </a></h3>
                 <div class="attractions-list" id="attractions-<%= v.id %>" style="color:lightgrey">
                 </div>
               </div>

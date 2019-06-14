@@ -1,5 +1,6 @@
 $(document).ready(function() {
   getVacations()
+  showAttractions()
 })
 
 function getVacations() {
@@ -32,19 +33,22 @@ class Vacation {
   }
 
 function showAttractions() {
-  const id = event.target.id
-  const thisVacation = $.grep(allVacations, function(v){
-    return v.id == id
-  })
+  camera = document.getElementsByClassName("glyphicon glyphicon-camera").addEventListener("click", function(){
 
-  const attractions = thisVacation[0].attractions
-  const attractionsDiv = document.getElementById(`attractions-${id}`)
+    const id = event.target.id
+    const thisVacation = $.grep(allVacations, function(v){
+      return v.id == id
+    })
+    debugger
 
-  attractionsDiv.innerHTML = attractions.map(a => {
-    return(`
-        <a href="${a.url}" class="attraction">${a.name}</a>
-        <br>
-        <div class="hide">"hide"</div>
-    `)
+    const attractions = thisVacation[0].attractions
+    const attractionsDiv = document.getElementById(`attractions-${id}`)
+
+    attractionsDiv.innerHTML = attractions.map(a => {
+      return(`
+          <a href="${a.url}" class="attraction">${a.name}</a>
+          <br>
+      `)
+    })
   })
 }
