@@ -32,7 +32,10 @@ $(document).ready(function() {
     }
 
   function setEventListener(){
-    document.querySelector('.glyphicon').addEventListener("click", showAttractions)
+    cameras = document.querySelectorAll('.glyphicon')
+    cameras.forEach(function (element) {
+      element.addEventListener("click", showAttractions)
+    })
   }
 
   function showAttractions() {
@@ -51,4 +54,5 @@ $(document).ready(function() {
       `)
     })
   }
+
 })
