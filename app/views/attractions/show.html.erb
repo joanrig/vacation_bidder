@@ -39,11 +39,13 @@
 
         <% if @user_attraction %>
           <h2>My Notes</h2>
-          <h4><%= @user_attraction.notes %></h4>
-          <button type="button" class="btn btn-default btn-sm" onclick = "updateNotes()">
+          <h4 class="current-comments"><%= @user_attraction.notes %></h4>
+          <button type="button" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-pencil" id="notes-<%= @user_attraction.id %>"></span> Add/ Edit
           </button>
         <% end %>
+        <br>
+        <br>
         <div id="show-notes">
         </div>
 
