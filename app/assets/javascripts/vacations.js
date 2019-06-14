@@ -32,13 +32,11 @@ $(document).ready(function() {
     }
 
   function setEventListener(){
-  $('.glyphicon').addEventListener("click", showAttractions)
+    document.querySelector('.glyphicon').addEventListener("click", showAttractions)
   }
 
   function showAttractions() {
-    debugger
     const id = event.target.id
-    debugger
     const thisVacation = $.grep(allVacations, function(v){
       return v.id == id
     })
