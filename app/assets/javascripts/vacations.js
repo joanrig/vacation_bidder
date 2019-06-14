@@ -34,8 +34,20 @@ $(document).ready(function() {
   function setEventListener(){
     cameras = document.querySelectorAll('.glyphicon')
     cameras.forEach(function (element) {
-      element.addEventListener("click", showAttractions)
+      element.addEventListener("click", timesClicked)
     })
+  }
+
+
+  let counter = 0
+
+  function timesClicked(){
+    counter++
+    if (counter % 2 === 0) {
+      hideAttractions()
+      } else {
+      showAttractions()
+    }
   }
 
   function showAttractions() {
@@ -43,10 +55,8 @@ $(document).ready(function() {
     const thisVacation = $.grep(allVacations, function(v){
       return v.id == id
     })
-
     const attractions = thisVacation[0].attractions
     const attractionsDiv = document.getElementById(`attractions-${id}`)
-
     attractionsDiv.innerHTML = attractions.map(a => {
       return(`
           <a href="${a.url}" class="attraction">${a.name}</a>
@@ -54,5 +64,12 @@ $(document).ready(function() {
       `)
     })
   }
+
+  function hideAttractions(){
+    const id = event.target.id
+    const attractionsDiv = document.getElementById(`attractions-${id}`)
+    attractionsDiv.innerHTML = ""
+  }
+
 
 })
