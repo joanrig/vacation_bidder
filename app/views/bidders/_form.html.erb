@@ -15,7 +15,9 @@
       <br><br>
       <%= f.label :website,"Company Website" %><br>
       <%= f.text_field :website %><br><br>
-      <%= f.submit %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
       </div>
     <% end %>
     <br>
@@ -25,4 +27,10 @@
     <br>
 
   </div>
+</div>
+
+<div id="bidderResult">
+  <h2 id="name"></h2>
+  <p id="email"></p>
+  <p id="website"></p>
 </div>

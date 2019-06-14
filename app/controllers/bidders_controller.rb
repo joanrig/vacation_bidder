@@ -10,7 +10,10 @@ class BiddersController < ApplicationController
     @bidder = Bidder.new(bidder_params)
     current_user.update(role: "bidder")
     if @bidder.save
-      redirect_to bidder_path(@bidder)
+      respond_to do |format|
+         format.html { render :show }
+         format.json { render json: @bidder, status: 201}
+      end
     else
       flash[:alert] = @bidder.full_messages
       render :new
