@@ -38,7 +38,6 @@ $(document).ready(function() {
     })
   }
 
-
   let counter = 0
 
   function timesClicked(){
@@ -70,6 +69,5 @@ $(document).ready(function() {
     const attractionsDiv = document.getElementById(`attractions-${id}`)
     attractionsDiv.innerHTML = ""
   }
-
 
 })
