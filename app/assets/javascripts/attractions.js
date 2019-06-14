@@ -16,6 +16,8 @@ $(document).ready(function() {
     })
   }
 
+  const allAttractions = []
+
   class Attraction {
       constructor(obj) {
           this.id = obj.id
@@ -27,13 +29,20 @@ $(document).ready(function() {
           this.country = obj.country
           this.notes = obj.notes
           this.public = obj.public
+          allAttractions.push(this)
       }
     }
 
   function updateNotes(){
+    debugger
     document.querySelector('.glyphicon').addEventListener("click", function(){
-      const id = document.URL.split('/')[4]
-      debugger
+      const id = event.target.id
+      const thisAttraction = $.grep(allAttractions, function(a){
+        return a.id == id
+      })
+      // const notes = thisVacation[0].notes
+      // const notesDiv = document.getElementById(`notes-${id}`)
+
     })
   }
 
