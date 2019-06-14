@@ -44,7 +44,7 @@ class AttractionsController < ApplicationController
       flash[:alert] = @attraction.errors.full_messages
       render :new
     end
-    binding.pry
+    #binding.pry
   end
 
   def show
@@ -53,6 +53,10 @@ class AttractionsController < ApplicationController
       @user_attraction = UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
     else
       @user_attraction = UserAttraction.new
+    end
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @vacations}
     end
   end
 
@@ -63,14 +67,14 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    binding.pry
+    #binding.pry
     if params[:attraction][:category]
       @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     end
 
     if @category
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
-      binding.pry
+      #binding.pry
     end
 
     if params[:attraction][:user_attraction]
