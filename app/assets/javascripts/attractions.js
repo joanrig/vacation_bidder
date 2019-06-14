@@ -34,17 +34,22 @@ $(document).ready(function() {
     }
 
   function updateNotes(){
-    debugger
-    document.querySelector('.glyphicon').addEventListener("click", function(){
-      const id = event.target.id
-      const thisAttraction = $.grep(allAttractions, function(a){
-        return a.id == id
-      })
-      // const notes = thisVacation[0].notes
-      // const notesDiv = document.getElementById(`notes-${id}`)
-
-    })
+    notesDiv = document.getElementById("show-notes")
+    pencil = document.querySelector('.glyphicon')
+    notesDiv.innerHTML = "hello from notes div"
   }
+
+    // .addEventListener("click", function(){
+    //   const id = event.target.id
+    //   debugger
+    //   const thisAttraction = $.grep(allAttractions, function(a){
+    //     return a.id == id
+    //   })
+    //   // const notes = thisVacation[0].notes
+    //   // const notesDiv = document.getElementById(`notes-${id}`)
+    //
+    // })
+  // }
 
 
 
