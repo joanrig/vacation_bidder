@@ -24,21 +24,32 @@ $(document).ready(function() {
     `
   }
 
-  //never called
+
   function submitForm(){
-    $('#new_notes').on('submit', (function(event) {
-      event.preventDefault()
-      debugger
-      const values = $(this).serialize()
+    const form = document.querySelector('#new_notes')
+    $(form).on('submit', function(event) {
+        event.preventDefault()
+        const values = $(this).serialize()
+        const id = document.querySelector('.glyphicon').id.split('-')[1]
 
+        fetch(`http://localhost:3000/attractions/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
 
-      const id = document.querySelector('.glyphicon').id.split('-')[1]
-      const posting = $.patch(/attractions/`${id}`, values)
+          body: JSON.stringify({
+            attraction: attraction.notes
+          })
+        })
 
-      posting.done(function(data) {
-        const post = data
-        $('.currentComments').innerText = post["attraction"]["notes"]
-      })
+        .then(function(json) { 
+        console.log(json)
+        })
+
     }))
   }
+
+
+//document ready
 })
