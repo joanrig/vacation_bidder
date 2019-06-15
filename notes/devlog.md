@@ -18,6 +18,8 @@ allow users to
 3 mass assign categories to attractions
 ? share vacations view? with guests.
 
+3 fix new bucket list item path button - no longer working
+
 3 deploy to heroku
 
 Thurs

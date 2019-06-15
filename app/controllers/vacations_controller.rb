@@ -6,10 +6,10 @@ class VacationsController < ApplicationController
 
   def index
     @vacations = @user.vacations
-     respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @vacations}
-    end
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @vacations}
+      end
   end
 
   def new
@@ -19,6 +19,7 @@ class VacationsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
     @vacation.bucket_list_items << @item
@@ -44,7 +45,7 @@ class VacationsController < ApplicationController
 
     @public =  Attraction.where(public:true)
     @private =  Attraction.select{|a| a.created_by = current_user.id}
-    binding.pry
+
     @both = @public + @private
 
     # if you want to create attractions from vacations edit page
