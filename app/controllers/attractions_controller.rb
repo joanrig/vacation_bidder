@@ -1,6 +1,7 @@
 class AttractionsController < ApplicationController
   before_action :set_attraction
   before_action :all_categories, only: [:index, :new, :create, :edit]
+  skip_before_action :verify_authenticity_token
 
   def index
     @categories = Category.all
@@ -47,6 +48,7 @@ class AttractionsController < ApplicationController
     #binding.pry
   end
 
+
   def show
     @categories = @attraction.categories.uniq
     if UserAttraction.find_by(user_id:current_user.id, attraction_id:@attraction.id)
@@ -54,6 +56,7 @@ class AttractionsController < ApplicationController
     else
       @user_attraction = UserAttraction.new
     end
+
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @vacations}
@@ -67,7 +70,7 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    #binding.pry
+    binding.pry
     if params[:attraction][:category]
       @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     end
@@ -96,7 +99,11 @@ class AttractionsController < ApplicationController
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
-      redirect_to attraction_path(@attraction)
+
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @attraction, status: 201}
+      end
     else
       flash[:alert] = @attraction.errors.full_message
       render :edit

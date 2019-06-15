@@ -12,7 +12,9 @@
 
         <h2>Categories</h2>
         <% @attraction.categories.uniq.each do |c| %>
-        <h5><%= link_to c.name, category_path(c) %></h5>
+        <div class="category" id="category-<%=c.id %>">
+          <h5><%= link_to c.name, category_path(c) %></h5>
+        </div>
         <% end %>
         <br>
         <br>
@@ -39,9 +41,9 @@
 
         <% if @user_attraction %>
           <h2>My Notes</h2>
-          <h4 class="current-comments"><%= @user_attraction.notes %></h4>
+          <h4 class="current-comments"><%= @attraction.notes %></h4>
           <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-pencil" id="notes-<%= @user_attraction.id %>"></span> Add/ Edit
+            <span class="glyphicon glyphicon-pencil" id="notes-<%= @attraction.id %>"></span> Add/ Edit
           </button>
         <% end %>
         <br>
