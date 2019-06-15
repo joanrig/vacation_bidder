@@ -24,21 +24,22 @@ $(document).ready(function() {
     `
   }
 
-  //never called
   function submitForm(){
     $('#new_notes').on('submit', (function(event) {
       event.preventDefault()
-      debugger
-      const values = $(this).serialize()
 
 
-      const id = document.querySelector('.glyphicon').id.split('-')[1]
-      const posting = $.patch(/attractions/`${id}`, values)
-
-      posting.done(function(data) {
-        const post = data
-        $('.currentComments').innerText = post["attraction"]["notes"]
+      let id = document.querySelector('.glyphicon').id.split('-')[1]
+      return $.ajax({
+          type: "Patch",
+          url: "/attractions/`${id}`",
+          data: JSON.stringify(item),
+          dataType: "json",
+          contentType: 'application/json; charset=utf-8'
       })
     }))
   }
+
+
+//document ready
 })
