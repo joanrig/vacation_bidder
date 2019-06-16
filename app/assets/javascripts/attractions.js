@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-  function submitForm () {
-    debugger
+
     $('form').submit(function(event) {
       event.preventDefault()
 
@@ -11,8 +10,8 @@ $(document).ready(function() {
       posting.done(function(data) {
         showAttraction(data)
       })
-    }
-  })
+    })
+
 
   function showAttraction(data){
     let categories = data.categories.map(c => {
