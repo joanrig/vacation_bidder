@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log('DOM fully loaded and parsed')
   showForm()
+  submitBidderForm()
 })
 
 
@@ -25,6 +26,15 @@ class Bidder {
       }
   }
 
+  Bidder.prototype.bidderHTML = function () {
+    return (`
+      <p>${data.name}</p>
+      <p>${data.email}</p>
+      <p>${data.website}</p>
+    `)
+    }
+
+
 
 
   function showForm(){
@@ -33,26 +43,22 @@ class Bidder {
 
 
   function submitBidderForm() {
-    $('#bidder-form').submit(function(event) {
+    $('#bidder-form').on('submit', function(event) {
       event.preventDefault()
 
       let values = $(this).serialize();
-      let posting = $.post('/bidders.json', values);
+      const posting = $.post('/bidders.json', values);
+      //this debugger hits
 
-      posting.done(function(data) {
+      posting.done(function(data){
+        let newBidder = new Bidder(data)
+        $('#bidder-results').innerHTML = newBidder.bidderHTML()
+        debugger
 
-        let bidderDiv = `
-         <p>${this.name}</p>
-        `
-
-        $('#bidder-results').html(bidderDiv);
       })
     })
   }
 
-
-
-  submitBidderForm()
 
 //document ready
 // })

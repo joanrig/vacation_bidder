@@ -4,6 +4,10 @@ class BiddersController < ApplicationController
 
   def new
     @bidder = Bidder.new
+    respond_to do |format|
+      format.html { render :new }
+      format.json { render json: @bidder}
+    end
   end
 
   def create
