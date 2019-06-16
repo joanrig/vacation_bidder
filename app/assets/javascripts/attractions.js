@@ -24,19 +24,29 @@ $(document).ready(function() {
     `
   }
 
+
+//doesn't work but at least it's solvable.
   function submitForm(){
     $('#new_notes').on('submit', (function(event) {
       event.preventDefault()
 
-
+      const patch = {
+        "data" : "New data"
+      }
       let id = document.querySelector('.glyphicon').id.split('-')[1]
-      return $.ajax({
-          type: "Patch",
-          url: "/attractions/`${id}`",
-          data: JSON.stringify(item),
-          dataType: "json",
-          contentType: 'application/json; charset=utf-8'
-      })
+
+        // https://stackoverflow.com/questions/38945677/using-jquery-patch-to-make-partial-update
+        $.ajax({
+           type: 'PATCH',
+           url: "/attractions/`${id}`",
+           data: JSON.stringify(patch),
+           processData: false,
+           contentType: 'application/merge-patch+json'
+        })
+          .done(function(data) {
+          console.log(data)
+        })
+
     }))
   }
 
