@@ -7,7 +7,7 @@ $(document).ready(function() {
           event.preventDefault()
           let newBucketListItemForm = BucketListItem.newBucketListItemForm()
           debugger
-          document.querySelector('div#new-bucket-list-item-form').innerHTML = newBucketListItemForm()
+          document.querySelector('div#new-bucket-list-item-form').innerHTML = newBucketListItemForm
 
       })
   }

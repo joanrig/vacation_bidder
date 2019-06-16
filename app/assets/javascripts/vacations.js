@@ -55,6 +55,7 @@ $(document).ready(function() {
       return v.id == id
     })
     const attractions = thisVacation[0].attractions
+    debugger
     const attractionsDiv = document.getElementById(`attractions-${id}`)
     attractionsDiv.innerHTML = attractions.map(a => {
       return(`
