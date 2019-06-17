@@ -19,20 +19,15 @@ const bindClickHandlers = () => {
         categories.forEach(category => {
           console.log(category)
         })
-
-
       })
-
-
-  //   fetch('http://localhost3000/attractions.json')
-  // .then(function(response) {
-  //   return response.json();
-  // })
-  // .then(function(myJson) {
-  //   console.log(JSON.stringify(myJson));
-  // });
   })
+}
 
+function Category(category) {
+  //this is the object you are building
+  this.id = post.id
+  this.name = post.name
+  this.attractions = post.attractions
 }
 
 
