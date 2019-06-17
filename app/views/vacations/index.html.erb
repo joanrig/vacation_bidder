@@ -22,8 +22,11 @@
               <div id="vacation-<%= v.id %>">
                 <h3><%= link_to v.name, vacation_path(v) %><a href="#">
                   <span id="<%= v.id %>" class="glyphicon glyphicon-camera"></span>
+                  <span id="notes-<%= v.id %>" class="glyphicon glyphicon-comment"></span>
                 </a></h3>
                 <div class="attractions-list" id="attractions-<%= v.id %>" style="color:lightgrey">
+                </div>
+                <div class="vacation-notes" id="notes-<%= v.id %>" style="color:lightgrey">
                 </div>
               </div>
           <% end %>
