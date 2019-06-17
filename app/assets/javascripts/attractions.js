@@ -17,7 +17,8 @@ const bindClickHandlers = () => {
         //arrow function version
         //if arrow function only takes in one argument you dn't need to wrap them in parentheses
         categories.forEach(category => {
-          console.log(category)
+          let newCategory = new Category(category)
+          console.log(newCategory)
         })
       })
   })
@@ -25,9 +26,9 @@ const bindClickHandlers = () => {
 
 function Category(category) {
   //this is the object you are building
-  this.id = post.id
-  this.name = post.name
-  this.attractions = post.attractions
+  this.id = category.id
+  this.name = category.name
+  this.attractions = category.attractions
 }
 
 
