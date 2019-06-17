@@ -1,6 +1,9 @@
 class Category < ApplicationRecord
   has_many :attraction_categories
   has_many :attractions, through: :attraction_categories
+
+  has_many :user_attractions
+  has_many :users, through: :user_attractions
   validates :name, presence: true, uniqueness: true
 
   def public_attractions

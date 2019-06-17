@@ -6,7 +6,7 @@ $(() => {
 const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
-    history.pushState(null, null, "categories");
+    history.pushState(null, null, "attractions");
     fetch(`/attractions.json`)
     // return response in json, pass it on
       .then((res) => res.json())
@@ -21,8 +21,7 @@ const bindClickHandlers = () => {
           let newCategory = new Category(category)
           let categoryHtml = ''
           categoryHtml += newCategory.formatIndex()
-          debugger
-          console.log(categoryHtml)
+          // debugger
           $('#app-container').append(categoryHtml)
         })
       })
@@ -36,12 +35,23 @@ function Category(category) {
   this.attractions = category.attractions
 }
 
+
 Category.prototype.formatIndex = function(){
+
+  let attractionsHtml = this.attractions.map(a => {
+    return(`
+        <a href="${a.url}" class="attraction">${a.name}</a>
+        <br>
+    `)
+  }).join(' ')
+
   let categoryHtml = `
-    <h1 style="text-align:center">${this.name}</h1>
+  <h1 style="text-align:center">${this.name}</h1>
   `
-  return categoryHtml
+  return (categoryHtml + attractionsHtml)
 }
+
+
 
 // $(document).ready(function() {
 //   bindClickHandlers()
