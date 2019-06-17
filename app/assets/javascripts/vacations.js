@@ -76,7 +76,7 @@ $(document).ready(function() {
   //////////////   COMMENTS ////////////////////////
 
 
-  Vacation.prototype.vacationHTML = function () {
+  Vacation.prototype.notes = function() {
     return (`
         <p>${this.notes}</p>
     `)
@@ -106,10 +106,11 @@ $(document).ready(function() {
     const id = event.target.id.split('-')[1]
     const thisVacation = $.grep(allVacations, function(v){
       return v.id == id
-      debugger
+      // debugger hits
     })
 
-    notes = thisVacation.vacationHTML()
+    //error from line below: thisVacation.notes is not a function
+    notes = thisVacation.notes()
     $(`#notes-${id}`).html(notes)
   }
 
