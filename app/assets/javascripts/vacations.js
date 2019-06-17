@@ -58,7 +58,8 @@ $(document).ready(function() {
       return v.id == id
     })
     const attractions = thisVacation[0].attractions
-    ${`#attractions-${id}`}.innerHTML = attractions.map(a => {
+    const attractionsDiv = document.getElementById(`attractions-${id}`)
+    attractionsDiv.innerHTML = attractions.map(a => {
       return(`
           <a href="${a.url}" class="attraction">${a.name}</a>
           <br>
@@ -104,9 +105,10 @@ $(document).ready(function() {
   function showNotes() {
     const id = event.target.id.split('-')[1]
     const thisVacation = $.grep(allVacations, function(v){
+      return v.id == id
       debugger
     })
-    // debugger
+
     notes = thisVacation.vacationHTML()
     $(`#notes-${id}`).html(notes)
   }

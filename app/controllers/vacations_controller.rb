@@ -19,10 +19,6 @@ class VacationsController < ApplicationController
   end
 
   def create
-<<<<<<< Updated upstream
-=======
-    #binding.pry
->>>>>>> Stashed changes
     @item = BucketListItem.find_by_id(params[:bucket_list_item_id])
     @vacation = Vacation.new(vacation_params)
     @vacation.bucket_list_items << @item

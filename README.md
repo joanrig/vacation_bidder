@@ -1,7 +1,5 @@
 # README
 
-blog link:
-https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
 
 ## Welcome to your Bucket List bidding system!
 
@@ -31,11 +29,33 @@ https://medium.com/@joanrigdon/breaking-the-speed-limit-with-javascript-event-li
 
 ## Videos
 
-Here is a 9-minute video walkthrough of how this program works:
+1. Here is a 9-minute video walkthrough of how this program works:
 https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
 
-Here is a 4-minutes video walkthrough of the Javascript features I recently added to this project:
+2. Here is a 4-minutes video walkthrough of the Javascript features I recently added to this project:
 https://www.loom.com/share/9bbb474022e443ffa2d80158261dc196
+
+## Project requirements
+
+Rails App with JavaScript Frontend Spec
+Project Specs:
+[ X ] Must have a Rails Backend and new requirements implemented through JavaScript.
+
+[ X ] Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Constructor Functions)
+
+[ X ] Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax.
+
+[ X ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. //vacations - list of attractions
+
+[ debug ] Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. //- Vacations - show notes
+
+[ X ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. // vacation's attraction
+
+[ X ] Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. - //attractions new notes
+
+
+[ X ] At least one of the JS Model Objects must have a method on the prototype. // display vacation notes - debugging
+
 
 
 
