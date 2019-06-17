@@ -6,6 +6,7 @@ $(() => {
 const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
+    history.pushState(null, null, "categories");
     fetch(`/attractions.json`)
     // return response in json, pass it on
       .then((res) => res.json())
