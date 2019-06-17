@@ -33,7 +33,7 @@ function Category(category) {
   this.attractions = category.attractions
 }
 
-Category.prototype.formatIndex = () => {
+Category.prototype.formatIndex = function(){
   let categoryHtml = `
   <h1>${this.name}</h1>
   `
