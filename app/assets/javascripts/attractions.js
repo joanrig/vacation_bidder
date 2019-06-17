@@ -18,8 +18,10 @@ const bindClickHandlers = () => {
         //if arrow function only takes in one argument you dn't need to wrap them in parentheses
         categories.forEach(category => {
           let newCategory = new Category(category)
-          console.log(newCategory)
-          let categoryHtml = newCategory.formatIndex()
+          let categoryHtml = ''
+          categoryHtml += newCategory.formatIndex()
+          debugger
+          console.log(categoryHtml)
           $('#app-container').append(categoryHtml)
         })
       })
