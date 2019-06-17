@@ -6,7 +6,10 @@ const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
     fetch(`/attractions.json`)
-      .then((response) => console.log(response))
+    // return response in json, pass it on
+      .then((response) => response.json())
+      .then(data => console.log(data))
+
 
   //   fetch('http://localhost3000/attractions.json')
   // .then(function(response) {
