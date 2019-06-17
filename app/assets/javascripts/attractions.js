@@ -19,6 +19,8 @@ const bindClickHandlers = () => {
         categories.forEach(category => {
           let newCategory = new Category(category)
           console.log(newCategory)
+          let categoryHtml = newCategory.formatIndex()
+          $('#app-container').append(categoryHtml)
         })
       })
   })
@@ -31,6 +33,12 @@ function Category(category) {
   this.attractions = category.attractions
 }
 
+Category.prototype.formatIndex = () => {
+  let categoryHtml = `
+  <h1>${this.name}</h1>
+  `
+  return categoryHtml
+}
 
 // $(document).ready(function() {
 //   bindClickHandlers()

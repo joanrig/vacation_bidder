@@ -1,50 +1,55 @@
 <%= render '/layouts/attractions' %>
 
-<br>
-<br>
-<div class="center" style="text-align:center">
-  <div class="container panel-a panel-body">
+<!-- //to get attractions index to display with this format use app-container here:
+<div id = "app-container"> -->
+  <br>
+  <br>
+  <div class="center" style="text-align:center">
+    <div class="container panel-a panel-body">
 
 
-    <div class="col-sm-12 d-flex flex-row">
-      <div class="text-center">
-      <h1>My Attractions</h1>
+      <div class="col-sm-12 d-flex flex-row">
+        <div class="text-center">
+        <h1>My Attractions</h1>
 
-      <%= form_tag(attractions_search_path) do %>
-        <%= text_field_tag :attraction %>
-        <%= submit_tag 'Search' %>
-      <% end %>
-      <br>
-      <br>
+        <%= form_tag(attractions_search_path) do %>
+          <%= text_field_tag :attraction %>
+          <%= submit_tag 'Search' %>
+        <% end %>
+        <br>
+        <br>
 
 
-      <% @categories.sort_by(&:name).each do |c| %>
-      <br>
-      <br>
-        <h2> <%= c.name %></h2>
-        <% c.attractions.uniq.sort_by(&:name).each do |a| %>
-          <% if current_user.attractions.include?(a) %>
-            <h5><%= link_to a.name, attraction_path(a) %></h5>
+        <% @categories.sort_by(&:name).each do |c| %>
+        <br>
+        <br>
+          <h2> <%= c.name %></h2>
+          <% c.attractions.uniq.sort_by(&:name).each do |a| %>
+            <% if current_user.attractions.include?(a) %>
+              <h5><%= link_to a.name, attraction_path(a) %></h5>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
 
-      <br>
-      <hr>
-      <br>
-      <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
-      <br>
-      <h5><%= link_to "Collect more attractions", categories_path %></h5>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
+        <br>
+        <hr>
+        <br>
+        <h5><%= link_to "Add new attraction", new_attraction_path %></h5>
+        <br>
+        <h5><%= link_to "Collect more attractions", categories_path %></h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
 
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<!-- //app container
+</div> -->
