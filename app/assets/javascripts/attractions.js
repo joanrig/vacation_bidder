@@ -2,13 +2,26 @@ $(() => {
   bindClickHandlers()
 })
 
+//attractions index page will show attractions through their categories, so we are making a fetch request for categories
 const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
     fetch(`/attractions.json`)
     // return response in json, pass it on
-      .then((response) => response.json())
-      .then(data => console.log(data))
+      .then((res) => res.json())
+      .then(categories => {
+        $('#app-container').html('')
+        //verbose version
+        // categories.forEach(function(category{
+
+        //arrow function version
+        //if arrow function only takes in one argument you dn't need to wrap them in parentheses
+        categories.forEach(category => {
+          console.log(category)
+        })
+
+
+      })
 
 
   //   fetch('http://localhost3000/attractions.json')
