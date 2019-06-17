@@ -21,14 +21,21 @@ I hope you can use this free app to make your bucket list dreams come true!
 
 You can read more about the development of this web app in these blog posts:
 
-1. Part 1. Nested routes and nested forms
+1. Nested routes and nested forms
 https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
+
+2. Speed! JavaScript and Event Listeners
+https://medium.com/@joanrigdon/breaking-the-speed-limit-with-javascript-event-listeners-23aaecadfa26
 
 
 
 ## Videos
 
-Here is a 9-minute video walkthrough of how this program works:https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
+Here is a 9-minute video walkthrough of how this program works:
+https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
+
+Here is a 4-minutes video walkthrough of the Javascript features I recently added to this project:
+https://www.loom.com/share/9bbb474022e443ffa2d80158261dc196
 
 
 
