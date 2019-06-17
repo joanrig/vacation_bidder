@@ -5,8 +5,8 @@ class VacationsController < ApplicationController
 
 
   def index
-    @vacations = @user.vacations.uniq
-     respond_to do |format|
+    @vacations = @user.vacations
+    respond_to do |format|
       format.html { render :index }
       format.json { render json: @vacations}
     end
@@ -44,7 +44,7 @@ class VacationsController < ApplicationController
 
     @public =  Attraction.where(public:true)
     @private =  Attraction.select{|a| a.created_by = current_user.id}
-    binding.pry
+    #binding.pry
     @both = @public + @private
 
     # if you want to create attractions from vacations edit page

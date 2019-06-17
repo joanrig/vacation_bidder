@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   get 'users/sign_out', to: 'devise/sessions#destroy'
 
-
   resources :bucket_list_items do
     resources :vacations, only: [:new, :create]
   end
