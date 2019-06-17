@@ -11,7 +11,6 @@ class AttractionsController < ApplicationController
     end
   end
 
-
   def search
     @attractions = Attraction.where("name LIKE ?", "%#{params[:attraction]}%")
     #binding.pry
@@ -51,7 +50,6 @@ class AttractionsController < ApplicationController
     end
     #binding.pry
   end
-
 
   def show
     @categories = @attraction.categories.uniq

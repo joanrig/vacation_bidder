@@ -40,7 +40,7 @@ Category.prototype.formatIndex = function(){
 
   let attractionsHtml = this.attractions.map(a => {
     return(`
-        <a href="${a.url}" class="attraction">${a.name}</a>
+        <h3 style="text-align:center"><a href="${a.url}" class="attraction">${a.name}</a></h3>
         <br>
     `)
   }).join(' ')
