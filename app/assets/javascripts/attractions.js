@@ -37,7 +37,7 @@ function Category(category) {
 
 Category.prototype.formatIndex = function(){
   let categoryHtml = `
-  <h1>${this.name}</h1>
+    <h1 style="text-align:center">${this.name}</h1>
   `
   return categoryHtml
 }
