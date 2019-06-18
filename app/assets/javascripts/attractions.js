@@ -74,15 +74,17 @@ $(document).ready(function() {
       // debugger hits here
 
       $.ajax({
-          url: `http://localhost:3000/attractions/${id}`,
-          method: 'get',
-          dataType: 'json',
-          success: function(data) {data => {
-            console.log(data)
-            // debugger does not hit
+        url: `http://localhost:3000/attractions/${id}`,
+        method: 'get',
+        dataType: 'json',
+        success: function(data) {data => {
+          console.log(data)
+          // debugger does not hit
 
-            const newAttraction = new Attraction(attraction)
-          }}
+          const newAttraction = new Attraction(attraction)
+          let attractionHtml = newAttraction.formatIndex()
+          $(`#show-attraction-${id}`).append(attractionHtml)
+        }}
       })
     })
   }
