@@ -1,7 +1,8 @@
 $(document).ready(function() {
   getCategoriesAndNestedAttractions()
+  listenForAttractionClick()
 
-  //////// INSPIRE ME aka categories index ///////////////
+  //INSPIRE ME aka categories index ///////////////
 
   //triggered by click on Inspire me in nav bar
   function getCategoriesAndNestedAttractions() {
@@ -26,7 +27,6 @@ $(document).ready(function() {
     })
   }
 
-
   const allCategories = []
 
   class Category {
@@ -39,8 +39,7 @@ $(document).ready(function() {
     }
   }
 
-
-  //get rid of duplicates stored in category.attractions- Rails problem
+  //get rid of duplicates in category.attractions- Rails problem
   Category.prototype.formatIndex = function(){
     let user_attractions = []
     let previousId = null
@@ -65,30 +64,28 @@ $(document).ready(function() {
     return (categoryHtml + attractionsHtml)
   }
 
-  ////// categories show page - click on attraction to show info
+  // categories show page - click on attraction to show info
   listenForAttractionClick()
 
   function listenForAttractionClick(){
-    $('.attraction').addEventListener("click", showAttraction)
-  }
-
-
-  function showAttraction() {
-    debugger
+    $('.attraction').on('click', (e) => {
+      e.preventDefault()
       const id = event.target.href.split('/')[4]
+      // debugger hits here
+
       $.ajax({
           url: `http://localhost:3000/attractions/${id}`,
           method: 'get',
           dataType: 'json',
           success: function(data) {data => {
             console.log(data)
-            debugger
+            // debugger does not hit
 
             const newAttraction = new Attraction(attraction)
           }}
       })
+    })
   }
-
 
 
   const allAttractions = []
@@ -121,10 +118,10 @@ $(document).ready(function() {
         <p>${this.public}</p>
     `)
   }
-
-
 //document ready
 })
+
+
 
 
 // $(document).ready(function() {
