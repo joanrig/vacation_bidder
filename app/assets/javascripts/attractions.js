@@ -1,13 +1,10 @@
-$(() => {
-  bindClickHandlers()
+$(document).ready(function() {
+  inspireMeClick()
 })
 
-$.get('/current_user', function(result){
-  alert(result.name);
-})
 
-//attractions index page will show attractions through their categories, so we are making a fetch request for categories
-const bindClickHandlers = () => {
+//for
+const inspireMeClick = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
     // history.pushState(null, null, "attractions");
@@ -16,16 +13,14 @@ const bindClickHandlers = () => {
       .then((res) => res.json())
       .then(categories => {
         $('#app-container').html('')
+
         //verbose version
         // categories.forEach(function(category{
-
-        //arrow function version
         //if arrow function only takes in one argument you dn't need to wrap them in parentheses
         categories.forEach(category => {
           let newCategory = new Category(category)
           let categoryHtml = ''
           categoryHtml += newCategory.formatIndex()
-          // debugger
           $('#app-container').append(categoryHtml)
         })
       })
@@ -40,29 +35,27 @@ function Category(category) {
   this.attractions = category.attractions
 }
 
-
-
-
+//get rid of duplicates stored in category.attractions- Rails problem
 Category.prototype.formatIndex = function(){
-  let test = []
+  let user_attractions = []
   let previousId = null
   for (let i=0; i < this.attractions.length; i++) {
     let currentId = this.attractions[i].id
     if (currentId != previousId){
-      test.push(this.attractions[i])
+      user_attractions.push(this.attractions[i])
     }
     previousId = currentId
   }
 
-  let attractionsHtml = test.map(a => {
+  let attractionsHtml = user_attractions.map(a => {
     return(`
-        <h3 style="text-align:center"><a href="${a.url}" class="attraction">${a.name}</a></h3>
+        <h3 style="color:white"><a href="${a.url}" class="attraction">${a.name}</a></h3>
         <br>
     `)
   }).join(' ')
 
   let categoryHtml = `
-  <h1 style="text-align:center">${this.name}</h1>
+  <h1><a href="categories/${this.id}" class="category">${this.name}</a></h1>
   `
   return (categoryHtml + attractionsHtml)
 }

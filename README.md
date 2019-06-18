@@ -45,14 +45,13 @@ Project Specs:
 
 [ X ] Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax.
 
-[ X ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. //vacations - list of attractions
+[ X ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. //vacations - "Inspire Me - list of attractions"
 
 [ debug ] Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. //- Vacations - show notes
 
-[ X ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. // vacation's attraction
+[ X ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. // category's attractions & vacation's attractions
 
 [ X ] Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. - //attractions new notes
-
 
 [ X ] At least one of the JS Model Objects must have a method on the prototype. // display vacation notes - debugging
 
