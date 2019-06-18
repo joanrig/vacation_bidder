@@ -1,6 +1,6 @@
 $(document).ready(function() {
   getCategoriesAndNestedAttractions()
-  
+
 
   //INSPIRE ME aka categories index ///////////////
 
@@ -65,29 +65,41 @@ $(document).ready(function() {
   }
 
   // categories show page - click on attraction to show info
-  // listenForAttractionClick()
+  listenForAttractionClick()
 
   function listenForAttractionClick(){
-    $('.attraction').on('click', (e) => {
+    $('.attraction').one('click', function(e){
       e.preventDefault()
+      console.log(this)
+
+
       const id = event.target.href.split('/')[4]
-      // debugger hits here
-
-      $.ajax({
-        url: `http://localhost:3000/attractions/${id}`,
-        method: 'get',
-        dataType: 'json',
-        success: function(data) {data => {
-          console.log(data)
-          // debugger does not hit
-
-          const newAttraction = new Attraction(attraction)
-          let attractionHtml = newAttraction.formatIndex()
+      fetch(`/attractions/${id}.json`)
+        .then((res) => res.json())
+        .then(attraction => {
+          let newAttraction = new Attraction(attraction)
+          let attractionHtml = newAttraction.formatShow()
           $(`#show-attraction-${id}`).append(attractionHtml)
-        }}
       })
     })
   }
+
+
+      // $.ajax({
+      //   url: `http://localhost:3000/attractions/${id}`,
+      //   method: 'get',
+      //   dataType: 'json',
+      //   success: function(data) {data => {
+      //     console.log(data)
+      //     // debugger does not hit
+      //
+      //     const newAttraction = new Attraction(attraction)
+      //     let attractionHtml = newAttraction.formatIndex()
+      //     $(`#show-attraction-${id}`).append(attractionHtml)
+      //   }}
+      // })
+  //   })
+  // }
 
 
   const allAttractions = []
@@ -107,18 +119,15 @@ $(document).ready(function() {
     }
   }
 
-  Attraction.prototype.formatIndex = function() {
-    return (`
-        <h1>${this.name}</h1>
+  Attraction.prototype.formatShow = function() {
+    let attractionHtml = `
         <hr>
         <p>${this.website}</p>
-        <p>${this.city}</p>
-        <p>${this.county}</p>
-        <p>${this.state}</p>
         <p>${this.country}</p>
         <p>${this.notes}</p>
-        <p>${this.public}</p>
-    `)
+        </hr>
+    `
+    return attractionHtml
   }
 //document ready
 })
