@@ -1,10 +1,11 @@
 $(document).ready(function() {
-  inspireMeClick()
+  listenForInspireMeClick()
+  getAttraction()
 })
 
 
 //for
-const inspireMeClick = () => {
+const listenForInspireMeClick = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
     // history.pushState(null, null, "attractions");
@@ -26,6 +27,24 @@ const inspireMeClick = () => {
       })
   })
 }
+
+const getAttraction = () => {
+  $('.attraction').on('click', (e) => {
+    e.preventDefault()
+    let id = event.target.href.split('/')[4]
+
+    $.ajax({
+        url: `http://localhost:3000/attractions/${id}`,
+        method: 'get',
+        dataType: 'json',
+        success: function(data) {data => {
+          const newAttraction = new Attraction(attraction)
+        })
+      }
+    })
+  })
+}
+
 
 
 function Category(category) {
@@ -55,7 +74,7 @@ Category.prototype.formatIndex = function(){
   }).join(' ')
 
   let categoryHtml = `
-  <h1><a href="categories/${this.id}" class="category">${this.name}</a></h1>
+  <h1 style="color:white"><a href="categories/${this.id}" class="category">${this.name}</a></h1>
   `
   return (categoryHtml + attractionsHtml)
 }
