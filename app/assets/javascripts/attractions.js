@@ -1,6 +1,6 @@
 $(document).ready(function() {
   getCategoriesAndNestedAttractions()
-  listenForAttractionClick()
+  
 
   //INSPIRE ME aka categories index ///////////////
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
   }
 
   // categories show page - click on attraction to show info
-  listenForAttractionClick()
+  // listenForAttractionClick()
 
   function listenForAttractionClick(){
     $('.attraction').on('click', (e) => {
