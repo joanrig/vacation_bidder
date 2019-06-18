@@ -69,7 +69,7 @@ class AttractionsController < ApplicationController
 
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @vacations}
+      format.json { render json: @attraction}
     end
   end
 
