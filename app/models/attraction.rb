@@ -12,4 +12,14 @@ class Attraction < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :country, presence: true
+
+
+  # def autosave_associated_records_for_attraction_categories
+  #   # Find or create the author by name
+  #   if new_author = Author.find_by_name(author.name)
+  #     self.author = new_author
+  #   else
+  #     self.author.save!
+  #   end
+  # end
 end

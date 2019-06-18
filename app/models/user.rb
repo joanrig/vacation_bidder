@@ -23,5 +23,9 @@ class User < ApplicationRecord
     end
   end
 
+  def current_user
+    render json: {name: current_user.name}
+  end
+
 
 end

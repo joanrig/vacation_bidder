@@ -2,6 +2,10 @@ $(() => {
   bindClickHandlers()
 })
 
+$.get('/current_user', function(result){
+  alert(result.name);
+})
+
 //attractions index page will show attractions through their categories, so we are making a fetch request for categories
 const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
@@ -28,6 +32,7 @@ const bindClickHandlers = () => {
   })
 }
 
+
 function Category(category) {
   //this is the object you are building
   this.id = category.id
@@ -36,9 +41,21 @@ function Category(category) {
 }
 
 
+
+
 Category.prototype.formatIndex = function(){
 
-  let attractionsHtml = this.attractions.map(a => {
+  let test = []
+  let previousId = null
+  for (let i=0; i < this.attractions.length; i++) {
+    let currentId = this.attractions[i].id
+    if (currentId != previousId){
+      test.push(this.attractions[i])
+    }
+    previousId = currentId
+  }
+
+  let attractionsHtml = test.map(a => {
     return(`
         <h3 style="text-align:center"><a href="${a.url}" class="attraction">${a.name}</a></h3>
         <br>

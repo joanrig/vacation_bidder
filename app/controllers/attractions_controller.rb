@@ -5,10 +5,18 @@ class AttractionsController < ApplicationController
 
   def index
     @categories = Category.all
+    # @attractions = @categories.each do |c|
+    #   c.attractions.each do |a|
+    #     a.users.include?(current_user)
+    #   end
+    # end
+    #binding.pry
+
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @categories}
+      format.json { render json: @categories }
     end
+
   end
 
   def search
