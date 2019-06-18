@@ -17,12 +17,15 @@ I hope you can use this free app to make your bucket list dreams come true!
 
 ## Blog Posts
 
-You can read more about the development of this web app in these blog posts:
+You can read more about the development of this web app in these posts:
 
-1. Nested routes and nested forms
+1. Entity Relationship Diagram - LucidChart
+https://www.lucidchart.com/invitations/accept/13b89cb7-8edd-4252-974c-abb8001dc9ad
+
+2. Blog Post: Nested routes and nested forms
 https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db9cf4590141
 
-2. Speed! JavaScript and Event Listeners
+3. Blog Post: Speed! JavaScript and Event Listeners
 https://medium.com/@joanrigdon/breaking-the-speed-limit-with-javascript-event-listeners-23aaecadfa26
 
 
@@ -35,6 +38,8 @@ https://medium.com/@joanrigdon/rails-portfolio-project-vacation-bidder-part-1-db
 2. Here is a 4-minutes video walkthrough of the Javascript features I recently added to this project:
 https://www.loom.com/share/9bbb474022e443ffa2d80158261dc196
 
+
+
 ## Project requirements
 
 Rails App with JavaScript Frontend Spec
@@ -45,16 +50,15 @@ Project Specs:
 
 [ X ] Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax.
 
-[ X ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. //vacations - list of attractions
+[ X ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. //vacations - "Inspire Me - list of attractions"
 
 [ debug ] Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. //- Vacations - show notes
 
-[ X ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. // vacation's attraction
+[ X ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. // category's attractions & vacation's attractions
 
-[ X ] Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. - //attractions new notes
+[ debug ] Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. - //attractions new notes
 
-
-[ X ] At least one of the JS Model Objects must have a method on the prototype. // display vacation notes - debugging
+[ X ] At least one of the JS Model Objects must have a method on the prototype. // Vacation, Category && Attraction classes
 
 
 
