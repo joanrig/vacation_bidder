@@ -1,84 +1,130 @@
 $(document).ready(function() {
-  listenForInspireMeClick()
-  getAttraction()
-})
+  getCategoriesAndNestedAttractions()
 
+  //////// INSPIRE ME aka categories index ///////////////
 
-//for
-const listenForInspireMeClick = () => {
-  $('.nav_element.attractions').on('click', (e) => {
-    e.preventDefault()
-    // history.pushState(null, null, "attractions");
-    fetch(`/attractions.json`)
-    // return response in json, pass it on
-      .then((res) => res.json())
-      .then(categories => {
-        $('#app-container').html('')
+  //triggered by click on Inspire me in nav bar
+  function getCategoriesAndNestedAttractions() {
+    $('.nav-element.inspire-me').on('click', (e) => {
+      e.preventDefault()
+      history.pushState(null, null, "categories")
+      fetch(`/attractions.json`)
+      // return response in json, pass it on
+        .then((res) => res.json())
+        .then(categories => {
+          $('#app-container').html('')
 
-        //verbose version
-        // categories.forEach(function(category{
-        //if arrow function only takes in one argument you dn't need to wrap them in parentheses
-        categories.forEach(category => {
-          let newCategory = new Category(category)
-          let categoryHtml = ''
-          categoryHtml += newCategory.formatIndex()
-          $('#app-container').append(categoryHtml)
+          //if arrow function only takes in one argument you dn't need to wrap them in parentheses
+          //verbose version of arrow function: categories.forEach(function(category{
+          categories.forEach(category => {
+            let newCategory = new Category(category)
+            let categoryHtml = ''
+            categoryHtml += newCategory.formatIndex()
+            $('#app-container').append(categoryHtml)
+          })
         })
-      })
-  })
-}
-
-const getAttraction = () => {
-  $('.attraction').on('click', (e) => {
-    e.preventDefault()
-    let id = event.target.href.split('/')[4]
-
-    $.ajax({
-        url: `http://localhost:3000/attractions/${id}`,
-        method: 'get',
-        dataType: 'json',
-        success: function(data) {data => {
-          const newAttraction = new Attraction(attraction)
-        })
-      }
     })
-  })
-}
-
-
-
-function Category(category) {
-  //this is the object you are building
-  this.id = category.id
-  this.name = category.name
-  this.attractions = category.attractions
-}
-
-//get rid of duplicates stored in category.attractions- Rails problem
-Category.prototype.formatIndex = function(){
-  let user_attractions = []
-  let previousId = null
-  for (let i=0; i < this.attractions.length; i++) {
-    let currentId = this.attractions[i].id
-    if (currentId != previousId){
-      user_attractions.push(this.attractions[i])
-    }
-    previousId = currentId
   }
 
-  let attractionsHtml = user_attractions.map(a => {
-    return(`
-        <h3 style="color:white"><a href="${a.url}" class="attraction">${a.name}</a></h3>
-        <br>
+
+  const allCategories = []
+
+  class Category {
+    constructor(category) {
+      //this is the object you are building
+      this.id = category.id
+      this.name = category.name
+      this.attractions = category.attractions
+      allCategories.push(this)
+    }
+  }
+
+
+  //get rid of duplicates stored in category.attractions- Rails problem
+  Category.prototype.formatIndex = function(){
+    let user_attractions = []
+    let previousId = null
+    for (let i=0; i < this.attractions.length; i++) {
+      let currentId = this.attractions[i].id
+      if (currentId != previousId){
+        user_attractions.push(this.attractions[i])
+      }
+      previousId = currentId
+    }
+
+    let attractionsHtml = user_attractions.map(a => {
+      return(`
+          <h3 style="color:white"><a href="attractions/${a.id}" class="attraction">${a.name}</a></h3>
+          <br>
+      `)
+    }).join(' ')
+
+    let categoryHtml = `
+    <h1 style="color:white"><a href="categories/${this.id}" class="category">${this.name}</a></h1>
+    `
+    return (categoryHtml + attractionsHtml)
+  }
+
+  ////// categories show page - click on attraction to show info
+  listenForAttractionClick()
+
+  function listenForAttractionClick(){
+    $('.attraction').addEventListener("click", showAttraction)
+  }
+
+
+  function showAttraction() {
+    debugger
+      const id = event.target.href.split('/')[4]
+      $.ajax({
+          url: `http://localhost:3000/attractions/${id}`,
+          method: 'get',
+          dataType: 'json',
+          success: function(data) {data => {
+            console.log(data)
+            debugger
+
+            const newAttraction = new Attraction(attraction)
+          }}
+      })
+  }
+
+
+
+  const allAttractions = []
+
+  class Attraction {
+    constructor(attraction) {
+      this.id = attraction.id
+      this.name = attraction.name
+      this.website= attraction.website
+      this.city= attraction.city
+      this.county= attraction.county
+      this.state= attraction.state
+      this.country= attraction.country
+      this.notes= attraction.notes
+      this.public= attraction.public
+      allAttractions.push(this)
+    }
+  }
+
+  Attraction.prototype.formatIndex = function() {
+    return (`
+        <h1>${this.name}</h1>
+        <hr>
+        <p>${this.website}</p>
+        <p>${this.city}</p>
+        <p>${this.county}</p>
+        <p>${this.state}</p>
+        <p>${this.country}</p>
+        <p>${this.notes}</p>
+        <p>${this.public}</p>
     `)
-  }).join(' ')
+  }
 
-  let categoryHtml = `
-  <h1 style="color:white"><a href="categories/${this.id}" class="category">${this.name}</a></h1>
-  `
-  return (categoryHtml + attractionsHtml)
-}
 
+//document ready
+})
 
 
 // $(document).ready(function() {

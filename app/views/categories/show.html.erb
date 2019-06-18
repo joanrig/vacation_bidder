@@ -30,7 +30,7 @@
           <% @category.public_attractions.sort_by(&:name).each do |a| %>
           <div class="attraction" id="public-attraction-<%= a.id =%>">
             <h3><%= link_to a.name, attraction_path(a) %></h3>
-            <div id="show-public-attraction-<%= a.id %>">
+            <div id="show-attraction-<%= a.id %>">
             </div>
           </div>
           <% end %>
@@ -45,7 +45,7 @@
         <% @category.private_attractions.sort_by(&:name).each do |a| %>
         <div class="attraction" id="private-attraction-<%= a.id =%>">
           <h3><%= link_to a.name, attraction_path(a) %></h3>
-          <div id="show-private-attraction-<%= a.id %>">
+          <div id="show-attraction-<%= a.id %>">
           </div>
         </div>
         <% end %>
