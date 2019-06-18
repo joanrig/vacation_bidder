@@ -10,7 +10,7 @@ $.get('/current_user', function(result){
 const bindClickHandlers = () => {
   $('.nav_element.attractions').on('click', (e) => {
     e.preventDefault()
-    history.pushState(null, null, "attractions");
+    // history.pushState(null, null, "attractions");
     fetch(`/attractions.json`)
     // return response in json, pass it on
       .then((res) => res.json())
@@ -44,7 +44,6 @@ function Category(category) {
 
 
 Category.prototype.formatIndex = function(){
-
   let test = []
   let previousId = null
   for (let i=0; i < this.attractions.length; i++) {
