@@ -1,5 +1,6 @@
 class BiddersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_bidder
 
 
   def new
@@ -46,5 +47,9 @@ class BiddersController < ApplicationController
   private
     def bidder_params
       params.require(:bidder).permit(:name, :email, :website)
+    end
+
+    def set_bidder
+      @bidder = Bidder.find_by_id(params[:id]) ||= Bidder.new
     end
 end

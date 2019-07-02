@@ -11,6 +11,7 @@ class BucketListItemsController < ApplicationController
   end
 
   def new
+    binding.pry
     @item = BucketListItem.new
   end
 

@@ -40,18 +40,33 @@ $(document).ready(function() {
   }
 
   //get rid of duplicates in category.attractions- Rails problem
+
   Category.prototype.formatIndex = function(){
-    let user_attractions = []
+    let attractions = []
     let previousId = null
     for (let i=0; i < this.attractions.length; i++) {
       let currentId = this.attractions[i].id
       if (currentId != previousId){
-        user_attractions.push(this.attractions[i])
+        attractions.push(this.attractions[i])
       }
       previousId = currentId
     }
 
-    let attractionsHtml = user_attractions.map(a => {
+    let sortedAttractions = attractions.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    });
+
+    let attractionsHtml = sortedAttractions.map(a => {
       return(`
           <h3 style="color:white"><a href="attractions/${a.id}" class="attraction">${a.name}</a></h3>
           <br>
@@ -70,8 +85,6 @@ $(document).ready(function() {
   function listenForAttractionClick(){
     $('.attraction').one('click', function(e){
       e.preventDefault()
-      console.log(this)
-
 
       const id = event.target.href.split('/')[4]
       fetch(`/attractions/${id}.json`)
@@ -83,24 +96,6 @@ $(document).ready(function() {
       })
     })
   }
-
-
-      // $.ajax({
-      //   url: `http://localhost:3000/attractions/${id}`,
-      //   method: 'get',
-      //   dataType: 'json',
-      //   success: function(data) {data => {
-      //     console.log(data)
-      //     // debugger does not hit
-      //
-      //     const newAttraction = new Attraction(attraction)
-      //     let attractionHtml = newAttraction.formatIndex()
-      //     $(`#show-attraction-${id}`).append(attractionHtml)
-      //   }}
-      // })
-  //   })
-  // }
-
 
   const allAttractions = []
 
@@ -121,11 +116,10 @@ $(document).ready(function() {
 
   Attraction.prototype.formatShow = function() {
     let attractionHtml = `
-        <hr>
         <p>${this.website}</p>
         <p>${this.country}</p>
         <p>${this.notes}</p>
-        </hr>
+        <hr>
     `
     return attractionHtml
   }

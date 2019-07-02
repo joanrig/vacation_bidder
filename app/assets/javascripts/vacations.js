@@ -2,7 +2,6 @@ $(document).ready(function() {
   getVacations()
   listenForAttractionsClick()
 
-
   function getVacations() {
     $.ajax({
           url: 'http://localhost:3000/vacations',
@@ -17,7 +16,6 @@ $(document).ready(function() {
   }
 
   const allVacations = []
-
   class Vacation {
       constructor(obj) {
           this.id = obj.id
@@ -32,7 +30,8 @@ $(document).ready(function() {
       }
     }
 
-//////////////   ATTRACTIONS   ////////////////////////
+
+  ///   attractions  ///
 
   function listenForAttractionsClick(){
     cameras = document.querySelectorAll('.glyphicon-camera')
@@ -42,7 +41,6 @@ $(document).ready(function() {
   }
 
   let cameraCounter = 0
-
   function timesCameraClicked(){
     cameraCounter++
     if (cameraCounter % 2 === 0) {
@@ -59,6 +57,7 @@ $(document).ready(function() {
     })
     const attractions = thisVacation[0].attractions
     const attractionsDiv = document.getElementById(`attractions-${id}`)
+
     attractionsDiv.innerHTML = attractions.map(a => {
       return(`
           <a href="${a.url}" class="attraction">${a.name}</a>
@@ -73,8 +72,8 @@ $(document).ready(function() {
     attractionsDiv.innerHTML = ""
   }
 
-  //////////////   COMMENTS ////////////////////////
 
+  ///  notes  ///
 
   Vacation.prototype.notes = function() {
     return (`
@@ -83,7 +82,6 @@ $(document).ready(function() {
   }
 
   listenForNotesClick()
-
   function listenForNotesClick(){
     comments = document.querySelectorAll('.glyphicon-comment')
     comments.forEach(function (element) {
@@ -92,7 +90,6 @@ $(document).ready(function() {
   }
 
   let commentsCounter = 0
-
   function timesCommentsClicked(){
     commentsCounter++
     if (commentsCounter % 2 === 0) {
@@ -114,12 +111,9 @@ $(document).ready(function() {
     $(`#notes-${id}`).html(notes)
   }
 
-
   function hideNotes(){
     const id = event.target.id
     $(`#notes-${id}`).innerHTML = ""
   }
-
-
 
 })
