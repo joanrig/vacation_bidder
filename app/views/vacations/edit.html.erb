@@ -89,7 +89,7 @@
 
 
         <% if @attractions %>
-          <%= v.collection_select :attraction_id, @both.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
+          <%= v.collection_select :attraction_id, @list.uniq.sort_by(&:name), :id, :name, prompt: "Select One" %>
         <% end %>
       <% end %>
       <br>

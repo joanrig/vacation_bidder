@@ -39,13 +39,16 @@ class VacationsController < ApplicationController
   end
 
   def edit
+    @all = Attraction.all
     @attractions = @vacation.attractions
+    @list = @all - @attractions | @attractions - @all
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
 
-    @public =  Attraction.where(public:true)
-    @private =  Attraction.select{|a| a.created_by = current_user.id}
-    #binding.pry
-    @both = @public + @private
+    # @public =  Attraction.where(public:true)
+    # @private =  Attraction.select{|a| a.created_by = current_user.id}
+    # binding.pry
+    # @both = @public + @private
+
 
     # if you want to create attractions from vacations edit page
     # @attraction = Attraction.new
@@ -63,6 +66,7 @@ class VacationsController < ApplicationController
   end
 
   def update
+    binding.pry
     @vacation_attraction = VacationAttraction.new(vacation_id: @vacation.id)
     @vacation.update(vacation_params)
     @all_attractions = Attraction.all
