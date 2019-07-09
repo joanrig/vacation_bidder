@@ -53,3 +53,6 @@ DOE confirm users are logged in & once logged in can only see their own info
 Monday
 DONE map out models, set them up and migrate, rough out basic views
 DONE pick background views, use bootstrap for stying
+
+
+notes - this version works without javascript
