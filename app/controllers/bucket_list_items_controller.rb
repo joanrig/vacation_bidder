@@ -7,7 +7,7 @@ class BucketListItemsController < ApplicationController
     @items = helpers.items
     @dreams = helpers.dreams
     @real = helpers.real
-    @vacations = helpers.vacations
+    @vacations = @user.vacations
   end
 
   def new

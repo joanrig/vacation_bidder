@@ -63,7 +63,7 @@ class VacationsController < ApplicationController
     @vacation.update(vacation_params)
     @all_attractions = Attraction.all
 
-    if params[:vacation][:vacation_attraction][:attraction_id]
+    if params[:vacation][:vacation_attraction]
       VacationAttraction.create(vacation_id: @vacation.id, attraction_id: params[:vacation][:vacation_attraction][:attraction_id])
       flash[:success] = "Successfully added attraction to itinerary."
     end
