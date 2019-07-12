@@ -1,38 +1,42 @@
+
 <%= render '/layouts/vacations' %>
 <br>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <br>
 <div class="center", style="text-align:center">
   <div class="container panel-a panel-body">
     <div class="col-sm-12 d-flex flex-row">
-      <br>
-
-
-      <h1> My Vacations </h1>
-      <br>
-      <br>
-      <% if @vacations.empty? %>
-        <h3>No Vacations yet! Let's build one!</h3>
-      <% else %>
-        <% @vacations.sort.each do |v| %>
-          <h3><%= link_to v.name, vacation_path(v) %></h3>
+      <br style="text-align:center">
+        <h1> My Vacations </h1>
+          <em>
+            <p>click on the camera to see each vacation's attractions</p>
+            <p>or click on the vacation name for full details</p>
+          </em>
+        <br>
+        <br>
+        <% if @vacations.empty? %>
+          <h3>No Vacations yet! Let's build one!</h3>
+        <% else %>
+          <% @vacations.uniq.sort.each do |v| %>
+              <div id="vacation-<%= v.id %>">
+                <h3><%= link_to v.name, vacation_path(v) %><a href="#">
+                  <span id="<%= v.id %>" class="glyphicon glyphicon-camera"></span>
+                </a></h3>
+                <div class="attractions-list" id="attractions-<%= v.id %>" style="color:lightgrey">
+                </div>
+              </div>
+          <% end %>
         <% end %>
-      <% end %>
       <br>
       <br>
 
 
       <h4>
         <div style="color:black">
-        <%= link_to "New Vacation", bucket_list_items_path %>
+          <%= link_to "New Vacation", bucket_list_items_path %>
         </div>
       </h4>
-
-
 
     </div>
   </div>
