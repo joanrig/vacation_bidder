@@ -3,11 +3,16 @@
 <div class="center" style="text-align:center">
   <div class="container panel-a panel-body">
     <div class="form" style="color:midnightblue">
-      <h3>Search Results</h3>
+      <h1>Search Results</h1>
+      <br>
+      <br>
+      <br>
 
 
       <% @attractions.each do |a| %>
-        <%= link_to a.name, attraction_path(a) %>
+      <ul>
+        <li><h3><%= link_to a.name, attraction_path(a) %></h3></li>
+      </ul>
       <% end %>
     </div>
   </div>
