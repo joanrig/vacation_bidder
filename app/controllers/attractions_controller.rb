@@ -27,14 +27,20 @@ class AttractionsController < ApplicationController
 
   def create
     @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
-    @attraction = Attraction.find_or_create_by(name: attraction_params[:name])
-    @attraction.update(attraction_params)
-    @attraction.created_by = current_user.id
+    if Attraction.find_by(name: attraction_params[:name])
+      flash[:alert] = @attraction.errors.full_messages
+    else
+      @attraction = Attraction.new(name: attraction_params[:name])
+      @attraction.created_by = current_user.id
+      @attraction_category = AttractionCategory.create(category_id: @category.id, attraction_id: @attraction.id)
+    end
+
+    binding.pry
 
     if @attraction.save
       @user_attraction = UserAttraction.create(user_id: current_user.id, attraction_id: @attraction.id, notes: params[:attraction][:user_attraction][:notes])
 
-      if params[:attraction][:attraction_category][:category_id]
+      if params[:attraction][:attraction_category]
         @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: params[:attraction][:attraction_category][:category_id][01])
       end
 
@@ -44,7 +50,6 @@ class AttractionsController < ApplicationController
       flash[:alert] = @attraction.errors.full_messages
       render :new
     end
-    binding.pry
   end
 
   def show
