@@ -3,7 +3,10 @@ class AttractionsController < ApplicationController
   before_action :all_categories, only: [:index, :new, :create, :edit]
 
   def index
-    @categories = Category.all
+  @categories = Category.all
+  respond_to do |format|
+    format.html { render :index }
+    format.json { render json: @categories }
   end
 
 

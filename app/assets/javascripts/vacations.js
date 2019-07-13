@@ -8,6 +8,7 @@ $(document).ready(function() {
           method: 'get',
           dataType: 'json',
           success: function(data) {data.map(vacation => {
+            console.log(data)
               // new js object
               const newVacation = new Vacation(vacation)
           })
@@ -28,12 +29,10 @@ $(document).ready(function() {
           this.open_to_bids = obj.open_to_bids
           this.attractions = obj.attractions
           allVacations.push(this)
-          debugger
       }
     }
 
   function setEventListener(){
-    debugger
     cameras = document.querySelectorAll('.glyphicon')
     cameras.forEach(function (element) {
       element.addEventListener("click", timesClicked)
@@ -56,8 +55,8 @@ $(document).ready(function() {
     const thisVacation = $.grep(allVacations, function(v){
       return v.id == id
     })
-    debugger
     const attractions = thisVacation[0].attractions
+    debugger
     const attractionsDiv = document.getElementById(`attractions-${id}`)
     attractionsDiv.innerHTML = attractions.map(a => {
       return(`
