@@ -62,6 +62,11 @@ class AttractionsController < ApplicationController
     else
       @user_attraction = UserAttraction.new
     end
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @attraction}
+    end
   end
 
   def edit
@@ -71,12 +76,14 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    binding.pry
     if params[:attraction][:category]
       @category = Category.find_by_id(params[:attraction][:attraction_category][:category_id])
     end
 
     if @category
       @attraction_category = AttractionCategory.create(attraction_id: @attraction.id, category_id: @category.id)
+      #binding.pry
     end
 
     if params[:attraction][:user_attraction]
@@ -98,7 +105,11 @@ class AttractionsController < ApplicationController
 
     if @attraction.update(attraction_params)
       flash[:alert] = "Successfully updated attraction."
-      redirect_to attraction_path(@attraction)
+
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @attraction, status: 201}
+      end
     else
       flash[:alert] = @attraction.errors.full_message
       render :edit

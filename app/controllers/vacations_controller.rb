@@ -5,10 +5,10 @@ class VacationsController < ApplicationController
 
 
   def index
-    @vacations = @user.vacations.uniq
-    respond_to do |f|
-      f.html
-      f.json { render json: @vacations}
+    @vacations = @user.vacations
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @vacations}
     end
   end
 
