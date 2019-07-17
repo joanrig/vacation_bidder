@@ -56,11 +56,13 @@ $(document).ready(function() {
       return v.id == id
     })
     const attractions = thisVacation[0].attractions
-    debugger
+
     const attractionsDiv = document.getElementById(`attractions-${id}`)
     attractionsDiv.innerHTML = attractions.map(a => {
       return(`
-          <a href="${a.url}" class="attraction">${a.name}</a>
+        <span>
+          <a href="${a.url}" class="attraction" style="color:white">${a.name}</a>
+        </span>
           <br>
       `)
     })

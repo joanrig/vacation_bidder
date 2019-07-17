@@ -41,7 +41,6 @@ $(document).ready(function() {
   }
 
   //get rid of duplicates in category.attractions- Rails problem
-
   Category.prototype.formatIndex = function(){
     let attractions = []
     let previousId = null
